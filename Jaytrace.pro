@@ -12,4 +12,6 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
+INCLUDEPATH += /usr/include/eigen2
+
 SOURCES += main.cpp

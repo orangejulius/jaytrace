@@ -2,6 +2,8 @@
 #include <Eigen/Core>
 #include <Eigen/LU>
 
+#include "Ray.h"
+
 using namespace Eigen;
 using namespace std;
 
@@ -25,32 +27,18 @@ int main()
     Vector3d rayOrigin(3,2,3);
     Vector3d rayDirection(-3,-2,-3);
 
+    Ray ray(rayOrigin,rayDirection);
+    Ray transformedRay=ray.getTransformedRay(M);
+
     cout<<"S (ray origin):\n";
-    cout<<rayOrigin<<endl;
+    cout<<ray.getOrigin()<<endl;
 
     cout<<"c (ray direction):\n";
-    cout<<rayDirection<<endl;
+    cout<<ray.getDirection()<<endl;
 
-    Vector4d rayOrigin4d;
-    rayOrigin4d<<rayOrigin,1;
-
-    Vector4d rayDirection4d;
-    rayDirection4d<<rayDirection,0;
-
-    Vector3d transformedRayOrigin;
-    transformedRayOrigin=(M.inverse()*rayOrigin4d).start<3>();
-    cout<<"M inverse * S: "<<endl;
-    cout<<transformedRayOrigin<<endl;
-
-    Vector3d transformedRayDirection;
-    transformedRayDirection=(M.inverse()*rayDirection4d).start<3>();
-    cout<<"M inverse * c\n";
-    cout<<transformedRayDirection<<endl;
-
-
-    double A = transformedRayDirection.squaredNorm();
-    double B = transformedRayOrigin.dot(transformedRayDirection);
-    double C = transformedRayOrigin.squaredNorm() - 1;
+    double A = transformedRay.getDirection().squaredNorm();
+    double B = transformedRay.getOrigin().dot(transformedRay.getDirection());
+    double C = transformedRay.getOrigin().squaredNorm() - 1;
     cout<<"A: "<<A<<" B: "<<B<<" C: "<<C<<endl;
 
     double discrim = B*B-A*C;
@@ -65,10 +53,8 @@ int main()
 
         double solutionTime = min(t1,t2);
         cout<<"Solution: "<<solutionTime<<endl;
-        Vector3d intersectionPoint = rayOrigin+rayDirection*solutionTime;
+        Vector3d intersectionPoint = ray.getPosition(solutionTime);
         cout<<intersectionPoint<<endl;
-
-
     } else {
         cout<<"No solutions"<<endl;
     }

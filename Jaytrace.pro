@@ -1,5 +1,4 @@
-#-------------------------------------------------
-#
+# -------------------------------------------------
 # Project created by QtCreator 2010-01-31T16:45:48
 #
 #-------------------------------------------------
@@ -12,7 +11,7 @@ CONFIG += console
 CONFIG -= app_bundle
 
 TEMPLATE = app
-
 INCLUDEPATH += /usr/include/eigen2
-
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    Ray.cpp
+HEADERS += Ray.h

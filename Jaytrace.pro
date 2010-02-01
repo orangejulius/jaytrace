@@ -14,4 +14,6 @@ TEMPLATE = app
 
 INCLUDEPATH += /usr/include/eigen2
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+	Ray.cpp
+HEADERS += Ray.h

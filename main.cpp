@@ -1,4 +1,7 @@
+#include "tests/RayTest.h"
+
 int main()
 {
-    return 0;
+	RayTest rayTest;
+	return QTest::qExec(&rayTest);
 }

@@ -3,6 +3,10 @@
 #include <Eigen/Geometry>
 #include <Eigen/LU>
 
+Ray::Ray(): origin(Vector3d(0,0,0)),direction(Vector3d(0,0,0))
+{
+
+}
 Ray::Ray(Vector3d origin, Vector3d direction): origin(origin), direction(direction)
 {
 
@@ -32,4 +36,9 @@ Ray Ray::getTransformedRay(Matrix4d transformationMatrix)
 Vector3d Ray::getPosition(double time)
 {
     return origin+direction*time;
+}
+
+bool Ray::operator==(const Ray &r) const
+{
+	return (r.origin == origin) && (r.direction == direction);
 }

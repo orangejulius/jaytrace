@@ -5,13 +5,18 @@
 
 QT -= gui
 
+SUBDIRS = test
+
 TARGET = Jaytrace
 
 CONFIG += console
 CONFIG -= app_bundle
+CONFIG += qtestlib
 
 TEMPLATE = app
 INCLUDEPATH += /usr/include/eigen2
 SOURCES += main.cpp \
-    Ray.cpp
-HEADERS += Ray.h
+    Ray.cpp \
+    tests/RayTest.cpp
+HEADERS += Ray.h \
+	tests/RayTest.h

@@ -1,5 +1,6 @@
 #include <QtCore/QCoreApplication>
 #include <Eigen/Core>
+#include <Eigen/Geometry>
 #include <Eigen/LU>
 
 #include "Ray.h"
@@ -7,10 +8,7 @@
 using namespace Eigen;
 using namespace std;
 
-int main(int argc, char *argv[])
-{
-    //QCoreApplication a(argc, argv);
-
+void rayTest() {
     Matrix4d M;
     M<< 1, 0, 0, 2,
         0, 4, 0, 4,
@@ -58,6 +56,21 @@ int main(int argc, char *argv[])
     } else {
         cout<<"No solutions"<<endl;
     }
+}
 
-    //return a.exec();
+void transformationTest() {
+    Transform3d transform(Matrix4d::Identity());
+    cout<<transform.matrix()<<endl;
+
+    transform*=Translation3d(1,2,3);
+    cout<<endl<<transform.matrix()<<endl;
+
+    transform*=AngleAxisd(10,Vector3d::UnitX());
+    cout<<transform.matrix()<<endl;
+
+}
+
+int main(int argc, char *argv[])
+{
+    transformationTest();
 }

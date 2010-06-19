@@ -1,0 +1,6 @@
+Jaytrace.pro.user
+*.o
+Makefile
+Jaytrace
+moc_*
+*.swp

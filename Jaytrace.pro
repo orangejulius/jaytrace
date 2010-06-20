@@ -16,7 +16,13 @@ TEMPLATE = app
 INCLUDEPATH += /usr/include/eigen2
 
 SOURCES += main.cpp \
+	CompositeNode.cpp \
+	Node.cpp \
 	Ray.cpp \
-	tests/RayTest.cpp
-HEADERS += Ray.h \
-	tests/RayTest.h
+	tests/RayTest.cpp \
+	tests/SceneGraphTest.cpp
+HEADERS += CompositeNode.h \
+	Node.h \
+	Ray.h \
+	tests/RayTest.h \
+	tests/SceneGraphTest.h

@@ -19,10 +19,14 @@ SOURCES += main.cpp \
 	CompositeNode.cpp \
 	Node.cpp \
 	Ray.cpp \
+	TransformNode.cpp \
+	TranslationNode.cpp \
 	tests/RayTest.cpp \
 	tests/SceneGraphTest.cpp
 HEADERS += CompositeNode.h \
 	Node.h \
 	Ray.h \
+	TransformNode.h \
+	TranslationNode.h \
 	tests/RayTest.h \
 	tests/SceneGraphTest.h

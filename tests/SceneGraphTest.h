@@ -8,5 +8,9 @@ class SceneGraphTest: public QObject
 	Q_OBJECT
 private slots:
 	void testCreation();
+	void testSingleTransformNode();
+	void testSingleTranslationNode();
+	void testTranslationNodeParent();
+	void testTranslationNodeParents();
 };
 #endif // SCENEGRAPHTEST_H

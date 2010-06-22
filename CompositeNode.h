@@ -9,6 +9,7 @@ using std::list;
 class CompositeNode: public Node
 {
 public:
+	CompositeNode(NodePointer parent = NodePointer(0));
 	virtual ~CompositeNode();
 
 	void addChild(NodePointer child);

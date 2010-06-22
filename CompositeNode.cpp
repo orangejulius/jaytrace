@@ -2,6 +2,11 @@
 
 #include <QDebug>
 
+CompositeNode::CompositeNode(NodePointer parent): Node(parent)
+{
+
+}
+
 CompositeNode::~CompositeNode()
 {
 	qDebug() << "Deleting CompositeNode " << this;

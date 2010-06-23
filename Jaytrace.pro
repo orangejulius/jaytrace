@@ -20,15 +20,19 @@ SOURCES += main.cpp \
 	Node.cpp \
 	Ray.cpp \
 	ScalingNode.cpp \
+	Sphere.cpp \
 	TransformNode.cpp \
 	TranslationNode.cpp \
 	tests/RayTest.cpp \
-	tests/SceneGraphTest.cpp
+	tests/SceneGraphTest.cpp \
+	tests/SphereTest.cpp
 HEADERS += CompositeNode.h \
 	Node.h \
 	Ray.h \
 	ScalingNode.h \
+	Sphere.h \
 	TransformNode.h \
 	TranslationNode.h \
 	tests/RayTest.h \
-	tests/SceneGraphTest.h
+	tests/SceneGraphTest.h \
+	tests/SphereTest.h

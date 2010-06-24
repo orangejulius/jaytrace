@@ -2,6 +2,7 @@
 
 #include <Eigen/Geometry>
 #include <iostream>
+#include "ScalingNode.h"
 #include "TranslationNode.h"
 
 using Eigen::Matrix4d;
@@ -40,6 +41,35 @@ void SceneGraphTest::testSingleTranslationNode()
 	cout << "expected: " << endl << expected << endl;
 	cout << "actual: " << endl << actual << endl;
 	QCOMPARE(actual, expected);
+}
+
+void SceneGraphTest::testScalingNodeParent()
+{
+	NodePointer t1(new ScalingNode(1, 5, 1));
+	NodePointer n1(new Node(t1));
+	Transform3d expected;
+	expected.setIdentity();
+	Scaling3d expectedScaling(1, 5, 1);
+	expected *= expectedScaling;
+	Matrix4d actual = n1->getMatrixState().matrix();
+	cout << "expected: " << endl << expected.matrix() << endl;
+	cout << "actual: " << endl << actual << endl;
+	QCOMPARE(actual, expected.matrix());
+}
+
+void SceneGraphTest::testScalingNodeParents()
+{
+	NodePointer t1(new ScalingNode(1, 5, 1));
+	NodePointer t2(new ScalingNode(4, 1, 1, t1));
+	NodePointer n1(new Node(t2));
+	Transform3d expected;
+	expected.setIdentity();
+	Scaling3d expectedScaling(4, 5, 1);
+	expected *= expectedScaling;
+	Matrix4d actual = n1->getMatrixState().matrix();
+	cout << "expected: " << endl << expected.matrix() << endl;
+	cout << "actual: " << endl << actual << endl;
+	QCOMPARE(actual, expected.matrix());
 }
 
 void SceneGraphTest::testTranslationNodeParent()

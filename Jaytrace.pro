@@ -19,6 +19,7 @@ SOURCES += main.cpp \
 	CompositeNode.cpp \
 	Node.cpp \
 	Ray.cpp \
+	ScalingNode.cpp \
 	TransformNode.cpp \
 	TranslationNode.cpp \
 	tests/RayTest.cpp \
@@ -26,6 +27,7 @@ SOURCES += main.cpp \
 HEADERS += CompositeNode.h \
 	Node.h \
 	Ray.h \
+	ScalingNode.h \
 	TransformNode.h \
 	TranslationNode.h \
 	tests/RayTest.h \

@@ -10,6 +10,8 @@ private slots:
 	void testCreation();
 	void testSingleTransformNode();
 	void testSingleTranslationNode();
+	void testScalingNodeParent();
+	void testScalingNodeParents();
 	void testTranslationNodeParent();
 	void testTranslationNodeParents();
 };

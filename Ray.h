@@ -24,8 +24,8 @@ public:
 		return direction;
 	}
 
-	Ray getTransformedRay(Matrix4d transformationMatrix);
-	Vector3d getPosition(double time);
+	Ray getTransformedRay(Matrix4d transformationMatrix) const;
+	Vector3d getPosition(double time) const;
 
 	bool operator==(const Ray& r) const;
 };

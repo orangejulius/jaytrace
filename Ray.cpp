@@ -12,7 +12,7 @@ Ray::Ray(Vector3d origin, Vector3d direction): origin(origin), direction(directi
 
 }
 
-Ray Ray::getTransformedRay(Matrix4d transformationMatrix)
+Ray Ray::getTransformedRay(Matrix4d transformationMatrix) const
 {
 	Vector4d rayOrigin4d;
 	rayOrigin4d << origin, 1;
@@ -29,7 +29,7 @@ Ray Ray::getTransformedRay(Matrix4d transformationMatrix)
 	return Ray(transformedRayOrigin, transformedRayDirection);
 }
 
-Vector3d Ray::getPosition(double time)
+Vector3d Ray::getPosition(double time) const
 {
 	return origin + direction * time;
 }

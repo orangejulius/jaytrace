@@ -2,16 +2,17 @@
 #define SPHERE_H
 
 #include "Node.h"
+#include "RayObject.h"
 
 class Ray;
 
-class Sphere: public Node
+class Sphere: public Node, public RayObject
 {
 public:
 	Sphere(NodePointer parent = NodePointer(0));
-	~Sphere();
+	virtual ~Sphere();
 
-	bool intersect(Ray ray);
+	IntersectionInfo* intersect(const Ray& ray);
 };
 
 #endif // SPHERE_H

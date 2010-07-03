@@ -10,8 +10,10 @@ find_package(Eigen2 REQUIRED)
 #source files used both by the main program and the test program
 set(common_sources
 	CompositeNode.cpp
+	IntersectionLibrary.cpp
 	Node.cpp
 	Ray.cpp
+	RayObject.cpp
 	ScalingNode.cpp
 	Sphere.cpp
 	TransformNode.cpp
@@ -20,6 +22,7 @@ set(common_sources
 #source files specific to the test program
 set(jaytraceTest_sources
 	main.cpp
+	tests/IntersectionLibraryTest.cpp
 	tests/RayTest.cpp
 	tests/SceneGraphTest.cpp
 	tests/SphereTest.cpp
@@ -28,6 +31,7 @@ set(jaytraceTest_sources
 #header files of classes with the Q_OBJECT macro
 #these classes must be processed by the moc
 set(jaytraceTest_qobject_headers
+	tests/IntersectionLibraryTest.h
 	tests/RayTest.h
 	tests/SceneGraphTest.h
 	tests/SphereTest.h

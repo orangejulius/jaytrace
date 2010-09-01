@@ -1,1 +1,7 @@
 A personal ray tracer project.
+
+Planned features include
+* Standard raytrac-y things: reflection, shadows, transparency
+* photon mapping
+* OpenCL/threading for computation
+* kd-tree based intersection algorithm

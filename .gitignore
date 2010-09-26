@@ -1,7 +1,9 @@
-Jaytrace.pro.user
 *.o
 Makefile
-Jaytrace
+jaytrace
 moc_*
 *.swp
 callgrind*
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake

@@ -1,31 +1,31 @@
-project(Jaytrace)
-
 cmake_minimum_required(VERSION 2.8)
+
+project(Jaytrace)
 
 set(CMAKE_MODULE_PATH ${Jaytrace_SOURCE_DIR}/cmake/)
 
 find_package(Qt4 REQUIRED)
 find_package(Eigen2 REQUIRED)
 
-set(jaytrace_test_sources tests/RayTest.cpp tests/SceneGraphTest.cpp
+#source files used both by the main program and the test program
+set(common_sources CompositeNode.cpp Node.cpp
+	Ray.cpp ScalingNode.cpp Sphere.cpp TransformNode.cpp
+	TranslationNode.cpp)
+
+#source files specific to the test program
+set(jaytraceTest_sources main.cpp tests/RayTest.cpp tests/SceneGraphTest.cpp
 	tests/SphereTest.cpp tests/TransformNodeTest.cpp)
 
-set(jaytrace_test_headers tests/RayTest.h tests/SceneGraphTest.h
+#header files of classes with the Q_OBJECT macro
+#these classes must be processed by the moc
+set(jaytraceTest_qobject_headers tests/RayTest.h tests/SceneGraphTest.h
 	tests/SphereTest.h tests/TransformNodeTest.h)
 
-set(jaytrace_moc_headers ${jaytrace_test_headers})
+qt4_wrap_cpp(jaytraceTest_moc_sources ${jaytraceTest_qobject_headers})
 
-set(jaytrace_sources main.cpp CompositeNode.cpp Node.cpp
-	Ray.cpp ScalingNode.cpp Sphere.cpp TransformNode.cpp
-	TranslationNode.cpp ${jaytrace_test_sources})
-
-set(jaytrace_headers CompositeNode.h Node.h Ray.h
-	ScalingNode.h Sphere.h TransformNode.h
-	TranslationNode.h ${jaytrace_test_headers})
+set(jaytraceTest_all_sources ${jaytraceTest_sources} ${jaytraceTest_moc_sources} ${common_sources})
 
 set(QT_USE_QTTEST true)
-
-qt4_wrap_cpp(jaytrace_headers_moc ${jaytrace_moc_headers})
 
 include(${QT_USE_FILE})
 include_directories(
@@ -35,5 +35,6 @@ include_directories(
 
 add_definitions(${QT_DEFINITIONS})
 
-add_executable(jaytrace ${jaytrace_sources} ${jaytrace_headers_moc})
-target_link_libraries(jaytrace ${QT_LIBRARIES})
+add_executable(jaytraceTest ${jaytraceTest_all_sources})
+
+target_link_libraries(jaytraceTest ${QT_LIBRARIES})

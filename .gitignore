@@ -1,6 +1,7 @@
 *.o
 Makefile
 jaytrace
+jaytraceTest
 moc_*
 *.swp
 callgrind*

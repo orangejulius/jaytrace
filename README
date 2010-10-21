@@ -2,6 +2,9 @@ A personal ray tracer project.
 
 Planned features include
 * Standard raytrac-y things: reflection, shadows, transparency
+* support for rendering multiple frames for an animation
 * photon mapping
 * OpenCL/threading for computation
+* network communication to enable multiple machines to work on one output image
 * kd-tree based intersection algorithm
+* powerful file representation of scenes and objects

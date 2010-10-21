@@ -7,17 +7,25 @@ set(CMAKE_MODULE_PATH ${Jaytrace_SOURCE_DIR}/cmake/)
 find_package(Qt4 REQUIRED)
 find_package(Eigen2 REQUIRED)
 
-set(jaytrace_sources main.cpp CompositeNode.cpp Node.cpp Ray.cpp ScalingNode.cpp
-	Sphere.cpp TransformNode.cpp TranslationNode.cpp tests/RayTest.cpp
-	tests/SceneGraphTest.cpp tests/SphereTest.cpp tests/TransformNodeTest.cpp)
+set(jaytrace_test_sources tests/RayTest.cpp tests/SceneGraphTest.cpp
+	tests/SphereTest.cpp tests/TransformNodeTest.cpp)
 
-set(jaytrace_headers CompositeNode.h Node.h Ray.h ScalingNode.h
-	Sphere.h TransformNode.h TranslationNode.h tests/RayTest.h
-	tests/SceneGraphTest.h tests/SphereTest.h tests/TransformNodeTest.h)
+set(jaytrace_test_headers tests/RayTest.h tests/SceneGraphTest.h
+	tests/SphereTest.h tests/TransformNodeTest.h)
+
+set(jaytrace_moc_headers ${jaytrace_test_headers})
+
+set(jaytrace_sources main.cpp CompositeNode.cpp Node.cpp
+	Ray.cpp ScalingNode.cpp Sphere.cpp TransformNode.cpp
+	TranslationNode.cpp ${jaytrace_test_sources})
+
+set(jaytrace_headers CompositeNode.h Node.h Ray.h
+	ScalingNode.h Sphere.h TransformNode.h
+	TranslationNode.h ${jaytrace_test_headers})
 
 set(QT_USE_QTTEST true)
 
-qt4_wrap_cpp(jaytrace_headers_moc ${jaytrace_headers})
+qt4_wrap_cpp(jaytrace_headers_moc ${jaytrace_moc_headers})
 
 include(${QT_USE_FILE})
 include_directories(

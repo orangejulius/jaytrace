@@ -9,6 +9,7 @@ find_package(Eigen2 REQUIRED)
 
 #source files used both by the main program and the test program
 set(common_sources
+	Color.cpp
 	CompositeNode.cpp
 	IntersectionLibrary.cpp
 	Node.cpp

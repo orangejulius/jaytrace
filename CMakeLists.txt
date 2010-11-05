@@ -8,18 +8,30 @@ find_package(Qt4 REQUIRED)
 find_package(Eigen2 REQUIRED)
 
 #source files used both by the main program and the test program
-set(common_sources CompositeNode.cpp Node.cpp
-	Ray.cpp ScalingNode.cpp Sphere.cpp TransformNode.cpp
+set(common_sources
+	CompositeNode.cpp
+	Node.cpp
+	Ray.cpp
+	ScalingNode.cpp
+	Sphere.cpp
+	TransformNode.cpp
 	TranslationNode.cpp)
 
 #source files specific to the test program
-set(jaytraceTest_sources main.cpp tests/RayTest.cpp tests/SceneGraphTest.cpp
-	tests/SphereTest.cpp tests/TransformNodeTest.cpp)
+set(jaytraceTest_sources
+	main.cpp
+	tests/RayTest.cpp
+	tests/SceneGraphTest.cpp
+	tests/SphereTest.cpp
+	tests/TransformNodeTest.cpp)
 
 #header files of classes with the Q_OBJECT macro
 #these classes must be processed by the moc
-set(jaytraceTest_qobject_headers tests/RayTest.h tests/SceneGraphTest.h
-	tests/SphereTest.h tests/TransformNodeTest.h)
+set(jaytraceTest_qobject_headers
+	tests/RayTest.h
+	tests/SceneGraphTest.h
+	tests/SphereTest.h
+	tests/TransformNodeTest.h)
 
 qt4_wrap_cpp(jaytraceTest_moc_sources ${jaytraceTest_qobject_headers})
 

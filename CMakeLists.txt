@@ -24,7 +24,7 @@ set(common_sources
 
 #source files specific to the test program
 set(jaytraceTest_sources
-	main.cpp
+	tests/main.cpp
 	tests/IntersectionLibraryTest.cpp
 	tests/RayTest.cpp
 	tests/SceneGraphTest.cpp

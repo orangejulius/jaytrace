@@ -7,6 +7,7 @@
 
 using Eigen::Transform3d;
 
+class Material;
 class Node;
 
 typedef QSharedPointer<Node> NodePointer;
@@ -19,6 +20,8 @@ public:
 	virtual ~Node();
 
 	virtual Transform3d getMatrixState();
+
+	virtual Material getMaterial();
 
 protected:
         NodePointer parent;

@@ -12,6 +12,8 @@ set(common_sources
 	Color.cpp
 	CompositeNode.cpp
 	IntersectionLibrary.cpp
+	Material.cpp
+	MaterialNode.cpp
 	Node.cpp
 	Ray.cpp
 	RayObject.cpp

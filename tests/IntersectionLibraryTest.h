@@ -9,5 +9,8 @@ class IntersectionLibraryTest: public QObject
 private slots:
 	///Test basic intersection math
 	void testIntersections();
+
+	///Test that depth is handled properly
+	void testOccultation();
 };
 #endif // INTERSECTIONLIBRARYTEST_H

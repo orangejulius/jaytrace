@@ -9,11 +9,15 @@ void IntersectionLibrary::addObject(RayObjectPointer object)
 
 IntersectionInfo* IntersectionLibrary::intersect(const Ray& ray)
 {
+	IntersectionInfo* best = 0;
 	for (list<RayObjectPointer>::iterator i = objects.begin(); i != objects.end(); i++) {
 		IntersectionInfo* info = (*i)->intersect(ray);
 		if (info) {
-			return info;
+			if (best == 0 || info->time < best->time) {
+				best = info;
+			}
 		}
 	}
-	return 0;
+
+	return best;
 }

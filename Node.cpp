@@ -2,6 +2,8 @@
 
 #include <QDebug>
 
+#include "Material.h"
+
 Node::Node(NodePointer parent): parent(parent)
 {
 
@@ -20,5 +22,15 @@ Transform3d Node::getMatrixState()
 		Transform3d noTransform;
 		noTransform.setIdentity();
 		return noTransform;
+	}
+}
+
+Material Node::getMaterial()
+{
+	if (parent) {
+		return parent->getMaterial();
+	} else {
+		Material material;
+		return material;
 	}
 }

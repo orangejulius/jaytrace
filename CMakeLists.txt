@@ -12,6 +12,7 @@ set(core_sources
 	Color.cpp
 	CompositeNode.cpp
 	IntersectionLibrary.cpp
+	Light.cpp
 	Material.cpp
 	MaterialNode.cpp
 	Node.cpp

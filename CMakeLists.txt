@@ -26,6 +26,7 @@ set(core_sources
 set(jaytraceTest_sources
 	tests/main.cpp
 	tests/IntersectionLibraryTest.cpp
+	tests/MaterialTest.cpp
 	tests/RayTest.cpp
 	tests/SceneGraphTest.cpp
 	tests/SphereTest.cpp
@@ -35,6 +36,7 @@ set(jaytraceTest_sources
 #these classes must be processed by the moc
 set(jaytraceTest_qobject_headers
 	tests/IntersectionLibraryTest.h
+	tests/MaterialTest.h
 	tests/RayTest.h
 	tests/SceneGraphTest.h
 	tests/SphereTest.h

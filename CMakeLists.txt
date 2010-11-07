@@ -8,7 +8,7 @@ find_package(Qt4 REQUIRED)
 find_package(Eigen2 REQUIRED)
 
 #source files used both by the main program and the test program
-set(common_sources
+set(core_sources
 	Color.cpp
 	CompositeNode.cpp
 	IntersectionLibrary.cpp
@@ -42,7 +42,7 @@ set(jaytraceTest_qobject_headers
 
 qt4_wrap_cpp(jaytraceTest_moc_sources ${jaytraceTest_qobject_headers})
 
-set(jaytraceTest_all_sources ${jaytraceTest_sources} ${jaytraceTest_moc_sources} ${common_sources})
+set(jaytraceTest_all_sources ${jaytraceTest_sources} ${jaytraceTest_moc_sources})
 
 set(QT_USE_QTTEST true)
 
@@ -54,6 +54,8 @@ include_directories(
 
 add_definitions(${QT_DEFINITIONS})
 
+add_library(JaytraceCore ${core_sources})
+
 add_executable(jaytraceTest ${jaytraceTest_all_sources})
 
-target_link_libraries(jaytraceTest ${QT_LIBRARIES})
+target_link_libraries(jaytraceTest JaytraceCore ${QT_LIBRARIES})

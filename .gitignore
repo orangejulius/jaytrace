@@ -1,4 +1,5 @@
 *kdev*
+libJaytraceCore.a
 *.o
 Makefile
 jaytrace

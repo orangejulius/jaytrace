@@ -59,6 +59,8 @@ add_definitions(${QT_DEFINITIONS})
 
 add_library(JaytraceCore ${core_sources})
 
+add_executable(jaytrace main.cpp)
 add_executable(jaytraceTest ${jaytraceTest_all_sources})
 
+target_link_libraries(jaytrace JaytraceCore ${QT_LIBRARIES})
 target_link_libraries(jaytraceTest JaytraceCore ${QT_LIBRARIES})

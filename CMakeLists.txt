@@ -55,7 +55,7 @@ include_directories(
 	${Jaytrace_SOURCE_DIR}
 )
 
-add_definitions(${QT_DEFINITIONS})
+add_definitions(-Wall -O2 -ggdb ${QT_DEFINITIONS})
 
 add_library(JaytraceCore ${core_sources})
 

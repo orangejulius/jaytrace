@@ -18,6 +18,8 @@ set(core_sources
 	Node.cpp
 	Ray.cpp
 	RayObject.cpp
+	RaytraceRenderer.cpp
+	Renderer.cpp
 	ScalingNode.cpp
 	Sphere.cpp
 	TransformNode.cpp

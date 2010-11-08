@@ -59,6 +59,15 @@ QImage RaytraceRenderer::render()
 
 				//first compute ambient lighting
 				pixelColor += (*light)->getAmbient() * objectMaterial.getAmbient();
+
+				//calculate the direction to the light
+				Vector3d lightVector = (*light)->getLightVector(pixelRay.getPosition(info->time));
+
+				double LdotN = lightVector.dot(info->normal);
+
+				if (LdotN > 0) {
+					pixelColor += (*light)->getDiffuse() * objectMaterial.getDiffuse() * LdotN;
+				}
 			}
 			image.setPixel(col, row, pixelColor.getARGB());
 		}

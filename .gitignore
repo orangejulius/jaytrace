@@ -1,3 +1,4 @@
+*.png
 *kdev*
 libJaytraceCore.a
 *.o

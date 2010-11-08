@@ -13,3 +13,8 @@ void Renderer::addObject(RayObjectPointer object)
 {
 	objects.push_back(object);
 }
+
+void Renderer::addLight(LightPointer light)
+{
+	lights.push_back(light);
+}

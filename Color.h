@@ -16,6 +16,8 @@ public:
 	float getBlue() const;
 	void setBlue(float b);
 
+	unsigned int getARGB() const;
+
 	Color operator +(const Color &c) const;
 	Color operator -(const Color &c) const;
 	Color& operator +=(const Color &c);

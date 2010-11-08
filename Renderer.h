@@ -3,6 +3,7 @@
 
 #include <list>
 
+#include "Light.h"
 #include "RayObject.h"
 
 using std::list;
@@ -13,6 +14,7 @@ public:
 	Renderer();
 
 	void addObject(RayObjectPointer object);
+	void addLight(LightPointer light);
 protected:
 	float projectionAngle;
 	float aspectRatio;
@@ -21,6 +23,7 @@ protected:
 	unsigned int height;
 
 	list<RayObjectPointer> objects;
+	list<LightPointer> lights;
 };
 
 #endif // RENDERER_H

@@ -3,6 +3,7 @@
 #include <Eigen/Core>
 #include <QtDebug>
 
+#include "Material.h"
 #include "Ray.h"
 
 using Eigen::Vector3d;
@@ -48,9 +49,18 @@ QImage RaytraceRenderer::render()
 			Ray pixelRay(origin, direction);
 
 			IntersectionInfo* info = intersectionLibrary.intersect(pixelRay);
-			if (info) {
-				image.setPixel(col, row, 0xff000099);
+			if (!info) {
+				continue;
 			}
+			Color pixelColor(0, 0, 0);
+			list<LightPointer>::iterator light;
+			for (light = lights.begin(); light != lights.end(); light++) {
+				Material objectMaterial = info->object->getMaterial();
+
+				//first compute ambient lighting
+				pixelColor += (*light)->getAmbient() * objectMaterial.getAmbient();
+			}
+			image.setPixel(col, row, pixelColor.getARGB());
 		}
 	}
 

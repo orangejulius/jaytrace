@@ -67,6 +67,16 @@ QImage RaytraceRenderer::render()
 
 				if (LdotN > 0) {
 					pixelColor += (*light)->getDiffuse() * objectMaterial.getDiffuse() * LdotN;
+
+					Vector3d halfVector = lightVector - direction;
+					halfVector.normalize();
+
+					double HdotN = halfVector.dot(info->normal);
+					double sif = pow(HdotN, objectMaterial.getShininess());
+
+					if (sif > 0) {
+						pixelColor += (*light)->getSpecular() * objectMaterial.getSpecular() * sif;
+					}
 				}
 			}
 			image.setPixel(col, row, pixelColor.getARGB());

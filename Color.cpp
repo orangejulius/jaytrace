@@ -57,6 +57,18 @@ void Color::setBlue(float b)
 	blue = b;
 }
 
+unsigned int Color::getARGB() const
+{
+	unsigned byte = 0;
+
+	byte += (unsigned(getByte(alpha)) << 24);
+	byte += (unsigned(getByte(red)) << 16);
+	byte += (unsigned(getByte(green)) << 8);
+	byte += (unsigned(getByte(blue)));
+
+	return byte;
+}
+
 Color Color::operator +(const Color& c) const
 {
 	return Color(red + c.red, green + c.green, blue + c.blue, alpha);

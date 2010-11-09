@@ -72,6 +72,12 @@ Color RaytraceRenderer::rayColor(Ray ray)
 		//calculate the direction to the light
 		Vector3d lightVector = (*light)->getLightVector(ray.getPosition(info->time));
 
+		//don't add any light if this point is in a shadow
+		Ray lightRay(ray.getPosition(info->time), lightVector);
+		if (!shadowFeeler(lightRay)) {
+			continue;
+		}
+
 		double LdotN = lightVector.dot(info->normal);
 
 		if (LdotN > 0) {
@@ -89,4 +95,11 @@ Color RaytraceRenderer::rayColor(Ray ray)
 		}
 	}
 	return totalColor;
+}
+
+bool RaytraceRenderer::shadowFeeler(Ray ray)
+{
+	IntersectionInfo* info = intersectionLibrary.intersect(ray);
+
+	return info == 0;
 }

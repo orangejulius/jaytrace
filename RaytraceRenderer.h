@@ -16,6 +16,7 @@ public:
 
 private:
 	Color rayColor(Ray ray);
+	bool shadowFeeler(Ray ray);
 	IntersectionLibrary intersectionLibrary;
 	QImage image;
 };

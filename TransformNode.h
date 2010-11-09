@@ -1,7 +1,7 @@
 #ifndef TRANSFORMNODE_H
 #define TRANSFORMNODE_H
 
-#include "CompositeNode.h"
+#include "Node.h"
 
 using Eigen::Transform3d;
 
@@ -16,7 +16,7 @@ using Eigen::Transform3d;
  * transformed by it.
  */
 
-class TransformNode : public CompositeNode
+class TransformNode : public Node
 {
 public:
 	TransformNode(NodePointer parent = NodePointer(0));

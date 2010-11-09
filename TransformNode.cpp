@@ -1,6 +1,6 @@
 #include "TransformNode.h"
 
-TransformNode::TransformNode(NodePointer parent): CompositeNode(parent)
+TransformNode::TransformNode(NodePointer parent): Node(parent)
 {
 	transform.setIdentity();
 	if (parent) {

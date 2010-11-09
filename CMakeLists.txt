@@ -10,7 +10,6 @@ find_package(Eigen2 REQUIRED)
 #source files used both by the main program and the test program
 set(core_sources
 	Color.cpp
-	CompositeNode.cpp
 	IntersectionLibrary.cpp
 	Light.cpp
 	Material.cpp

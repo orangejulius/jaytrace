@@ -2,7 +2,7 @@
 
 #include <QDebug>
 
-MaterialNode::MaterialNode(NodePointer parent): CompositeNode(parent)
+MaterialNode::MaterialNode(NodePointer parent): Node(parent)
 {
 
 }

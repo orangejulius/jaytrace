@@ -15,6 +15,7 @@ public:
 	QImage render();
 
 private:
+	Color rayColor(Ray ray);
 	IntersectionLibrary intersectionLibrary;
 	QImage image;
 };

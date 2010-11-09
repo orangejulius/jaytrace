@@ -47,41 +47,46 @@ QImage RaytraceRenderer::render()
 			direction.normalize();
 
 			Ray pixelRay(origin, direction);
-
-			IntersectionInfo* info = intersectionLibrary.intersect(pixelRay);
-			if (!info) {
-				continue;
-			}
-			Color pixelColor(0, 0, 0);
-			list<LightPointer>::iterator light;
-			for (light = lights.begin(); light != lights.end(); light++) {
-				Material objectMaterial = info->object->getMaterial();
-
-				//first compute ambient lighting
-				pixelColor += (*light)->getAmbient() * objectMaterial.getAmbient();
-
-				//calculate the direction to the light
-				Vector3d lightVector = (*light)->getLightVector(pixelRay.getPosition(info->time));
-
-				double LdotN = lightVector.dot(info->normal);
-
-				if (LdotN > 0) {
-					pixelColor += (*light)->getDiffuse() * objectMaterial.getDiffuse() * LdotN;
-
-					Vector3d halfVector = lightVector - direction;
-					halfVector.normalize();
-
-					double HdotN = halfVector.dot(info->normal);
-					double sif = pow(HdotN, objectMaterial.getShininess());
-
-					if (sif > 0) {
-						pixelColor += (*light)->getSpecular() * objectMaterial.getSpecular() * sif;
-					}
-				}
-			}
+			Color pixelColor = rayColor(pixelRay);
 			image.setPixel(col, row, pixelColor.getARGB());
 		}
 	}
-
 	return image;
+}
+
+Color RaytraceRenderer::rayColor(Ray ray)
+{
+	IntersectionInfo* info = intersectionLibrary.intersect(ray);
+	Color totalColor(0, 0, 0);
+	if (!info) {
+		return totalColor;
+	}
+
+	list<LightPointer>::iterator light;
+	for (light = lights.begin(); light != lights.end(); light++) {
+		Material objectMaterial = info->object->getMaterial();
+
+		//first compute ambient lighting
+		totalColor += (*light)->getAmbient() * objectMaterial.getAmbient();
+
+		//calculate the direction to the light
+		Vector3d lightVector = (*light)->getLightVector(ray.getPosition(info->time));
+
+		double LdotN = lightVector.dot(info->normal);
+
+		if (LdotN > 0) {
+			totalColor += (*light)->getDiffuse() * objectMaterial.getDiffuse() * LdotN;
+
+			Vector3d halfVector = lightVector - ray.getDirection();
+			halfVector.normalize();
+
+			double HdotN = halfVector.dot(info->normal);
+			double sif = pow(HdotN, objectMaterial.getShininess());
+
+			if (sif > 0) {
+				totalColor += (*light)->getSpecular() * objectMaterial.getSpecular() * sif;
+			}
+		}
+	}
+	return totalColor;
 }

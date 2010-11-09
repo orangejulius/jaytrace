@@ -1,10 +1,10 @@
 #ifndef MATERIALNODE_H
 #define MATERIALNODE_H
 
-#include "CompositeNode.h"
+#include "Node.h"
 #include "Material.h"
 
-class MaterialNode: public CompositeNode
+class MaterialNode: public Node
 {
 public:
 	MaterialNode(NodePointer parent = NodePointer(0));

@@ -13,14 +13,12 @@ Q_DECLARE_METATYPE(Matrix4d)
 
 void SceneGraphTest::testCreation()
 {
-	CompositeNodePointer c1(new CompositeNode());
-	qDebug() << "Created CompositeNode " << c1.data();
-	NodePointer c2(new CompositeNode());
-	qDebug() << "Created CompositeNode " << c2.data();
 	NodePointer n1(new Node());
 	qDebug() << "Created Node " << n1.data();
-	c1->addChild(n1);
-	c1->addChild(c2);
+	NodePointer n2(new Node(n1));
+	qDebug() << "Created Node " << n2.data();
+	NodePointer n3(new Node(n2));
+	qDebug() << "Created Node " << n3.data();
 }
 
 void SceneGraphTest::testSingleTransformNode()

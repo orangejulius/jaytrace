@@ -15,7 +15,7 @@ int main()
 	l1->setDiffuse(white);
 	l1->setSpecular(white);
 
-	CompositeNodePointer t1(new TranslationNode(0, 0, -10));
+	NodePointer t1(new TranslationNode(0, 0, -10));
 	MaterialNodePointer m1(new MaterialNode(t1));
 	Color m1Color(.5, .2, .2);
 	m1->setAmbient(m1Color);

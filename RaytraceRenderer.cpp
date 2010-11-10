@@ -4,6 +4,7 @@
 #include <QtDebug>
 
 #include "Material.h"
+#include "Poisson.h"
 #include "Ray.h"
 
 using Eigen::Vector3d;
@@ -38,16 +39,28 @@ QImage RaytraceRenderer::render()
 
 	for (unsigned int row = 0; row < height; row++) {
 		for (unsigned int col = 0; col < width; col++) {
-			float x = xMin + (col + .5) / width * xWidth;
-			float y = yMin + ((height - row) + .5) / height * yHeight;
-			float z = -1;
+			Color pixelColor(0,0,0);
+			unsigned int aaSamples = 4;
+			Poisson poisson(aaSamples);
+			for (unsigned int aa = 0; aa < aaSamples; aa++) {
+				Vector2d offset(.5,.5);
+				if (aa > 0) {
+					offset = poisson.generate();
+				}
 
-			Vector3d origin(0, 0, 0);
-			Vector3d direction(x, y, z);
-			direction.normalize();
+				float x = xMin + (col + offset.x()) / width * xWidth;
+				float y = yMin + ((height - row) + offset.y()) / height * yHeight;
+				float z = -1;
 
-			Ray pixelRay(origin, direction);
-			Color pixelColor = rayColor(pixelRay);
+				Vector3d origin(0, 0, 0);
+				Vector3d direction(x, y, z);
+				direction.normalize();
+
+				Ray pixelRay(origin, direction);
+				pixelColor = pixelColor + rayColor(pixelRay);
+			}
+
+			pixelColor = pixelColor * (1./aaSamples);
 			image.setPixel(col, row, pixelColor.getARGB());
 		}
 	}

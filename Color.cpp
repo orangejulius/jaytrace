@@ -7,7 +7,7 @@ unsigned char getByte(float color)
 	} else if (color > 1) {
 		return 255;
 	} else {
-		return color * 255;
+		return color * 255 + .5;
 	}
 }
 

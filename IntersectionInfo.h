@@ -13,7 +13,7 @@ class IntersectionInfo
 public:
 	Vector3d normal;
 	double time;
-	NodePointer object;
+	Node* object;
 };
 
 #endif // INTERSECTIONINFO_H

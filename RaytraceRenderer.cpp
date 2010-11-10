@@ -107,6 +107,8 @@ Color RaytraceRenderer::rayColor(Ray ray)
 			}
 		}
 	}
+	delete info;
+
 	return totalColor;
 }
 
@@ -114,5 +116,10 @@ bool RaytraceRenderer::shadowFeeler(Ray ray)
 {
 	IntersectionInfo* info = intersectionLibrary.intersect(ray);
 
-	return info == 0;
+	if (info == 0) {
+		return true;
+	} else {
+		delete info;
+		return false;
+	}
 }

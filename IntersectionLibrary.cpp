@@ -15,6 +15,8 @@ IntersectionInfo* IntersectionLibrary::intersect(const Ray& ray)
 		if (info) {
 			if (best == 0 || info->time < best->time) {
 				best = info;
+			} else {
+				delete info;
 			}
 		}
 	}

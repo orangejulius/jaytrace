@@ -65,7 +65,7 @@ IntersectionInfo* Sphere::intersect(const Ray& ray)
 	Vector3d circleCenter = transform.translation();
 	result->normal = intersectionPoint - circleCenter;
 	result->normal.normalize();
-	result->object = NodePointer(this);
+	result->object = this;
 
 	return result;
 }

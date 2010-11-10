@@ -15,6 +15,7 @@ set(core_sources
 	Material.cpp
 	MaterialNode.cpp
 	Node.cpp
+	Poisson.cpp
 	Ray.cpp
 	RayObject.cpp
 	RaytraceRenderer.cpp

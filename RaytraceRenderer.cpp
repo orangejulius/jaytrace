@@ -74,11 +74,10 @@ Color RaytraceRenderer::rayColor(Ray ray)
 	if (!info) {
 		return totalColor;
 	}
+	Material objectMaterial = info->object->getMaterial();
 
 	list<LightPointer>::iterator light;
 	for (light = lights.begin(); light != lights.end(); light++) {
-		Material objectMaterial = info->object->getMaterial();
-
 		//first compute ambient lighting
 		totalColor += (*light)->getAmbient() * objectMaterial.getAmbient();
 
@@ -107,6 +106,14 @@ Color RaytraceRenderer::rayColor(Ray ray)
 			}
 		}
 	}
+
+	//reflection from other objects
+	Vector3d rayDirection = ray.getDirection();
+	Vector3d reflectionVector = rayDirection - 2*(rayDirection.dot(info->normal)) * info->normal;
+	Ray reflectionRay(ray.getPosition(info->time), reflectionVector);
+	Color reflectionColor = rayColor(reflectionRay);
+	totalColor += reflectionColor * objectMaterial.getSpecular();
+
 	delete info;
 
 	return totalColor;

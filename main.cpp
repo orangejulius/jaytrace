@@ -16,6 +16,11 @@ int main()
 	l1->setDiffuse(white);
 	l1->setSpecular(white);
 
+	LightPointer l2(new Light(Vector3d(10, 10, -17), 0));
+	Color purple(.62, .12, .94);
+	l2->setDiffuse(purple);
+	l2->setSpecular(purple);
+
 	NodePointer t1(new TranslationNode(0, 3, -20));
 	MaterialNodePointer m1(new MaterialNode(t1));
 	Color m1Color(.5, .2, .2);
@@ -68,6 +73,7 @@ int main()
 	raytraceRenderer.addObject(s4);
 	raytraceRenderer.addObject(s5);
 	raytraceRenderer.addLight(l1);
+	raytraceRenderer.addLight(l2);
 	QImage output = raytraceRenderer.render();
 	QString filename = QDateTime::currentDateTime().toString(Qt::ISODate) + ".png";
 	output.save(filename, "PNG");

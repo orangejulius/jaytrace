@@ -13,6 +13,8 @@ public:
 	virtual ~Sphere();
 
 	IntersectionInfo* intersect(const Ray& ray);
+private:
+
 };
 
 #endif // SPHERE_H

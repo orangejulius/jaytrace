@@ -20,7 +20,7 @@ class Ray
         Vector3d getOrigin() {return origin;}
         Vector3d getDirection() {return direction;}
 
-        Ray getTransformedRay(Matrix4d transformationMatrix) const;
+        Ray getTransformedRay(Matrix4d inverseTransformationMatrix) const;
         Vector3d getPosition(double time) const;
 
 	bool operator==(const Ray &r) const;

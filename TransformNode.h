@@ -23,8 +23,11 @@ public:
 
 	virtual Transform3d getMatrixState();
 
+	virtual Matrix4d getInverseMatrix();
+
 protected:
 	Transform3d transform;
+	Matrix4d inverseMatrix;
 };
 
 #endif // TRANSFORMNODE_H

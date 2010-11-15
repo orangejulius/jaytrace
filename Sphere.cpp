@@ -25,7 +25,7 @@ IntersectionInfo* Sphere::intersect(const Ray& ray)
 		return 0;
 	}
 
-	Ray genericRay = ray.getTransformedRay(transform.matrix());
+	Ray genericRay = ray.getTransformedRay(getInverseMatrix());
 
 	double A = genericRay.getDirection().squaredNorm();
 	double B = genericRay.getOrigin().dot(genericRay.getDirection());

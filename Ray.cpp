@@ -3,10 +3,11 @@
 #include <Eigen/Geometry>
 #include <Eigen/LU>
 
-Ray::Ray(): origin(Vector3d(0, 0, 0)), direction(Vector3d(0, 0, 0))
+Ray::Ray()
 {
 
 }
+
 Ray::Ray(Vector3d origin, Vector3d direction): origin(origin), direction(direction)
 {
 

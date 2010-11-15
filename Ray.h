@@ -9,10 +9,6 @@ using Eigen::Matrix4d;
 
 class Ray
 {
-protected:
-	Vector3d origin;
-	Vector3d direction;
-
 public:
 	Ray();
 	Ray(Vector3d origin, Vector3d direction);
@@ -28,6 +24,10 @@ public:
 	Vector3d getPosition(double time) const;
 
 	bool operator==(const Ray& r) const;
+
+protected:
+	Vector3d origin;
+	Vector3d direction;
 };
 
 #endif // RAY_H

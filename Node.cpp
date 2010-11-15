@@ -25,6 +25,15 @@ Transform3d Node::getMatrixState()
 	}
 }
 
+Matrix4d Node::getInverseMatrix()
+{
+	if (parent) {
+		return parent->getInverseMatrix();
+	} else {
+		return Matrix4d::Identity();
+	}
+}
+
 Material Node::getMaterial()
 {
 	if (parent) {

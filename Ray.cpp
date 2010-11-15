@@ -14,13 +14,18 @@ Ray::Ray(Vector3d origin, Vector3d direction)
 	this->direction << direction, 0;
 }
 
+Ray::Ray(Vector4d origin, Vector4d direction): origin(origin), direction(direction)
+{
+
+}
+
 Ray Ray::getTransformedRay(Matrix4d inverseTransformationMatrix) const
 {
-	Vector3d transformedRayOrigin;
-	transformedRayOrigin = (inverseTransformationMatrix * origin).start<3>();
+	Vector4d transformedRayOrigin;
+	transformedRayOrigin = (inverseTransformationMatrix * origin);
 
-	Vector3d transformedRayDirection;
-	transformedRayDirection = (inverseTransformationMatrix * direction).start<3>();
+	Vector4d transformedRayDirection;
+	transformedRayDirection = (inverseTransformationMatrix * direction);
 
 	return Ray(transformedRayOrigin, transformedRayDirection);
 }

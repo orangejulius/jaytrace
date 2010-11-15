@@ -12,6 +12,7 @@ class Ray
 public:
 	Ray();
 	Ray(Vector3d origin, Vector3d direction);
+	Ray(Vector4d origin, Vector4d direction);
 
 	Vector3d getOrigin() {
 		return origin.start<3>();

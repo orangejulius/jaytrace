@@ -1,7 +1,17 @@
-A personal ray tracer project.
+Jaytrace: a personal ray tracer project
+
+v0.1
+
+Features
+Sphere intersections, reflections
+
+Dependencies
+CMake 2.8+
+Qt 4.6 (core and test libraries)
+Eigen 2.0
 
 Planned features include
-* Standard raytrac-y things: reflection, shadows, transparency
+* Full transparency (diffraction, total internal reflection, proper handling of shadows)
 * support for rendering multiple frames for an animation
 * photon mapping
 * OpenCL/threading for computation

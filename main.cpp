@@ -1,4 +1,5 @@
 #include "RaytraceRenderer.h"
+#include "Camera.h"
 #include "MaterialNode.h"
 #include "TranslationNode.h"
 #include "RotationNode.h"
@@ -20,7 +21,13 @@ int main()
 	int firstSphereDepth = 10;
 	double radius = 2;
 
-	MaterialNodePointer material(new MaterialNode);
+	Vector3d eye(Vector3d(0, 0, 0));
+	Vector3d look(Vector3d(0, 0, -100));
+	Vector3d up(Vector3d(0, 1, 0));
+	Camera camera(eye, look, up);
+
+	NodePointer rootNode(new TransformNode(camera.getTransform()));
+	MaterialNodePointer material(new MaterialNode(rootNode));
 	Color white(1, 1, 1);
 	material->setAmbient(white * .1);
 	material->setDiffuse(white * .5);

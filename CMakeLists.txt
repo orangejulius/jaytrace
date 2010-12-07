@@ -38,6 +38,7 @@ if (enableTests)
 	set(jaytraceTest_sources
 		tests/main.cpp
 		tests/AngleTest.cpp
+		tests/CameraTest.cpp
 		tests/IntersectionLibraryTest.cpp
 		tests/MaterialTest.cpp
 		tests/RayTest.cpp
@@ -49,6 +50,7 @@ if (enableTests)
 	#these classes must be processed by the moc
 	set(jaytraceTest_qobject_headers
 		tests/AngleTest.h
+		tests/CameraTest.h
 		tests/IntersectionLibraryTest.h
 		tests/MaterialTest.h
 		tests/RayTest.h

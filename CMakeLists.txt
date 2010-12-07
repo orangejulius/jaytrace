@@ -14,6 +14,7 @@ find_package(Qt4 REQUIRED)
 
 #source files used both by the main program and the test program
 set(core_sources
+	Camera.cpp
 	Color.cpp
 	IntersectionLibrary.cpp
 	Light.cpp

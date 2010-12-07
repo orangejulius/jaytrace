@@ -35,6 +35,7 @@ if (enableTests)
 	#source files specific to the test program
 	set(jaytraceTest_sources
 		tests/main.cpp
+		tests/CameraTest.cpp
 		tests/IntersectionLibraryTest.cpp
 		tests/MaterialTest.cpp
 		tests/RayTest.cpp
@@ -45,6 +46,7 @@ if (enableTests)
 	#header files of classes with the Q_OBJECT macro
 	#these classes must be processed by the moc
 	set(jaytraceTest_qobject_headers
+		tests/CameraTest.h
 		tests/IntersectionLibraryTest.h
 		tests/MaterialTest.h
 		tests/RayTest.h

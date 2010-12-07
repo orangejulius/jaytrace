@@ -1,3 +1,4 @@
+#include "Camera.h"
 #include "RaytraceRenderer.h"
 #include "MaterialNode.h"
 #include "TranslationNode.h"
@@ -19,6 +20,10 @@ int main()
 	double depthBetweenSpheresMultiple = 1.10;
 	int firstSphereDepth = 10;
 	double radius = 2;
+
+	Camera camera;
+
+	NodePointer rootNode(new TransformNode(camera.getTransform()));
 
 	MaterialNodePointer material(new MaterialNode);
 	Color white(1, 1, 1);

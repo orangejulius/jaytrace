@@ -6,6 +6,8 @@ set(CMAKE_MODULE_PATH ${Jaytrace_SOURCE_DIR}/cmake/)
 
 option(enableTests "Build the test executable" ON)
 
+set(CMAKE_CXX_FLAGS "-Wall")
+
 find_package(Eigen2 REQUIRED)
 find_package(Qt4 REQUIRED)
 
@@ -63,7 +65,7 @@ include_directories(
 	${Jaytrace_SOURCE_DIR}
 )
 
-add_definitions(-Wall -O2 -ggdb ${QT_DEFINITIONS})
+add_definitions(-O2 -ggdb ${QT_DEFINITIONS})
 
 add_library(JaytraceCore ${core_sources})
 

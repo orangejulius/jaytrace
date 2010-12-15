@@ -21,6 +21,8 @@ public:
 	Transform3d getTransform() const;
 
 protected:
+	/// Compute the camera coordinate axes from the eye, look, and up vectors
+	void computeCameraCoordinates();
 
 	/// The location of the camera in world coordinates
 	Vector3d eye;
@@ -30,6 +32,11 @@ protected:
 
 	/// A vector in world coordinates that determines the top of the viewplane
 	Vector3d up;
+
+	/// Camera coordinate axes
+	Vector3d u;
+	Vector3d v;
+	Vector3d n;
 };
 
 #endif // CAMERA_H

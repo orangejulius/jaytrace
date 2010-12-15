@@ -17,6 +17,9 @@ public:
 	void setLook(Vector3d look);
 	void setUp(Vector3d up);
 
+	/// Translate the eye and look points by offset delta in camera coordinates
+	void slide(Vector3d delta);
+
 	/// Return a transformation to convert world coordinates into camera coordinates
 	Transform3d getTransform() const;
 

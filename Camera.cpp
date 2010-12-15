@@ -1,8 +1,10 @@
 #include "Camera.h"
 
 #include <Eigen/Array>
+#include <Eigen/LU>
 
 using Eigen::Matrix4d;
+using Eigen::Translation3d;
 
 Camera::Camera()
 {
@@ -37,6 +39,19 @@ void Camera::setUp(Vector3d newUp)
 	up = newUp;
 
 	computeCameraCoordinates();
+}
+
+void Camera::slide(Vector3d delta)
+{
+	//get a transform to convert world coordinates to camera coordinates
+	Transform3d worldToCamera = getTransform();
+	//get the inverse transform which is returned by inverse() as a matrix
+	Transform3d cameraToWorld = Transform3d(worldToCamera.inverse());
+
+	Transform3d slide = worldToCamera * Translation3d(delta) * cameraToWorld;
+
+	eye = slide * eye;
+	look = slide * eye;
 }
 
 Transform3d Camera::getTransform() const

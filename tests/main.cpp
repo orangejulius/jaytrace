@@ -20,5 +20,10 @@ int main()
 	result += QTest::qExec(&sceneGraphTest);
 	result += QTest::qExec(&sphereTest);
 
-	return result;
+	if (result) {
+		qDebug()<<"Tests failed\n";
+		return 1;
+	} else {
+		return 0;
+	}
 }

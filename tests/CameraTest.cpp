@@ -52,3 +52,23 @@ void CameraTest::test2()
 	cout<<"actual: "<<endl<<actual<<endl;
 	QVERIFY(actual.isApprox(expected,1));
 }
+
+void CameraTest::testSlide1()
+{
+	Vector3d eye(0, 10, 0);
+	Vector3d look(0, 10, -1);
+	Vector3d up(0, 1, 0);
+	Vector3d slideDelta(0, 10, 0);
+
+	Camera c1(eye, look, up);
+
+	Camera c2;
+	c2.slide(slideDelta);
+
+	Matrix4d expected = c1.getTransform().matrix();
+	Matrix4d actual = c2.getTransform().matrix();
+
+	cout<<"expected: "<<endl<<expected<<endl;
+	cout<<"actual: "<<endl<<actual<<endl;
+	QVERIFY(actual.isApprox(expected));
+}

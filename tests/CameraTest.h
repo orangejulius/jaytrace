@@ -22,5 +22,12 @@ private slots:
 	 * Default eye and look coordinates with a slide up of 10
 	 */
 	void testSlide1();
+
+	/**
+	 * Another basic test of slide, but with non-default eye, look, and up values for both expected and actual
+	 * Compare setting eye 0,10,0 look 0,10,-1 up 1,0,0 to
+	 * eye 0,5,0 look 0,5,-1 up 1,0,0 and a slide of 5,0,0
+	 */
+	void testSlide2();
 };
 #endif // CAMERATEST_H

@@ -1,6 +1,7 @@
 #include "CameraTest.h"
 
 #include <iostream>
+#include "Angle.h"
 #include "Camera.h"
 
 using Eigen::Matrix4d;
@@ -86,6 +87,25 @@ void CameraTest::testSlide2()
 	Vector3d slideDelta(5, 0, 0);
 	Camera c2(eye2, look2, up2);
 	c2.slide(slideDelta);
+
+	Matrix4d expected = c1.getTransform().matrix();
+	Matrix4d actual = c2.getTransform().matrix();
+
+	cout << "expected: " << endl << expected << endl;
+	cout << "actual: " << endl << actual << endl;
+	QVERIFY(actual.isApprox(expected));
+}
+
+void CameraTest::testRotateAroundLook1()
+{
+	Vector3d eye1(0, 0, -2);
+	Vector3d look1(0, 0, -1);
+	Vector3d up1(0, 1, 0);
+	Camera c1(eye1, look1, up1);
+
+	Camera c2;
+	Angle angle = Angle::degrees(180);
+	c2.rotateAroundLook(angle, Vector3d::UnitY());
 
 	Matrix4d expected = c1.getTransform().matrix();
 	Matrix4d actual = c2.getTransform().matrix();

@@ -3,7 +3,10 @@
 #include <Eigen/Array>
 #include <Eigen/LU>
 
+#include "Angle.h"
+
 using Eigen::Matrix4d;
+using Eigen::AngleAxisd;
 using Eigen::Translation3d;
 
 Camera::Camera()
@@ -52,6 +55,19 @@ void Camera::slide(Vector3d delta)
 
 	eye = slide * eye;
 	look = slide * eye;
+}
+
+void Camera::rotateAroundLook(Angle angle, Vector3d axis)
+{
+	Translation3d translateToCenter(look);
+	AngleAxisd rotate(angle.getRadians(), axis);
+
+	Transform3d transform = translateToCenter * rotate * Transform3d(translateToCenter.inverse());
+
+	eye = transform * eye;
+	up = transform * up;
+
+	computeCameraCoordinates();
 }
 
 Transform3d Camera::getTransform() const

@@ -7,6 +7,8 @@
 using Eigen::Vector3d;
 using Eigen::Transform3d;
 
+class Angle;
+
 class Camera
 {
 public:
@@ -19,6 +21,13 @@ public:
 
 	/// Translate the eye and look points by offset delta in camera coordinates
 	void slide(Vector3d delta);
+
+	/** Rotate the camera around the look point
+	 *
+	 * @param angle	angle (in radians) to rotate
+	 * @param axis	axis to rotate around (in camera coordinates)
+	 */
+	void rotateAroundLook(Angle angle, Vector3d axis);
 
 	/// Return a transformation to convert world coordinates into camera coordinates
 	Transform3d getTransform() const;

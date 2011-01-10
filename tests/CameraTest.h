@@ -29,5 +29,11 @@ private slots:
 	 * eye 0,5,0 look 0,5,-1 up 1,0,0 and a slide of 5,0,0
 	 */
 	void testSlide2();
+
+	/**
+	 * Test Camera::rotateAroundLook().
+	 * Compare eye 0,0,-2 look 0,0,-1 up 0,1,0 to a default camera rotated 180 degrees around the Y axis
+	 */
+	void testRotateAroundLook1();
 };
 #endif // CAMERATEST_H

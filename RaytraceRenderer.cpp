@@ -3,13 +3,12 @@
 #include <Eigen/Core>
 #include <QtDebug>
 
+#include "Angle.h"
 #include "Material.h"
 #include "Poisson.h"
 #include "Ray.h"
 
 using Eigen::Vector3d;
-
-const float PI = 3.1415926535897932384626;
 
 RaytraceRenderer::RaytraceRenderer()
 {
@@ -27,7 +26,7 @@ QImage RaytraceRenderer::render()
 		intersectionLibrary.addObject(*it);
 	}
 
-	float yMin = -tan(projectionAngle * PI / 360);
+	float yMin = -tan(projectionAngle.getRadians() / 2);
 	float yHeight = -2 * yMin;
 
 	float xMin = aspectRatio * yMin;

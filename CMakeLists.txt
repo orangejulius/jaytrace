@@ -36,9 +36,17 @@ set(core_sources
 if (enableGui)
 	#source files specific to the qt4 gui interface
 	set(jaytraceQt_sources
-		gui/main.cpp)
+		gui/main.cpp
+		gui/MainWindow.cpp)
 
-	set(jaytraceQt_all_sources ${jaytraceQt_sources})
+	#header files of classes with the Q_OBJECT macro
+	#these classes must be processed by the moc
+	set(jaytraceQt_qobject_headers
+		gui/MainWindow.h)
+
+	qt4_wrap_cpp(jaytraceQt_moc_sources ${jaytraceQt_qobject_headers})
+
+	set(jaytraceQt_all_sources ${jaytraceQt_sources} ${jaytraceQt_moc_sources})
 endif (enableGui)
 
 if (enableTests)

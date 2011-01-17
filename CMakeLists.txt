@@ -4,6 +4,7 @@ project(Jaytrace)
 
 set(CMAKE_MODULE_PATH ${Jaytrace_SOURCE_DIR}/cmake/)
 
+option(enableGui "Build the qt4 jaytrace executable" ON)
 option(enableTests "Build the test executable" ON)
 
 set(CMAKE_CXX_FLAGS "-Wall")
@@ -31,6 +32,14 @@ set(core_sources
 	Sphere.cpp
 	TransformNode.cpp
 	TranslationNode.cpp)
+
+if (enableGui)
+	#source files specific to the qt4 gui interface
+	set(jaytraceQt_sources
+		gui/main.cpp)
+
+	set(jaytraceQt_all_sources ${jaytraceQt_sources})
+endif (enableGui)
 
 if (enableTests)
 	#source files specific to the test program
@@ -75,6 +84,11 @@ add_library(JaytraceCore ${core_sources})
 
 add_executable(jaytrace main.cpp)
 target_link_libraries(jaytrace JaytraceCore ${QT_LIBRARIES})
+
+if (enableGui)
+	add_executable(jaytraceQt ${jaytraceQt_all_sources})
+	target_link_libraries(jaytraceQt JaytraceCore ${QT_LIBRARIES})
+endif (enableGui)
 
 if (enableTests)
 	add_executable(jaytraceTest ${jaytraceTest_all_sources})

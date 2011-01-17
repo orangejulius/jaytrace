@@ -5,6 +5,7 @@ libJaytraceCore.a
 Makefile
 jaytrace
 jaytraceTest
+jaytraceQt
 moc_*
 *.swp
 callgrind*

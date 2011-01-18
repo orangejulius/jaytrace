@@ -9,6 +9,11 @@ class MainWindow: public QMainWindow
 
 public:
 	MainWindow();
+
+private:
+	QMenu* raytraceMenu;
+
+	QAction* render;
 };
 
 #endif // MAINWINDOW_H_INCLUDED

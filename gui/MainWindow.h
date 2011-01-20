@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+class MainWidget;
+
 class MainWindow: public QMainWindow
 {
 	Q_OBJECT
@@ -11,6 +13,8 @@ public:
 	MainWindow();
 
 private:
+	MainWidget* widget;
+
 	QMenu* raytraceMenu;
 
 	QAction* render;

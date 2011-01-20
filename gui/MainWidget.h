@@ -11,6 +11,9 @@ class MainWidget: public QGLWidget
 
 public:
 	MainWidget(QWidget *parent = 0);
+
+	QSize minimumSizeHint() const;
+	QSize sizeHint() const;
 };
 
 #endif // MAINWIDGET_H_INCLUDED

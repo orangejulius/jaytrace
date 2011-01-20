@@ -12,11 +12,12 @@ class Material;
 class Node;
 
 typedef QSharedPointer<Node> NodePointer;
+typedef QWeakPointer<Node> WeakNodePointer;
 
 class Node
 {
 public:
-	Node(NodePointer parent = NodePointer(0));
+	Node(WeakNodePointer parent = WeakNodePointer());
 
 	virtual ~Node();
 
@@ -27,7 +28,7 @@ public:
 	virtual Material getMaterial();
 
 protected:
-        NodePointer parent;
+        WeakNodePointer parent;
 };
 
 #endif //NODE_H

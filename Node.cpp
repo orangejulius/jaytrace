@@ -4,7 +4,7 @@
 
 #include "Material.h"
 
-Node::Node(NodePointer parent): parent(parent)
+Node::Node(WeakNodePointer parent): parent(parent)
 {
 
 }
@@ -16,8 +16,9 @@ Node::~Node()
 
 Transform3d Node::getMatrixState()
 {
-	if (parent){
-		return parent->getMatrixState();
+	NodePointer strongParent = parent.toStrongRef();
+	if (strongParent){
+		return strongParent->getMatrixState();
 	} else {
 		Transform3d noTransform;
 		noTransform.setIdentity();
@@ -27,8 +28,9 @@ Transform3d Node::getMatrixState()
 
 Matrix4d Node::getInverseMatrix()
 {
-	if (parent) {
-		return parent->getInverseMatrix();
+	NodePointer strongParent = parent.toStrongRef();
+	if (strongParent) {
+		return strongParent->getInverseMatrix();
 	} else {
 		return Matrix4d::Identity();
 	}
@@ -36,8 +38,9 @@ Matrix4d Node::getInverseMatrix()
 
 Material Node::getMaterial()
 {
-	if (parent) {
-		return parent->getMaterial();
+	NodePointer strongParent = parent.toStrongRef();
+	if (strongParent) {
+		return strongParent->getMaterial();
 	} else {
 		Material material;
 		return material;

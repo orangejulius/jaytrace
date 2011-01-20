@@ -23,6 +23,7 @@ set(core_sources
 	Poisson.cpp
 	Ray.cpp
 	RayObject.cpp
+	Raytracer.cpp
 	RaytraceRenderer.cpp
 	Renderer.cpp
 	RotationNode.cpp

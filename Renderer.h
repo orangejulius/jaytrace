@@ -17,11 +17,11 @@ public:
 	void addObject(RayObjectPointer object);
 	void addLight(LightPointer light);
 protected:
-	Angle projectionAngle;
-	float aspectRatio;
-
 	unsigned int width;
 	unsigned int height;
+
+	Angle projectionAngle;
+	float aspectRatio;
 
 	list<RayObjectPointer> objects;
 	list<LightPointer> lights;

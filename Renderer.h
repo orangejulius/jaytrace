@@ -12,7 +12,7 @@ using std::list;
 class Renderer
 {
 public:
-	Renderer();
+	Renderer(unsigned int width = 640, unsigned int height = 480, Angle projectionAngle = Angle::degrees(25));
 
 	void addObject(RayObjectPointer object);
 	void addLight(LightPointer light);

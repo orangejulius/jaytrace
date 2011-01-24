@@ -10,7 +10,7 @@
 
 using Eigen::Vector3d;
 
-RaytraceRenderer::RaytraceRenderer()
+RaytraceRenderer::RaytraceRenderer(unsigned int width, unsigned int height, Angle projectionAngle): Renderer(width, height, projectionAngle)
 {
 
 }

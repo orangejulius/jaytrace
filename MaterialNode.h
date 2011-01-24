@@ -22,6 +22,6 @@ protected:
 	Material material;
 };
 
-typedef QSharedPointer<MaterialNode> MaterialNodePointer;
+typedef QExplicitlySharedDataPointer<MaterialNode> MaterialNodePointer;
 
 #endif // MATERIALNODE_H

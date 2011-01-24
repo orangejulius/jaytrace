@@ -3,7 +3,7 @@
 
 #include <Eigen/Geometry>
 #include <QtGlobal>
-#include <QSharedPointer>
+#include <QExplicitlySharedDataPointer>
 
 using Eigen::Matrix4d;
 using Eigen::Transform3d;
@@ -11,9 +11,9 @@ using Eigen::Transform3d;
 class Material;
 class Node;
 
-typedef QSharedPointer<Node> NodePointer;
+typedef QExplicitlySharedDataPointer<Node> NodePointer;
 
-class Node
+class Node: public QSharedData
 {
 public:
 	Node(NodePointer parent = NodePointer(0));

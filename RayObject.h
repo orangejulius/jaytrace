@@ -1,12 +1,12 @@
 #ifndef RAYOBJECT_H
 #define RAYOBJECT_H
 
-#include <QSharedPointer>
+#include <QExplicitlySharedDataPointer>
 
 class Ray;
 class IntersectionInfo;
 
-class RayObject
+class RayObject: public QSharedData
 {
 public:
 	virtual ~RayObject();
@@ -14,6 +14,6 @@ public:
 	virtual IntersectionInfo* intersect(const Ray& ray) = 0;
 };
 
-typedef QSharedPointer<RayObject> RayObjectPointer;
+typedef QExplicitlySharedDataPointer<RayObject> RayObjectPointer;
 
 #endif // RAYOBJECT_H

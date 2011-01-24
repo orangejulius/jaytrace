@@ -6,12 +6,22 @@
 
 Node::Node(NodePointer parent): parent(parent)
 {
-
+	if (parent) {
+		parent->addChild(this);
+		qDebug()<<"Adding "<<this<<" as child of "<<parent.data();
+	} else {
+		qDebug()<<this<<"has invalid parent: "<<parent.data();
+	}
 }
 
 Node::~Node()
 {
 	qDebug()<<"Deleting Node "<<this;
+}
+
+void Node::addChild(Node* child)
+{
+	children.push_back(NodePointer(child));
 }
 
 Transform3d Node::getMatrixState()

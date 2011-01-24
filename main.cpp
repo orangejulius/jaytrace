@@ -8,15 +8,13 @@
 #include <cmath>
 #include <QDate>
 
-const float PI = 3.1415926535897932384626;
-
 int main()
 {
 	RaytraceRenderer raytraceRenderer;
 
 	int numSpheres = 100;
 	double sphereScaling = .6;
-	int angleBetweenSpheres = 25;
+	Angle angleBetweenSpheres = Angle::degrees(25);
 	double depthBetweenSpheresBase = 1.2;
 	double depthBetweenSpheresMultiple = 1.10;
 	int firstSphereDepth = 10;
@@ -33,7 +31,7 @@ int main()
 
 	NodePointer lastDepthTranslation = firstDepthTranslation;
 	for (int i = 0; i < numSpheres; i++) {
-		double rotationInRadians = angleBetweenSpheres * i * PI / 180;
+		double rotationInRadians = angleBetweenSpheres.getRadians() * i;
 		NodePointer rotation(new RotationNode( rotationInRadians, Vector3d::UnitZ(), lastDepthTranslation));
 		NodePointer radiusTranslation(new TranslationNode(radius, 0, 0, rotation));
 		NodePointer sphereScalingNode(new ScalingNode(sphereScaling, sphereScaling, sphereScaling, radiusTranslation));

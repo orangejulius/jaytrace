@@ -15,5 +15,6 @@ public:
 };
 
 typedef QSharedPointer<RayObject> RayObjectPointer;
+typedef QWeakPointer<RayObject> WeakRayObjectPointer;
 
 #endif // RAYOBJECT_H

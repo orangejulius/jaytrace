@@ -8,7 +8,7 @@ Renderer::Renderer(): projectionAngle(Angle::degrees(25))
 	aspectRatio = (float)width/height;
 }
 
-void Renderer::addObject(RayObjectPointer object)
+void Renderer::addObject(WeakRayObjectPointer object)
 {
 	objects.push_back(object);
 }

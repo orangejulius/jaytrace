@@ -14,7 +14,7 @@ class Renderer
 public:
 	Renderer();
 
-	void addObject(RayObjectPointer object);
+	void addObject(WeakRayObjectPointer object);
 	void addLight(LightPointer light);
 protected:
 	Angle projectionAngle;
@@ -23,7 +23,7 @@ protected:
 	unsigned int width;
 	unsigned int height;
 
-	list<RayObjectPointer> objects;
+	list<WeakRayObjectPointer> objects;
 	list<LightPointer> lights;
 };
 

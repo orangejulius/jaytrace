@@ -10,10 +10,10 @@ using std::list;
 class IntersectionLibrary
 {
 public:
-	void addObject(RayObjectPointer object);
+	void addObject(WeakRayObjectPointer object);
 	IntersectionInfo* intersect(const Ray& ray);
 private:
-	list<RayObjectPointer> objects;
+	list<WeakRayObjectPointer> objects;
 };
 
 #endif // INTERSECTIONLIBRARY_H

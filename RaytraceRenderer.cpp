@@ -22,7 +22,7 @@ RaytraceRenderer::~RaytraceRenderer()
 
 QImage RaytraceRenderer::render()
 {
-	for (list<RayObjectPointer>::iterator it = objects.begin(); it != objects.end(); it++) {
+	for (list<WeakRayObjectPointer>::iterator it = objects.begin(); it != objects.end(); it++) {
 		intersectionLibrary.addObject(*it);
 	}
 

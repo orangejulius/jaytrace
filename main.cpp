@@ -31,8 +31,8 @@ int main()
 
 	NodePointer lastDepthTranslation = firstDepthTranslation;
 	for (int i = 0; i < numSpheres; i++) {
-		double rotationInRadians = angleBetweenSpheres.getRadians() * i;
-		NodePointer rotation(new RotationNode( rotationInRadians, Vector3d::UnitZ(), lastDepthTranslation));
+		Angle rotationAngle = angleBetweenSpheres * i;
+		NodePointer rotation(new RotationNode(rotationAngle, Vector3d::UnitZ(), lastDepthTranslation));
 		NodePointer radiusTranslation(new TranslationNode(radius, 0, 0, rotation));
 		NodePointer sphereScalingNode(new ScalingNode(sphereScaling, sphereScaling, sphereScaling, radiusTranslation));
 		RayObjectPointer sphere(new Sphere(sphereScalingNode));

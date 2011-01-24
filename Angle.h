@@ -46,6 +46,22 @@ public:
 		return Angle(angle - a.angle);
 	}
 
+	Angle operator*(const Angle &a) const {
+		return Angle(angle * a.angle);
+	}
+
+	Angle operator/(const Angle &a) const {
+		return Angle(angle / a.angle);
+	}
+
+	Angle operator*(int s) const {
+		return Angle(angle * s);
+	}
+
+	Angle operator/(int s) const {
+		return Angle(angle / s);
+	}
+
 	Angle& operator+=(const Angle &a) {
 		angle += a.angle;
 		return *this;

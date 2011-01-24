@@ -2,7 +2,6 @@
 #define INTERSECTIONINFO_H
 
 #include <Eigen/Core>
-#include <QSharedPointer>
 
 #include "Node.h"
 

@@ -1,5 +1,5 @@
-#include "RaytraceRenderer.h"
 #include "Camera.h"
+#include "Raytracer.h"
 #include "MaterialNode.h"
 #include "TranslationNode.h"
 #include "RotationNode.h"
@@ -11,7 +11,7 @@
 
 int main()
 {
-	RaytraceRenderer raytraceRenderer;
+	Raytracer raytracer(640, 480, Angle::degrees(25));
 
 	int numSpheres = 100;
 	double sphereScaling = .6;
@@ -43,7 +43,7 @@ int main()
 		NodePointer radiusTranslation(new TranslationNode(radius, 0, 0, rotation));
 		NodePointer sphereScalingNode(new ScalingNode(sphereScaling, sphereScaling, sphereScaling, radiusTranslation));
 		RayObjectPointer sphere(new Sphere(sphereScalingNode));
-		raytraceRenderer.addObject(sphere);
+		raytracer.addObject(sphere);
 		double depthBetweenSpheres = depthBetweenSpheresBase * pow(depthBetweenSpheresMultiple, i);
 		lastDepthTranslation = NodePointer(new TranslationNode(0, 0, -depthBetweenSpheres, lastDepthTranslation));
 	}
@@ -52,27 +52,27 @@ int main()
 	l1->setAmbient(white * .2);
 	l1->setDiffuse(white);
 	l1->setSpecular(white);
-	raytraceRenderer.addLight(l1);
+	raytracer.addLight(l1);
 
 	LightPointer l2(new Light(Vector3d(-10, 10, -15), 0));
 	Color l2Color(.3, .8, .3);
 	l2->setDiffuse(l2Color * .8);
 	l2->setSpecular(l2Color);
-	raytraceRenderer.addLight(l2);
+	raytracer.addLight(l2);
 
 	LightPointer l3(new Light(Vector3d(10, 10, -50), 0));
 	Color l3Color(.3, .3, .8);
 	l3->setDiffuse(l3Color * .9);
 	l3->setSpecular(l3Color);
-	raytraceRenderer.addLight(l3);
+	raytracer.addLight(l3);
 
 	LightPointer l4(new Light(Vector3d(0, 0, -100), 0));
 	Color l4Color(.8, .3, .3);
 	l4->setDiffuse(l4Color * .9);
 	l4->setSpecular(l4Color);
-	raytraceRenderer.addLight(l4);
+	raytracer.addLight(l4);
 
-	QImage output = raytraceRenderer.render();
+	QImage output = raytracer.render();
 	QString filename = QDateTime::currentDateTime().toString(Qt::ISODate) + ".png";
 	output.save(filename, "PNG");
 	return 0;

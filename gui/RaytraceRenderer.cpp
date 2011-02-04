@@ -1,5 +1,7 @@
 #include "RaytraceRenderer.h"
 
+#include <QImage>
+
 #include "Raytracer.h"
 
 RaytraceRenderer::RaytraceRenderer()
@@ -12,7 +14,7 @@ RaytraceRenderer::~RaytraceRenderer()
 
 }
 
-QImage RaytraceRenderer::render()
+void RaytraceRenderer::render()
 {
 	Raytracer raytracer(width, height, projectionAngle);
 
@@ -24,5 +26,5 @@ QImage RaytraceRenderer::render()
 		raytracer.addLight(*it);
 	}
 
-	return raytracer.render();
+	QImage image = raytracer.render();
 }

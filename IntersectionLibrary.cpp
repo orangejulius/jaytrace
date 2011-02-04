@@ -7,6 +7,11 @@ void IntersectionLibrary::addObject(RayObjectPointer object)
 	objects.push_back(object);
 }
 
+void IntersectionLibrary::addObjects(list< RayObjectPointer > p_objects)
+{
+	objects.splice(objects.end(), p_objects);
+}
+
 IntersectionInfo* IntersectionLibrary::intersect(const Ray& ray)
 {
 	IntersectionInfo* best = 0;

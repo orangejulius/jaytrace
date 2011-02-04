@@ -25,8 +25,6 @@ set(core_sources
 	Ray.cpp
 	RayObject.cpp
 	Raytracer.cpp
-	RaytraceRenderer.cpp
-	Renderer.cpp
 	RotationNode.cpp
 	ScalingNode.cpp
 	Sphere.cpp
@@ -38,7 +36,9 @@ if (enableGui)
 	set(jaytraceQt_sources
 		gui/main.cpp
 		gui/MainWidget.cpp
-		gui/MainWindow.cpp)
+		gui/MainWindow.cpp
+		gui/RaytraceRenderer.cpp
+		gui/Renderer.cpp)
 
 	#header files of classes with the Q_OBJECT macro
 	#these classes must be processed by the moc

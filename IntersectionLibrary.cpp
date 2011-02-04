@@ -12,6 +12,11 @@ void IntersectionLibrary::addObjects(list< RayObjectPointer > p_objects)
 	objects.splice(objects.end(), p_objects);
 }
 
+void IntersectionLibrary::clear()
+{
+	objects.clear();
+}
+
 IntersectionInfo* IntersectionLibrary::intersect(const Ray& ray)
 {
 	IntersectionInfo* best = 0;

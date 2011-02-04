@@ -9,14 +9,11 @@ Raytracer::Raytracer(unsigned int width, unsigned int height, Angle projectionAn
 	aspectRatio = (double)width/height;
 }
 
-void Raytracer::addObject(RayObjectPointer object)
+void Raytracer::setScene(ScenePointer newScene)
 {
-	intersectionLibrary.addObject(object);
-}
-
-void Raytracer::addLight(LightPointer light)
-{
-	lights.push_back(light);
+	scene = newScene;
+	intersectionLibrary.clear();
+	intersectionLibrary.addObjects(scene->getObjects());
 }
 
 void Raytracer::resize(unsigned int newWidth, unsigned int newHeight)
@@ -77,6 +74,7 @@ Color Raytracer::rayColor(Ray ray)
 	}
 	Material objectMaterial = info->object->getMaterial();
 
+	list<LightPointer> lights = scene->getLights();
 	list<LightPointer>::iterator light;
 	for (light = lights.begin(); light != lights.end(); light++) {
 		//first compute ambient lighting

@@ -16,6 +16,8 @@ public:
 
 	void addObject(RayObjectPointer object);
 	void addLight(LightPointer light);
+
+	virtual void render() = 0;
 protected:
 	Angle projectionAngle;
 	float aspectRatio;

@@ -1,76 +1,13 @@
-#include "Camera.h"
 #include "Raytracer.h"
-#include "MaterialNode.h"
-#include "TranslationNode.h"
-#include "RotationNode.h"
-#include "ScalingNode.h"
-#include "Sphere.h"
-
-#include <cmath>
 #include <QDate>
 
 int main()
 {
 	Raytracer raytracer(640, 480, Angle::degrees(25));
 
-	int numSpheres = 100;
-	double sphereScaling = .6;
-	Angle angleBetweenSpheres = Angle::degrees(25);
-	double depthBetweenSpheresBase = 1.2;
-	double depthBetweenSpheresMultiple = 1.10;
-	int firstSphereDepth = 10;
-	double radius = 2;
+	ScenePointer scene(new Scene(Scene::getSpiralScene()));
 
-	Vector3d eye(Vector3d(0, 0, 0));
-	Vector3d look(Vector3d(0, 0, -100));
-	Vector3d up(Vector3d(0, 1, 0));
-	Camera camera(eye, look, up);
-
-	NodePointer rootNode(new TransformNode(camera.getTransform()));
-	MaterialNodePointer material(new MaterialNode(rootNode));
-	Color white(1, 1, 1);
-	material->setAmbient(white * .1);
-	material->setDiffuse(white * .5);
-	material->setSpecular(white);
-	material->setShininess(20);
-
-	NodePointer firstDepthTranslation(new TranslationNode(0, 0, -firstSphereDepth, material));
-
-	NodePointer lastDepthTranslation = firstDepthTranslation;
-	for (int i = 0; i < numSpheres; i++) {
-		Angle rotationAngle = angleBetweenSpheres * i;
-		NodePointer rotation(new RotationNode(rotationAngle, Vector3d::UnitZ(), lastDepthTranslation));
-		NodePointer radiusTranslation(new TranslationNode(radius, 0, 0, rotation));
-		NodePointer sphereScalingNode(new ScalingNode(sphereScaling, sphereScaling, sphereScaling, radiusTranslation));
-		RayObjectPointer sphere(new Sphere(sphereScalingNode));
-		raytracer.addObject(sphere);
-		double depthBetweenSpheres = depthBetweenSpheresBase * pow(depthBetweenSpheresMultiple, i);
-		lastDepthTranslation = NodePointer(new TranslationNode(0, 0, -depthBetweenSpheres, lastDepthTranslation));
-	}
-
-	LightPointer l1(new Light(Vector3d(-3, 12, -15), 0));
-	l1->setAmbient(white * .2);
-	l1->setDiffuse(white);
-	l1->setSpecular(white);
-	raytracer.addLight(l1);
-
-	LightPointer l2(new Light(Vector3d(-10, 10, -15), 0));
-	Color l2Color(.3, .8, .3);
-	l2->setDiffuse(l2Color * .8);
-	l2->setSpecular(l2Color);
-	raytracer.addLight(l2);
-
-	LightPointer l3(new Light(Vector3d(10, 10, -50), 0));
-	Color l3Color(.3, .3, .8);
-	l3->setDiffuse(l3Color * .9);
-	l3->setSpecular(l3Color);
-	raytracer.addLight(l3);
-
-	LightPointer l4(new Light(Vector3d(0, 0, -100), 0));
-	Color l4Color(.8, .3, .3);
-	l4->setDiffuse(l4Color * .9);
-	l4->setSpecular(l4Color);
-	raytracer.addLight(l4);
+	raytracer.setScene(scene);
 
 	QImage output = raytracer.render();
 	QString filename = QDateTime::currentDateTime().toString(Qt::ISODate) + ".png";

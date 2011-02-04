@@ -5,7 +5,7 @@
 
 #include "Angle.h"
 #include "IntersectionLibrary.h"
-#include "Light.h"
+#include "Scene.h"
 
 class Color;
 
@@ -14,8 +14,7 @@ class Raytracer
 public:
 	Raytracer(unsigned int width = 640, unsigned int height = 480, Angle projectionAngle = Angle::degrees(25));
 
-	void addObject(RayObjectPointer object);
-	void addLight(LightPointer light);
+	void setScene(ScenePointer newScene);
 
 	void resize(unsigned int width, unsigned int height);
 
@@ -32,7 +31,7 @@ private:
 	double aspectRatio;
 	Angle projectionAngle;
 
-	list<LightPointer> lights;
+	ScenePointer scene;
 };
 
 #endif // RAYTRACERENDERER_H

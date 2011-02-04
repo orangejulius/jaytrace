@@ -25,6 +25,9 @@ public:
 	list<RayObjectPointer> getObjects() const;
 	list<LightPointer> getLights() const;
 
+	/// returns a demo scene with a spiral made of spheres
+	static Scene getSpiralScene();
+
 protected:
 	Camera camera;
 	list<RayObjectPointer> objects;

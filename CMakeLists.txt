@@ -26,6 +26,7 @@ set(core_sources
 	Raytracer.cpp
 	RotationNode.cpp
 	ScalingNode.cpp
+	Scene.cpp
 	Sphere.cpp
 	TransformNode.cpp
 	TranslationNode.cpp)

@@ -29,6 +29,7 @@ set(core_sources
 	Renderer.cpp
 	RotationNode.cpp
 	ScalingNode.cpp
+	Scene.cpp
 	Sphere.cpp
 	TransformNode.cpp
 	TranslationNode.cpp)

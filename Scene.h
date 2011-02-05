@@ -28,6 +28,9 @@ public:
 	/// returns a demo scene with a spiral made of spheres
 	static Scene getSpiralScene();
 
+	/// returns a demo scene with 4 spheres and two lights
+	static Scene get4SphereScene();
+
 protected:
 	Camera camera;
 	list<RayObjectPointer> objects;

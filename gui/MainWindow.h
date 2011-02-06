@@ -12,6 +12,9 @@ class MainWindow: public QMainWindow
 public:
 	MainWindow();
 
+	QSize minimumSizeHint() const;
+	QSize sizeHint() const;
+
 private:
 	RaytracerWidget* raytracerWidget;
 };

@@ -14,3 +14,13 @@ MainWindow::MainWindow()
 
 	setCentralWidget(raytracerWidget);
 }
+
+QSize MainWindow::minimumSizeHint() const
+{
+	return QSize(320, 240);
+}
+
+QSize MainWindow::sizeHint() const
+{
+	return QSize(640, 480);
+}

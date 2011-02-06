@@ -17,6 +17,8 @@ public:
 	void addObject(RayObjectPointer object);
 	void addLight(LightPointer light);
 
+	void resize(unsigned int width, unsigned int height);
+
 	QImage render();
 
 private:

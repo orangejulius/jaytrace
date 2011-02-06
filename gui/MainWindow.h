@@ -3,12 +3,17 @@
 
 #include <QMainWindow>
 
+class RaytracerWidget;
+
 class MainWindow: public QMainWindow
 {
 	Q_OBJECT
 
 public:
 	MainWindow();
+
+private:
+	RaytracerWidget* raytracerWidget;
 };
 
 #endif // MAINWINDOW_H_INCLUDED

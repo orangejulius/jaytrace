@@ -19,6 +19,13 @@ void Raytracer::addLight(LightPointer light)
 	lights.push_back(light);
 }
 
+void Raytracer::resize(unsigned int newWidth, unsigned int newHeight)
+{
+	width = newWidth;
+	height = newHeight;
+	aspectRatio = (double)width / height;
+}
+
 QImage Raytracer::render()
 {
 	float yMin = -tan(projectionAngle.getRadians() / 2);

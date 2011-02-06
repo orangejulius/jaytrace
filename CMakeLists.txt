@@ -24,8 +24,6 @@ set(core_sources
 	Ray.cpp
 	RayObject.cpp
 	Raytracer.cpp
-	RaytraceRenderer.cpp
-	Renderer.cpp
 	RotationNode.cpp
 	ScalingNode.cpp
 	Sphere.cpp

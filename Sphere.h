@@ -2,11 +2,11 @@
 #define SPHERE_H
 
 #include "Node.h"
-#include "RayObject.h"
+#include "SceneObject.h"
 
 class Ray;
 
-class Sphere: public Node, public RayObject
+class Sphere: public Node, public SceneObject
 {
 public:
 	Sphere(NodePointer parent = NodePointer(0));

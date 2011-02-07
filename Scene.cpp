@@ -17,7 +17,7 @@ void Scene::setCamera(Camera c)
 	camera = c;
 }
 
-void Scene::addObject(RayObjectPointer object)
+void Scene::addObject(SceneObjectPointer object)
 {
 	objects.push_back(object);
 
@@ -28,7 +28,7 @@ void Scene::addLight(LightPointer light)
 	lights.push_back(light);
 }
 
-list<RayObjectPointer> Scene::getObjects() const
+list<SceneObjectPointer> Scene::getObjects() const
 {
 	return objects;
 }
@@ -71,7 +71,7 @@ Scene Scene::getSpiralScene()
 		NodePointer rotation(new RotationNode(rotationAngle, Vector3d::UnitZ(), lastDepthTranslation));
 		NodePointer radiusTranslation(new TranslationNode(radius, 0, 0, rotation));
 		NodePointer sphereScalingNode(new ScalingNode(sphereScaling, sphereScaling, sphereScaling, radiusTranslation));
-		RayObjectPointer sphere(new Sphere(sphereScalingNode));
+		SceneObjectPointer sphere(new Sphere(sphereScalingNode));
 		scene.addObject(sphere);
 		double depthBetweenSpheres = depthBetweenSpheresBase * pow(depthBetweenSpheresMultiple, i);
 		lastDepthTranslation = NodePointer(new TranslationNode(0,0, -depthBetweenSpheres, lastDepthTranslation));
@@ -125,7 +125,7 @@ Scene Scene::get4SphereScene()
 	m1->setDiffuse(m1Color);
 	m1->setSpecular(white);
 	m1->setShininess(10);
-	RayObjectPointer s1(new Sphere(m1));
+	SceneObjectPointer s1(new Sphere(m1));
 
 	NodePointer t2(new TranslationNode(0,0,-20));
 	NodePointer sc1(new ScalingNode(2,2,2,t2));
@@ -135,7 +135,7 @@ Scene Scene::get4SphereScene()
 	m2->setDiffuse(white* .6);
 	m2->setSpecular(white*.9);
 	m2->setShininess(20);
-	RayObjectPointer s2(new Sphere(m2));
+	SceneObjectPointer s2(new Sphere(m2));
 
 	NodePointer t3(new TranslationNode(3,0,-20));
 	MaterialNodePointer m3(new MaterialNode(t3));
@@ -144,7 +144,7 @@ Scene Scene::get4SphereScene()
 	m3->setDiffuse(m3Color);
 	m3->setSpecular(white);
 	m3->setShininess(30);
-	RayObjectPointer s3(new Sphere(m3));
+	SceneObjectPointer s3(new Sphere(m3));
 
 	NodePointer t4(new TranslationNode(-3,0,-20));
 	MaterialNodePointer m4(new MaterialNode(t4));
@@ -153,7 +153,7 @@ Scene Scene::get4SphereScene()
 	m4->setDiffuse(m4Color);
 	m4->setSpecular(white);
 	m4->setShininess(30);
-	RayObjectPointer s4(new Sphere(m4));
+	SceneObjectPointer s4(new Sphere(m4));
 
 	NodePointer t5(new TranslationNode(0,-3,-20));
 	MaterialNodePointer m5(new MaterialNode(t5));
@@ -162,7 +162,7 @@ Scene Scene::get4SphereScene()
 	m5->setDiffuse(m5Color);
 	m5->setSpecular(white);
 	m5->setShininess(30);
-	RayObjectPointer s5(new Sphere(m5));
+	SceneObjectPointer s5(new Sphere(m5));
 
 	scene.addObject(s1);
 	scene.addObject(s2);

@@ -5,7 +5,7 @@
 
 #include "Camera.h"
 #include "Light.h"
-#include "RayObject.h"
+#include "SceneObject.h"
 
 using std::list;
 
@@ -19,10 +19,10 @@ public:
 	Camera getCamera() const;
 	void setCamera(Camera c);
 
-	void addObject(RayObjectPointer object);
+	void addObject(SceneObjectPointer object);
 	void addLight(LightPointer light);
 
-	list<RayObjectPointer> getObjects() const;
+	list<SceneObjectPointer> getObjects() const;
 	list<LightPointer> getLights() const;
 
 	/// returns a demo scene with a spiral made of spheres
@@ -33,7 +33,7 @@ public:
 
 protected:
 	Camera camera;
-	list<RayObjectPointer> objects;
+	list<SceneObjectPointer> objects;
 	list<LightPointer> lights;
 };
 

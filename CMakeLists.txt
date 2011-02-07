@@ -23,11 +23,11 @@ set(core_sources
 	Node.cpp
 	Poisson.cpp
 	Ray.cpp
-	RayObject.cpp
 	Raytracer.cpp
 	RotationNode.cpp
 	ScalingNode.cpp
 	Scene.cpp
+	SceneObject.cpp
 	Sphere.cpp
 	TransformNode.cpp
 	TranslationNode.cpp)

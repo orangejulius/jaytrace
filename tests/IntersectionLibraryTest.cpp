@@ -14,8 +14,8 @@ void IntersectionLibraryTest::testIntersections()
 	NodePointer t2(new TranslationNode(0,10,0,t1));
 	NodePointer s1(new ScalingNode(5,5,5,t2));
 
-	RayObjectPointer sphere1(new Sphere(t1));
-	RayObjectPointer sphere2(new Sphere(s1));
+	SceneObjectPointer sphere1(new Sphere(t1));
+	SceneObjectPointer sphere2(new Sphere(s1));
 
 	Ray ray1(Vector3d(0,0,0),Vector3d(1,0,0));
 	Ray ray2(Vector3d(0,0,0),Vector3d(-1,0,0));
@@ -45,8 +45,8 @@ void IntersectionLibraryTest::testOccultation()
 	NodePointer t2(new TranslationNode(10,0,0,t1));
 
 	//radius 1 spheres with centers at (10,0,0) and (20,0,0)
-	RayObjectPointer sphere1(new Sphere(t1));
-	RayObjectPointer sphere2(new Sphere(t2));
+	SceneObjectPointer sphere1(new Sphere(t1));
+	SceneObjectPointer sphere2(new Sphere(t2));
 
 	//vector starting at origin heading in the +x direction
 	Ray ray1(Vector3d(0,0,0),Vector3d(1,0,0));

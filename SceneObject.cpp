@@ -1,8 +1,8 @@
-#include "RayObject.h"
+#include "SceneObject.h"
 
 #include <QDebug>
 
-RayObject::~RayObject()
+SceneObject::~SceneObject()
 {
 	qDebug()<<"Deleting RayObject "<<this;
 }

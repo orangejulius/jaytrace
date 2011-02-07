@@ -54,3 +54,4 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 {
 	raytracerWidget->resize(size());
 }
+

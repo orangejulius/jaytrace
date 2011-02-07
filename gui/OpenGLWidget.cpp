@@ -2,7 +2,11 @@
 
 void OpenGLWidget::visit(const Sphere* sphere)
 {
+}
 
+void OpenGLWidget::setScene(ScenePointer newScene)
+{
+	scene = newScene;
 }
 
 void OpenGLWidget::initializeGL()

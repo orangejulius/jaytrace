@@ -13,6 +13,7 @@ public:
 	virtual ~Sphere();
 
 	IntersectionInfo* intersect(const Ray& ray);
+	virtual void accept(SceneObjectVisitor& visitor);
 private:
 
 };

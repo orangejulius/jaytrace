@@ -2,6 +2,7 @@
 
 #include "IntersectionInfo.h"
 #include "Ray.h"
+#include "SceneObjectVisitor.h"
 
 #include <QDebug>
 #include <Eigen/LU>
@@ -68,4 +69,9 @@ IntersectionInfo* Sphere::intersect(const Ray& ray)
 	result->object = this;
 
 	return result;
+}
+
+void Sphere::accept(SceneObjectVisitor& visitor)
+{
+	visitor.visit(this);
 }

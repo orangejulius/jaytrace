@@ -12,6 +12,7 @@ class OpenGLWidget: public QGLWidget, public SceneObjectVisitor
 public:
 	virtual void visit(const Sphere* sphere);
 	void setScene(ScenePointer newScene);
+	void drawAxes();
 
 protected:
 	void initializeGL();

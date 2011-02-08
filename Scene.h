@@ -37,4 +37,6 @@ protected:
 	list<LightPointer> lights;
 };
 
+typedef QSharedPointer<Scene> ScenePointer;
+
 #endif // SCENE_H

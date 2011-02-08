@@ -12,6 +12,8 @@ MainWindow::MainWindow()
 	setWindowTitle(tr("Jaytrace"));
 
 	raytracerWidget = new RaytracerWidget();
+	scene = ScenePointer(new Scene(Scene::get4SphereScene()));
+	raytracerWidget->setScene(scene);
 
 	createActions();
 	createToolbars();

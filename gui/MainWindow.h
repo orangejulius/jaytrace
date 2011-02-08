@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "Scene.h"
+
 class RaytracerWidget;
 
 class MainWindow: public QMainWindow
@@ -24,6 +26,8 @@ private:
 	QToolBar* raytraceToolbar;
 
 	RaytracerWidget* raytracerWidget;
+
+	ScenePointer scene;
 };
 
 #endif // MAINWINDOW_H_INCLUDED

@@ -14,6 +14,9 @@ public:
 
 	void setScene(ScenePointer newScene);
 
+public slots:
+	void render();
+
 protected:
 	Raytracer raytracer;
 };

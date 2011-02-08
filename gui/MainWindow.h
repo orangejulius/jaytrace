@@ -16,6 +16,13 @@ public:
 	QSize sizeHint() const;
 
 private:
+	void createActions();
+	void createToolbars();
+
+	QAction* raytraceAction;
+
+	QToolBar* raytraceToolbar;
+
 	RaytracerWidget* raytracerWidget;
 };
 

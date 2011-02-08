@@ -3,6 +3,7 @@
 #include <QAction>
 #include <QMenu>
 #include <QMenuBar>
+#include <QToolBar>
 
 #include "RaytracerWidget.h"
 
@@ -11,6 +12,9 @@ MainWindow::MainWindow()
 	setWindowTitle(tr("Jaytrace"));
 
 	raytracerWidget = new RaytracerWidget();
+
+	createActions();
+	createToolbars();
 
 	setCentralWidget(raytracerWidget);
 }
@@ -23,4 +27,15 @@ QSize MainWindow::minimumSizeHint() const
 QSize MainWindow::sizeHint() const
 {
 	return QSize(640, 480);
+}
+
+void MainWindow::createActions()
+{
+	raytraceAction = new QAction(tr("Raytrace"), this);
+}
+
+void MainWindow::createToolbars()
+{
+	raytraceToolbar = addToolBar(tr("Raytrace"));
+	raytraceToolbar->addAction(raytraceAction);
 }

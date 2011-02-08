@@ -14,6 +14,8 @@ public:
 
 	void setScene(ScenePointer newScene);
 
+	void resizeEvent(QResizeEvent* event);
+
 public slots:
 	void render();
 

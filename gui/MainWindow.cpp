@@ -42,3 +42,8 @@ void MainWindow::createToolbars()
 	raytraceToolbar = addToolBar(tr("Raytrace"));
 	raytraceToolbar->addAction(raytraceAction);
 }
+
+void MainWindow::resizeEvent(QResizeEvent* event)
+{
+	raytracerWidget->resize(size());
+}

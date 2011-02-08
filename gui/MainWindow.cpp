@@ -34,6 +34,7 @@ QSize MainWindow::sizeHint() const
 void MainWindow::createActions()
 {
 	raytraceAction = new QAction(tr("Raytrace"), this);
+	connect(raytraceAction, SIGNAL(triggered()), raytracerWidget, SLOT(render()));
 }
 
 void MainWindow::createToolbars()

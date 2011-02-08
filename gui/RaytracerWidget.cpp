@@ -6,3 +6,8 @@ RaytracerWidget::RaytracerWidget(QWidget* parent): QLabel(parent), raytracer(siz
 	emptyPixmap.fill(Qt::black);
 	setPixmap(emptyPixmap);
 }
+
+void RaytracerWidget::setScene(ScenePointer newScene)
+{
+	raytracer.setScene(newScene);
+}

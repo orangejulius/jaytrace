@@ -12,6 +12,8 @@ class RaytracerWidget: public QLabel
 public:
 	RaytracerWidget(QWidget* parent = 0);
 
+	void setScene(ScenePointer newScene);
+
 protected:
 	Raytracer raytracer;
 };

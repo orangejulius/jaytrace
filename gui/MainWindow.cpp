@@ -5,6 +5,7 @@
 #include <QMenuBar>
 #include <QToolBar>
 
+#include "OpenGLWidget.h"
 #include "RaytracerWidget.h"
 
 MainWindow::MainWindow()
@@ -12,8 +13,10 @@ MainWindow::MainWindow()
 	setWindowTitle(tr("Jaytrace"));
 
 	raytracerWidget = new RaytracerWidget();
+	openglWidget = new OpenGLWidget();
 	scene = ScenePointer(new Scene(Scene::get4SphereScene()));
 	raytracerWidget->setScene(scene);
+	openglWidget->setScene(scene);
 
 	createActions();
 	createToolbars();

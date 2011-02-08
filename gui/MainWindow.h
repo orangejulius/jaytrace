@@ -5,6 +5,7 @@
 
 #include "Scene.h"
 
+class OpenGLWidget;
 class RaytracerWidget;
 
 class MainWindow: public QMainWindow
@@ -30,6 +31,7 @@ private:
 
 	QToolBar* raytraceToolbar;
 
+	OpenGLWidget* openglWidget;
 	RaytracerWidget* raytracerWidget;
 
 	ScenePointer scene;

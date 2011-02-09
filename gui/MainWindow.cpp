@@ -26,6 +26,8 @@ MainWindow::MainWindow()
 	stackedWidget->addWidget(raytracerWidget);
 
 	setCentralWidget(stackedWidget);
+
+	setOpenGL();
 }
 
 QSize MainWindow::minimumSizeHint() const

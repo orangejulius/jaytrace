@@ -54,6 +54,9 @@ void MainWindow::createActions()
 	raytraceAction = new QAction(tr("Raytrace"), this);
 	connect(raytraceAction, SIGNAL(triggered()), raytracerWidget, SLOT(render()));
 
+	setOpenGLAction = new QAction(tr("Set OpenGL"), this);
+	connect(setOpenGLAction, SIGNAL(triggered()), this, SLOT(setOpenGL()));
+
 	setRaytraceAction = new QAction(tr("Set Raytrace"), this);
 	connect(setRaytraceAction, SIGNAL(triggered()), this, SLOT(setRaytrace()));
 }
@@ -61,6 +64,7 @@ void MainWindow::createActions()
 void MainWindow::createToolbars()
 {
 	raytraceToolbar = addToolBar(tr("Raytrace"));
+	raytraceToolbar->addAction(setOpenGLAction);
 	raytraceToolbar->addAction(raytraceAction);
 
 	openglToolbar = addToolBar(tr("OpenGL"));

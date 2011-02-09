@@ -29,6 +29,7 @@ private:
 	void resizeEvent(QResizeEvent* event);
 
 	QAction* raytraceAction;
+	QAction* setOpenGLAction;
 	QAction* setRaytraceAction;
 
 	QToolBar* openglToolbar;

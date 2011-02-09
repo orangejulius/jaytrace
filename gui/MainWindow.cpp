@@ -31,6 +31,13 @@ QSize MainWindow::sizeHint() const
 	return QSize(640, 480);
 }
 
+void MainWindow::setRaytrace()
+{
+	raytraceToolbar->setVisible(true);
+	setCentralWidget(raytracerWidget);
+	raytracerWidget->render();
+}
+
 void MainWindow::createActions()
 {
 	raytraceAction = new QAction(tr("Raytrace"), this);

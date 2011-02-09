@@ -17,6 +17,9 @@ public:
 	QSize minimumSizeHint() const;
 	QSize sizeHint() const;
 
+private slots:
+	void setRaytrace();
+
 private:
 	void createActions();
 	void createToolbars();

@@ -37,6 +37,7 @@ QSize MainWindow::sizeHint() const
 void MainWindow::setRaytrace()
 {
 	raytraceToolbar->setVisible(true);
+	openglToolbar->setVisible(false);
 	setCentralWidget(raytracerWidget);
 	raytracerWidget->render();
 }
@@ -54,6 +55,9 @@ void MainWindow::createToolbars()
 {
 	raytraceToolbar = addToolBar(tr("Raytrace"));
 	raytraceToolbar->addAction(raytraceAction);
+
+	openglToolbar = addToolBar(tr("OpenGL"));
+	openglToolbar->addAction(setRaytraceAction);
 }
 
 void MainWindow::resizeEvent(QResizeEvent* event)

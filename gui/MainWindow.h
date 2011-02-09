@@ -30,6 +30,7 @@ private:
 	QAction* raytraceAction;
 	QAction* setRaytraceAction;
 
+	QToolBar* openglToolbar;
 	QToolBar* raytraceToolbar;
 
 	OpenGLWidget* openglWidget;

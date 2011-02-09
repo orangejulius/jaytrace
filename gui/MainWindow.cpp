@@ -21,7 +21,11 @@ MainWindow::MainWindow()
 	createActions();
 	createToolbars();
 
-	setCentralWidget(raytracerWidget);
+	stackedWidget = new QStackedWidget();
+	stackedWidget->addWidget(openglWidget);
+	stackedWidget->addWidget(raytracerWidget);
+
+	setCentralWidget(stackedWidget);
 }
 
 QSize MainWindow::minimumSizeHint() const
@@ -38,7 +42,7 @@ void MainWindow::setRaytrace()
 {
 	raytraceToolbar->setVisible(true);
 	openglToolbar->setVisible(false);
-	setCentralWidget(raytracerWidget);
+	stackedWidget->setCurrentWidget(raytracerWidget);
 	raytracerWidget->render();
 }
 
@@ -46,7 +50,7 @@ void MainWindow::setOpenGL()
 {
 	openglToolbar->setVisible(true);
 	raytraceToolbar->setVisible(false);
-	setCentralWidget(openglWidget);
+	stackedWidget->setCurrentWidget(openglWidget);
 }
 
 void MainWindow::createActions()

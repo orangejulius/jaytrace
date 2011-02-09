@@ -2,6 +2,7 @@
 #define MAINWINDOW_H_INCLUDED
 
 #include <QMainWindow>
+#include <QStackedWidget>
 
 #include "Scene.h"
 
@@ -37,6 +38,8 @@ private:
 
 	OpenGLWidget* openglWidget;
 	RaytracerWidget* raytracerWidget;
+
+	QStackedWidget* stackedWidget;
 
 	ScenePointer scene;
 };

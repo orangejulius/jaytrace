@@ -45,6 +45,9 @@ void MainWindow::createActions()
 {
 	raytraceAction = new QAction(tr("Raytrace"), this);
 	connect(raytraceAction, SIGNAL(triggered()), raytracerWidget, SLOT(render()));
+
+	setRaytraceAction = new QAction(tr("Set Raytrace"), this);
+	connect(setRaytraceAction, SIGNAL(triggered()), this, SLOT(setRaytrace()));
 }
 
 void MainWindow::createToolbars()

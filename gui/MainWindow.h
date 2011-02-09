@@ -28,6 +28,7 @@ private:
 	void resizeEvent(QResizeEvent* event);
 
 	QAction* raytraceAction;
+	QAction* setRaytraceAction;
 
 	QToolBar* raytraceToolbar;
 

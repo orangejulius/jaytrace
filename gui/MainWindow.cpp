@@ -42,6 +42,13 @@ void MainWindow::setRaytrace()
 	raytracerWidget->render();
 }
 
+void MainWindow::setOpenGL()
+{
+	openglToolbar->setVisible(true);
+	raytraceToolbar->setVisible(false);
+	setCentralWidget(openglWidget);
+}
+
 void MainWindow::createActions()
 {
 	raytraceAction = new QAction(tr("Raytrace"), this);

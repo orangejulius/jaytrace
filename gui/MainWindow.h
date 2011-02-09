@@ -20,6 +20,7 @@ public:
 
 private slots:
 	void setRaytrace();
+	void setOpenGL();
 
 private:
 	void createActions();

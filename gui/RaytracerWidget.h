@@ -12,6 +12,7 @@ class RaytracerWidget: public QLabel
 public:
 	RaytracerWidget(QWidget* parent = 0);
 
+	void setConfig(ConfigPointer newConfig);
 	void setScene(ScenePointer newScene);
 
 	void resizeEvent(QResizeEvent* event);

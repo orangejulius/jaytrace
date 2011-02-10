@@ -7,6 +7,11 @@ RaytracerWidget::RaytracerWidget(QWidget* parent): QLabel(parent), raytracer(siz
 	setPixmap(emptyPixmap);
 }
 
+void RaytracerWidget::setConfig(ConfigPointer newConfig)
+{
+	raytracer.setConfig(newConfig);
+}
+
 void RaytracerWidget::setScene(ScenePointer newScene)
 {
 	raytracer.setScene(newScene);

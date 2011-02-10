@@ -13,12 +13,15 @@ MainWindow::MainWindow()
 	setWindowTitle(tr("Jaytrace"));
 
 	config = ConfigPointer(new Config);
+	config->projectionAngle = Angle::degrees(25);
 
 	raytracerWidget = new RaytracerWidget();
 	openglWidget = new OpenGLWidget();
 	scene = ScenePointer(new Scene(Scene::get4SphereScene()));
 	raytracerWidget->setScene(scene);
 	openglWidget->setScene(scene);
+	raytracerWidget->setConfig(config);
+	openglWidget->setConfig(config);
 
 	createActions();
 	createToolbars();

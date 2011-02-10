@@ -31,6 +31,11 @@ void OpenGLWidget::drawAxes()
 	glEnable(GL_LIGHTING);
 }
 
+void OpenGLWidget::setConfig(ConfigPointer newConfig)
+{
+	config = newConfig;
+}
+
 void OpenGLWidget::initializeGL()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

@@ -3,6 +3,7 @@
 
 #include <QGLWidget>
 
+#include "Config.h"
 #include "Scene.h"
 #include "SceneObjectVisitor.h"
 
@@ -14,11 +15,14 @@ public:
 	void setScene(ScenePointer newScene);
 	void drawAxes();
 
+	void setConfig(ConfigPointer newConfig);
+
 protected:
 	void initializeGL();
 	void resizeGL(int width, int height);
 	void paintGL();
 
+	ConfigPointer config;
 	ScenePointer scene;
 
 	float aspectRatio;

@@ -17,6 +17,11 @@ public:
 		return Angle(angleRadians);
 	}
 
+	/// Default constructor that sets the angle to 0 degrees
+	Angle() {
+		angle = 0;
+	}
+
 	Angle(const Angle& other) {
 		angle = other.angle;
 	}

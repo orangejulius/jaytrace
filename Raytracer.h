@@ -4,6 +4,7 @@
 #include <QImage>
 
 #include "Angle.h"
+#include "Config.h"
 #include "IntersectionLibrary.h"
 #include "Scene.h"
 
@@ -17,6 +18,7 @@ public:
 	void setScene(ScenePointer newScene);
 
 	void resize(unsigned int width, unsigned int height);
+	void setConfig(ConfigPointer newConfig);
 
 	QImage render();
 
@@ -31,6 +33,7 @@ private:
 	double aspectRatio;
 	Angle projectionAngle;
 
+	ConfigPointer config;
 	ScenePointer scene;
 };
 

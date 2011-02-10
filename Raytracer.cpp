@@ -23,6 +23,11 @@ void Raytracer::resize(unsigned int newWidth, unsigned int newHeight)
 	aspectRatio = (double)width/height;
 }
 
+void Raytracer::setConfig(ConfigPointer newConfig)
+{
+	config = newConfig;
+}
+
 QImage Raytracer::render()
 {
 	float yMin = -tan(projectionAngle.getRadians()/2);

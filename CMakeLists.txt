@@ -52,6 +52,8 @@ if (enableGui)
 	set(jaytraceQt_all_sources ${jaytraceQt_sources} ${jaytraceQt_moc_sources})
 
 	set(QT_USE_QTOPENGL true)
+
+	find_package(OpenGL REQUIRED)
 endif (enableGui)
 
 if (enableTests)
@@ -100,7 +102,8 @@ target_link_libraries(jaytrace JaytraceCore ${QT_LIBRARIES})
 
 if (enableGui)
 	add_executable(jaytraceQt ${jaytraceQt_all_sources})
-	target_link_libraries(jaytraceQt JaytraceCore ${QT_LIBRARIES})
+	target_link_libraries(jaytraceQt JaytraceCore ${QT_LIBRARIES}
+		${OPENGL_glu_LIBRARY})
 endif (enableGui)
 
 if (enableTests)

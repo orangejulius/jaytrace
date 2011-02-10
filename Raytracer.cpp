@@ -4,7 +4,7 @@
 #include "Poisson.h"
 #include "Ray.h"
 
-Raytracer::Raytracer(unsigned int width, unsigned int height, Angle projectionAngle): width(width), height(height), projectionAngle(projectionAngle)
+Raytracer::Raytracer(unsigned int width, unsigned int height): width(width), height(height)
 {
 	aspectRatio = (double)width/height;
 }
@@ -30,6 +30,10 @@ void Raytracer::setConfig(ConfigPointer newConfig)
 
 QImage Raytracer::render()
 {
+	Angle projectionAngle;
+	if (config) {
+		projectionAngle = config->projectionAngle;
+	}
 	float yMin = -tan(projectionAngle.getRadians()/2);
 	float yHeight = -2 * yMin;
 

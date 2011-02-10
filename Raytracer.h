@@ -13,7 +13,7 @@ class Color;
 class Raytracer
 {
 public:
-	Raytracer(unsigned int width = 640, unsigned int height = 480, Angle projectionAngle = Angle::degrees(25));
+	Raytracer(unsigned int width = 640, unsigned int height = 480);
 
 	void setScene(ScenePointer newScene);
 
@@ -31,7 +31,6 @@ private:
 	unsigned int width;
 	unsigned int height;
 	double aspectRatio;
-	Angle projectionAngle;
 
 	ConfigPointer config;
 	ScenePointer scene;

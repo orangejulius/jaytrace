@@ -3,7 +3,11 @@
 
 int main()
 {
-	Raytracer raytracer(640, 480, Angle::degrees(25));
+	ConfigPointer config(new Config);
+	config->projectionAngle = Angle::degrees(25);
+	Raytracer raytracer(640, 480);
+
+	raytracer.setConfig(config);
 
 	ScenePointer scene(new Scene(Scene::getSpiralScene()));
 

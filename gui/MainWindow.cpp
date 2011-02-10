@@ -12,6 +12,8 @@ MainWindow::MainWindow()
 {
 	setWindowTitle(tr("Jaytrace"));
 
+	config = ConfigPointer(new Config);
+
 	raytracerWidget = new RaytracerWidget();
 	openglWidget = new OpenGLWidget();
 	scene = ScenePointer(new Scene(Scene::get4SphereScene()));

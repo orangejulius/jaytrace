@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 
+#include "Config.h"
 #include "Scene.h"
 
 class OpenGLWidget;
@@ -41,6 +42,7 @@ private:
 
 	QStackedWidget* stackedWidget;
 
+	ConfigPointer config;
 	ScenePointer scene;
 };
 

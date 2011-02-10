@@ -38,16 +38,35 @@ void OpenGLWidget::setConfig(ConfigPointer newConfig)
 
 void OpenGLWidget::initializeGL()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_DEPTH_TEST);
+
+	// Cull backfacing polygons
+	glCullFace(GL_BACK);
+	glEnable(GL_CULL_FACE);
 }
 
 void OpenGLWidget::resizeGL(int width, int height)
 {
-	aspectRatio = size().width()/size().height();
+	aspectRatio = float(width) / height;
+
+	glViewport(0, 0, width, height);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	Angle projectionAngle;
+	if (config) {
+		projectionAngle = config->projectionAngle;
+	}
+	gluPerspective(projectionAngle.getDegrees(), aspectRatio, 0.0001, 10000);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 }
 
 void OpenGLWidget::paintGL()
 {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	drawAxes();
 }
 

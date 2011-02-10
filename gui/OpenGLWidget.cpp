@@ -38,6 +38,7 @@ void OpenGLWidget::initializeGL()
 
 void OpenGLWidget::resizeGL(int width, int height)
 {
+	aspectRatio = size().width()/size().height();
 }
 
 void OpenGLWidget::paintGL()

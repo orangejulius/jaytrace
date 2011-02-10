@@ -20,6 +20,8 @@ protected:
 	void paintGL();
 
 	ScenePointer scene;
+
+	float aspectRatio;
 };
 
 #endif // OpenGLWidget

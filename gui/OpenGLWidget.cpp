@@ -70,3 +70,8 @@ void OpenGLWidget::paintGL()
 	drawAxes();
 }
 
+void OpenGLWidget::setOpenGLMatrix(Transform3d transform)
+{
+	glLoadMatrixd(transform.data());
+}
+

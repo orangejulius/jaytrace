@@ -17,6 +17,8 @@ public:
 
 	void setConfig(ConfigPointer newConfig);
 
+	void setOpenGLMatrix(Transform3d transform);
+
 protected:
 	void initializeGL();
 	void resizeGL(int width, int height);

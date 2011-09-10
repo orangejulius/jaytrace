@@ -67,6 +67,8 @@ void OpenGLWidget::resizeGL(int width, int height)
 void OpenGLWidget::paintGL()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	setOpenGLMatrix(scene->getCamera().getTransform());
 	drawAxes();
 }
 

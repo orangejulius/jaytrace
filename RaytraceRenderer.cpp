@@ -37,6 +37,7 @@ QImage RaytraceRenderer::render()
 
 	image.fill(0xff000000);
 
+	#pragma omp parallel for num_threads(4)
 	for (unsigned int row = 0; row < height; row++) {
 		for (unsigned int col = 0; col < width; col++) {
 			Color pixelColor(0, 0, 0);

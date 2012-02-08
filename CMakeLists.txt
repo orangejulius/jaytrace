@@ -7,7 +7,7 @@ add_definitions(-DQT_NO_DEBUG_OUTPUT)
 
 option(enableTests "Build the test executable" ON)
 
-set(CMAKE_CXX_FLAGS "-Wall")
+set(CMAKE_CXX_FLAGS "-Wall -fopenmp")
 
 find_package(Eigen2 REQUIRED)
 find_package(Qt4 REQUIRED)

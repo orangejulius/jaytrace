@@ -7,7 +7,7 @@ class AngleTest: public QObject
 {
 	Q_OBJECT
 private slots:
-	void testAngleCreation();
+	void testAngleEquality();
 };
 
 #endif // ANGLETEST_H

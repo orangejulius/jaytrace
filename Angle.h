@@ -13,8 +13,16 @@ public:
 		return Angle(angleRadians);
 	}
 
+	static Angle degrees(double angleDegrees) {
+		return Angle(angleDegrees * PI / 180);
+	}
+
 	double getRadians() const {
 		return angle;
+	}
+
+	double getDegrees() const {
+		return angle * 180 / PI;
 	}
 
 protected:

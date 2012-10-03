@@ -25,6 +25,10 @@ public:
 		return angle * 180 / PI;
 	}
 
+	bool operator==(const Angle& other) const {
+		return angle == other.angle;
+	}
+
 protected:
 	Angle(double radians) {
 		angle = radians;

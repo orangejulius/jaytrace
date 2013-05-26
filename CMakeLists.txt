@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 project(Jaytrace)
 
 set(CMAKE_MODULE_PATH ${Jaytrace_SOURCE_DIR}/cmake/)
+add_definitions(-DQT_NO_DEBUG_OUTPUT)
 
 option(enableTests "Build the test executable" ON)
 

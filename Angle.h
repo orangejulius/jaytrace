@@ -37,6 +37,10 @@ public:
 		return Angle(angle - other.angle);
 	}
 
+	Angle operator *(double s) const {
+		return Angle(angle * s);
+	}
+
 protected:
 	Angle(double radians) {
 		angle = radians;

@@ -7,6 +7,8 @@ class AngleTest: public QObject
 {
 	Q_OBJECT
 private slots:
+	void testRadiansToDegrees();
+	void testDegreesToRadians();
 	void testAngleEquality();
 };
 

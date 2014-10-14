@@ -29,6 +29,10 @@ public:
 		return angle == other.angle;
 	}
 
+	Angle operator +(const Angle& other) const {
+		return Angle(angle + other.angle);
+	}
+
 protected:
 	Angle(double radians) {
 		angle = radians;

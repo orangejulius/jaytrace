@@ -45,3 +45,13 @@ void AngleTest::testAssignmentOperator()
 	//ensure chained assigment works as well
 	QCOMPARE(a3.getRadians(), 2 * PI);
 }
+
+void AngleTest::testAdditionOperator()
+{
+	Angle a1 = Angle::radians(PI);
+	Angle a2 = Angle::radians(PI / 2);
+
+	Angle a3 = a1 + a2;
+
+	QCOMPARE(a3.getRadians(), 3 * PI / 2);
+}

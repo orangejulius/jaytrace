@@ -12,6 +12,7 @@ private slots:
 	void testAngleEquality();
 	void testCopyConstructor();
 	void testAssignmentOperator();
+	void testAdditionOperator();
 };
 
 #endif // ANGLETEST_H

@@ -14,6 +14,7 @@ find_package(Qt4 REQUIRED)
 
 #source files used both by the main program and the test program
 set(core_sources
+	Camera.cpp
 	Color.cpp
 	IntersectionLibrary.cpp
 	Light.cpp
@@ -23,6 +24,7 @@ set(core_sources
 	Poisson.cpp
 	Ray.cpp
 	RayObject.cpp
+	Raytracer.cpp
 	RaytraceRenderer.cpp
 	Renderer.cpp
 	RotationNode.cpp
@@ -36,6 +38,7 @@ if (enableTests)
 	set(jaytraceTest_sources
 		tests/main.cpp
 		tests/AngleTest.cpp
+		tests/CameraTest.cpp
 		tests/IntersectionLibraryTest.cpp
 		tests/MaterialTest.cpp
 		tests/RayTest.cpp
@@ -47,6 +50,7 @@ if (enableTests)
 	#these classes must be processed by the moc
 	set(jaytraceTest_qobject_headers
 		tests/AngleTest.h
+		tests/CameraTest.h
 		tests/IntersectionLibraryTest.h
 		tests/MaterialTest.h
 		tests/RayTest.h

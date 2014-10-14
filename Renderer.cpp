@@ -1,10 +1,7 @@
 #include "Renderer.h"
 
-Renderer::Renderer(): projectionAngle(Angle::degrees(25))
+Renderer::Renderer(unsigned int width, unsigned int height, Angle projectionAngle):width(width), height(height), projectionAngle(projectionAngle)
 {
-	width = 640;
-	height = 480;
-
 	aspectRatio = (float)width / height;
 }
 

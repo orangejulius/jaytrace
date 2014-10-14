@@ -55,3 +55,13 @@ void AngleTest::testAdditionOperator()
 
 	QCOMPARE(a3.getRadians(), 3 * PI / 2);
 }
+
+void AngleTest::testSubtractionOperator()
+{
+	Angle a1 = Angle::degrees(90);
+	Angle a2 = Angle::degrees(45);
+
+	Angle a3 = a1 - a2;
+
+	QCOMPARE(a3.getDegrees(), 45.);
+}

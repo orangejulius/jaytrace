@@ -74,3 +74,12 @@ void AngleTest::testScalarMultiplicationOperator()
 
 	QCOMPARE(a2.getDegrees(), 180.);
 }
+
+void AngleTest::testScalarDivisionOperator()
+{
+	Angle a1 = Angle::degrees(90);
+
+	Angle a2 = a1 / 2;
+
+	QCOMPARE(a2.getDegrees(), 45.);
+}

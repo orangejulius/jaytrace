@@ -15,6 +15,7 @@ private slots:
 	void testAdditionOperator();
 	void testSubtractionOperator();
 	void testScalarMultiplicationOperator();
+	void testScalarDivisionOperator();
 };
 
 #endif // ANGLETEST_H

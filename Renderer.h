@@ -3,6 +3,7 @@
 
 #include <list>
 
+#include "Angle.h"
 #include "Light.h"
 #include "RayObject.h"
 
@@ -16,7 +17,7 @@ public:
 	void addObject(RayObjectPointer object);
 	void addLight(LightPointer light);
 protected:
-	float projectionAngle;
+	Angle projectionAngle;
 	float aspectRatio;
 
 	unsigned int width;

@@ -10,6 +10,7 @@ private slots:
 	void testRadiansToDegrees();
 	void testDegreesToRadians();
 	void testAngleEquality();
+	void testCopyConstructor();
 };
 
 #endif // ANGLETEST_H

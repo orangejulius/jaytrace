@@ -23,3 +23,12 @@ void AngleTest::testAngleEquality()
 
 	QVERIFY(a1 == a2);
 }
+
+// the default C++ copy constructor is sufficient at the moment
+void AngleTest::testCopyConstructor()
+{
+	Angle a1 = Angle::radians(PI);
+	Angle a2 = a1;
+
+	QCOMPARE(a2.getRadians(), PI);
+}

@@ -18,7 +18,7 @@ void CameraTest::testStandard()
 	QVERIFY(actual.isApprox(expected));
 }
 
-void CameraTest::test1()
+void CameraTest::testPosition1()
 {
 	Vector3d eye(10, 10, 10);
 	Vector3d look(0, 0, 0);
@@ -36,7 +36,7 @@ void CameraTest::test1()
 	QVERIFY(actual.isApprox(expected,1));
 }
 
-void CameraTest::test2()
+void CameraTest::testPosition2()
 {
 	Vector3d eye(4, 4, 4);
 	Vector3d look(0, 1, 0);

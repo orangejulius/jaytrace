@@ -83,3 +83,23 @@ void AngleTest::testScalarDivisionOperator()
 
 	QCOMPARE(a2.getDegrees(), 45.);
 }
+
+void AngleTest::testAdditionAssignmentOperator()
+{
+	Angle a1 = Angle::degrees(90);
+	Angle a2 = Angle::degrees(30);
+
+	a1 += a2;
+
+	QCOMPARE(a1.getDegrees(), 120.);
+}
+
+void AngleTest::testSubtractionAssignmentOperator()
+{
+	Angle a1 = Angle::degrees(90);
+	Angle a2 = Angle::degrees(30);
+
+	a1 -= a2;
+
+	QCOMPARE(a1.getDegrees(), 60.);
+}

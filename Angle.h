@@ -45,6 +45,16 @@ public:
 		return Angle(angle / s);
 	}
 
+	Angle& operator+=(const Angle& a) {
+		angle += a.angle;
+		return *this;
+	}
+
+	Angle& operator-=(const Angle& a) {
+		angle -= a.angle;
+		return *this;
+	}
+
 protected:
 	Angle(double radians) {
 		angle = radians;

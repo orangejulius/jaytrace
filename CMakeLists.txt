@@ -31,6 +31,7 @@ set(core_sources
 	ScalingNode.cpp
 	Scene.cpp
 	Sphere.cpp
+	SpiralScene.cpp
 	TransformNode.cpp
 	TranslationNode.cpp)
 

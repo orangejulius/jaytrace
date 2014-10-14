@@ -32,3 +32,16 @@ void AngleTest::testCopyConstructor()
 
 	QCOMPARE(a2.getRadians(), PI);
 }
+
+void AngleTest::testAssignmentOperator()
+{
+	Angle a1 = Angle::radians(2 * PI);
+	Angle a2 = Angle::radians(PI);
+
+	Angle a3 = a2 = a1;
+
+	QCOMPARE(a2.getRadians(), 2 * PI);
+
+	//ensure chained assigment works as well
+	QCOMPARE(a3.getRadians(), 2 * PI);
+}

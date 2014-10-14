@@ -12,12 +12,14 @@ class Ray
 public:
 	Ray();
 	Ray(Vector3d origin, Vector3d direction);
+	Ray(Vector4d origin, Vector4d direction);
 
 	Vector3d getOrigin() {
-		return origin;
+		return origin.start<3>();
 	}
+
 	Vector3d getDirection() {
-		return direction;
+		return direction.start<3>();
 	}
 
 	Ray getTransformedRay(Matrix4d inverseTransformationMatrix) const;
@@ -26,8 +28,8 @@ public:
 	bool operator==(const Ray& r) const;
 
 protected:
-	Vector3d origin;
-	Vector3d direction;
+	Vector4d origin;
+	Vector4d direction;
 };
 
 #endif // RAY_H

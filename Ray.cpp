@@ -8,31 +8,31 @@ Ray::Ray()
 
 }
 
-Ray::Ray(Vector3d origin, Vector3d direction): origin(origin), direction(direction)
+Ray::Ray(Vector3d origin, Vector3d direction)
+{
+	this->origin << origin, 1;
+	this->direction << direction, 0;
+}
+
+Ray::Ray(Vector4d origin, Vector4d direction): origin(origin), direction(direction)
 {
 
 }
 
 Ray Ray::getTransformedRay(Matrix4d inverseTransformationMatrix) const
 {
-	Vector4d rayOrigin4d;
-	rayOrigin4d << origin, 1;
+	Vector4d transformedRayOrigin;
+	transformedRayOrigin = (inverseTransformationMatrix * origin);
 
-	Vector4d rayDirection4d;
-	rayDirection4d << direction, 0;
-
-	Vector3d transformedRayOrigin;
-	transformedRayOrigin = (inverseTransformationMatrix * rayOrigin4d).start<3>();
-
-	Vector3d transformedRayDirection;
-	transformedRayDirection = (inverseTransformationMatrix * rayDirection4d).start<3>();
+	Vector4d transformedRayDirection;
+	transformedRayDirection = (inverseTransformationMatrix * direction);
 
 	return Ray(transformedRayOrigin, transformedRayDirection);
 }
 
 Vector3d Ray::getPosition(double time) const
 {
-	return origin + direction * time;
+	return (origin + direction * time).start<3>();
 }
 
 bool Ray::operator==(const Ray& r) const

@@ -4,6 +4,8 @@
 #include "Node.h"
 #include "RayObject.h"
 
+using Eigen::Vector3d;
+
 class Ray;
 
 class Cube: public Node, public RayObject
@@ -13,8 +15,9 @@ public:
 	virtual ~Cube();
 
 	IntersectionInfo* intersect(const Ray& ray);
-private:
 
+protected:
+	Vector3d getFaceNormal(int axis, int magnitude);
 };
 
 #endif // CUBE_H

@@ -4,7 +4,6 @@
 #include "Ray.h"
 
 #include <QDebug>
-#include <Eigen/LU>
 
 Cube::Cube(NodePointer parent): Node(parent)
 {
@@ -33,25 +32,37 @@ IntersectionInfo* Cube::intersect(const Ray& ray)
 
 			// check for parallel ray
 			if (denominator == 0) {
-				if (numerator < 0) {
+				if (numerator <= 0) {
 					//ray is never inside cube
+					//note this includes rays exactly in the plane of one face
 					return 0;
 				}
 			} else {
 				double tHit = numerator / denominator;
+
 				if (denominator < 0) {
 					if (tHit > tIn) {
 						//this is a new latest hit going in
 						info = new IntersectionInfo();
 						info->object = this;
 						info->time = tHit;
-
-						info->normal = Vector3d();
-						info->normal[axis] = magnitude;
+						info->normal = getFaceNormal(axis, magnitude);
 					}
 				}
 			}
 		}
 	}
 	return info;
+}
+
+Vector3d Cube::getFaceNormal(int axis, int magnitude)
+{
+	Vector4d normal(0, 0, 0, 1);
+	normal[axis] = magnitude;
+
+	Matrix4d transformationMatrix = getMatrixState().matrix();
+
+	Vector4d transformedNormal = transformationMatrix * normal;
+
+	return transformedNormal.start<3>();
 }

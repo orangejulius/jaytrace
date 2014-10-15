@@ -16,6 +16,7 @@ find_package(Qt4 REQUIRED)
 set(core_sources
 	Camera.cpp
 	Color.cpp
+	FourSphereScene.cpp
 	IntersectionLibrary.cpp
 	Light.cpp
 	Material.cpp

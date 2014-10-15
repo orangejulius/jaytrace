@@ -11,7 +11,7 @@ using std::list;
 class Renderer
 {
 public:
-	Renderer(ScenePointer scene, unsigned int width = 640, unsigned int height = 480, Angle projectionAngle = Angle::degrees(25));
+	Renderer(ScenePointer scene, unsigned int width, unsigned int height, Angle projectionAngle);
 
 protected:
 	ScenePointer scene;

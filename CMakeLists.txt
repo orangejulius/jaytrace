@@ -16,6 +16,7 @@ find_package(Qt4 REQUIRED)
 set(core_sources
 	Camera.cpp
 	Color.cpp
+	FourSphereScene.cpp
 	IntersectionLibrary.cpp
 	Light.cpp
 	Material.cpp
@@ -29,7 +30,9 @@ set(core_sources
 	Renderer.cpp
 	RotationNode.cpp
 	ScalingNode.cpp
+	Scene.cpp
 	Sphere.cpp
+	SpiralScene.cpp
 	TransformNode.cpp
 	TranslationNode.cpp)
 

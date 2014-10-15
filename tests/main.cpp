@@ -16,15 +16,18 @@ int main()
 	SceneGraphTest sceneGraphTest;
 	SphereTest sphereTest;
 
+	QStringList testArguments;
+	testArguments << " "<< "-silent";
+
 	int result = 0;
 
-	result += QTest::qExec(&angleTest);
-	result += QTest::qExec(&cameraTest);
-	result += QTest::qExec(&intersectionLibraryTest);
-	result += QTest::qExec(&materialTest);
-	result += QTest::qExec(&rayTest);
-	result += QTest::qExec(&sceneGraphTest);
-	result += QTest::qExec(&sphereTest);
+	result += QTest::qExec(&angleTest, testArguments);
+	result += QTest::qExec(&cameraTest, testArguments);
+	result += QTest::qExec(&intersectionLibraryTest, testArguments);
+	result += QTest::qExec(&materialTest, testArguments);
+	result += QTest::qExec(&rayTest, testArguments);
+	result += QTest::qExec(&sceneGraphTest, testArguments);
+	result += QTest::qExec(&sphereTest, testArguments);
 
 	if (result) {
 		qDebug()<<"Tests failed\n";

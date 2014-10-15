@@ -9,6 +9,7 @@ public:
 	SpiralScene();
 
 protected:
+	void setupCamera();
 	void setupObjects();
 	void setupLights();
 };

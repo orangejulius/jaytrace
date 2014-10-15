@@ -8,8 +8,17 @@
 
 SpiralScene::SpiralScene()
 {
+	setupCamera();
 	setupObjects();
 	setupLights();
+}
+
+void SpiralScene::setupCamera()
+{
+	Vector3d eye(0, 0, 0);
+	Vector3d look(0, 0, -100);
+	Vector3d up(0, 1, 0);
+	camera = Camera(eye, look, up);
 }
 
 void SpiralScene::setupObjects()
@@ -22,7 +31,9 @@ void SpiralScene::setupObjects()
 	int firstSphereDepth = 10;
 	double radius = 2;
 
-	MaterialNodePointer material(new MaterialNode);
+	NodePointer rootNode(new TransformNode(getCamera().getTransform()));
+
+	MaterialNodePointer material(new MaterialNode(rootNode));
 	Color white(1, 1, 1);
 	material->setAmbient(white * .1);
 	material->setDiffuse(white * .5);

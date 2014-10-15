@@ -16,6 +16,7 @@ find_package(Qt4 REQUIRED)
 set(core_sources
 	Camera.cpp
 	Color.cpp
+	Cube.cpp
 	FourSphereScene.cpp
 	IntersectionLibrary.cpp
 	Light.cpp
@@ -42,6 +43,7 @@ if (enableTests)
 		tests/main.cpp
 		tests/AngleTest.cpp
 		tests/CameraTest.cpp
+		tests/CubeTest.cpp
 		tests/IntersectionLibraryTest.cpp
 		tests/MaterialTest.cpp
 		tests/RayTest.cpp
@@ -54,6 +56,7 @@ if (enableTests)
 	set(jaytraceTest_qobject_headers
 		tests/AngleTest.h
 		tests/CameraTest.h
+		tests/CubeTest.h
 		tests/IntersectionLibraryTest.h
 		tests/MaterialTest.h
 		tests/RayTest.h

@@ -1,20 +1,14 @@
 #include "CameraTest.h"
 
-#include <iostream>
 #include "Angle.h"
 #include "Camera.h"
 
 using Eigen::Matrix4d;
-using std::cout;
-using std::endl;
-
 void CameraTest::testStandard()
 {
 	Camera c1;
 	Matrix4d expected = Matrix4d::Identity();
 	Matrix4d actual = c1.getTransform().matrix();
-	cout<<"expected: "<<endl<<expected<<endl;
-	cout<<"actual: "<<endl<<actual<<endl;
 	QVERIFY(actual.isApprox(expected));
 }
 
@@ -31,8 +25,6 @@ void CameraTest::testPosition1()
 	0, 0, 0, 1;
 
 	Matrix4d actual = c1.getTransform().matrix();
-	cout<<"expected: "<<endl<<expected<<endl;
-	cout<<"actual: "<<endl<<actual<<endl;
 	QVERIFY(actual.isApprox(expected,1));
 }
 
@@ -49,8 +41,6 @@ void CameraTest::testPosition2()
 	0, 0, 0, 1;
 
 	Matrix4d actual = c1.getTransform().matrix();
-	cout<<"expected: "<<endl<<expected<<endl;
-	cout<<"actual: "<<endl<<actual<<endl;
 	QVERIFY(actual.isApprox(expected,1));
 }
 
@@ -69,8 +59,6 @@ void CameraTest::testSlide1()
 	Matrix4d expected = c1.getTransform().matrix();
 	Matrix4d actual = c2.getTransform().matrix();
 
-	cout<<"expected: "<<endl<<expected<<endl;
-	cout<<"actual: "<<endl<<actual<<endl;
 	QVERIFY(actual.isApprox(expected));
 }
 
@@ -91,8 +79,6 @@ void CameraTest::testSlide2()
 	Matrix4d expected = c1.getTransform().matrix();
 	Matrix4d actual = c2.getTransform().matrix();
 
-	cout<<"expected: "<<endl<<expected<<endl;
-	cout<<"actual: "<<endl<<actual<<endl;
 	QVERIFY(actual.isApprox(expected));
 }
 
@@ -110,7 +96,5 @@ void CameraTest::testRotateAroundLook1()
 	Matrix4d expected = c1.getTransform().matrix();
 	Matrix4d actual = c2.getTransform().matrix();
 
-	cout<<"expected: "<<endl<<expected<<endl;
-	cout<<"actual: "<<endl<<actual<<endl;
 	QVERIFY(actual.isApprox(expected));
 }

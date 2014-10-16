@@ -17,7 +17,7 @@ Cube::~Cube()
 
 IntersectionInfo* Cube::intersect(const Ray& ray)
 {
-	double tIn = 0.0, tOut = 100000000.0;
+	double tIn = 0.000000001, tOut = 100000000.0;
 
 	IntersectionInfo* info = 0;
 

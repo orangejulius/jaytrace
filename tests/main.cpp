@@ -1,5 +1,6 @@
 #include "tests/AngleTest.h"
 #include "tests/CameraTest.h"
+#include "tests/CubeTest.h"
 #include "tests/IntersectionLibraryTest.h"
 #include "tests/MaterialTest.h"
 #include "tests/RayTest.h"
@@ -10,6 +11,7 @@ int main()
 {
 	AngleTest angleTest;
 	CameraTest cameraTest;
+	CubeTest cubeTest;
 	IntersectionLibraryTest intersectionLibraryTest;
 	MaterialTest materialTest;
 	RayTest rayTest;
@@ -23,6 +25,7 @@ int main()
 
 	result += QTest::qExec(&angleTest, testArguments);
 	result += QTest::qExec(&cameraTest, testArguments);
+	result += QTest::qExec(&cubeTest, testArguments);
 	result += QTest::qExec(&intersectionLibraryTest, testArguments);
 	result += QTest::qExec(&materialTest, testArguments);
 	result += QTest::qExec(&rayTest, testArguments);

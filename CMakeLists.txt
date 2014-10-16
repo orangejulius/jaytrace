@@ -17,6 +17,7 @@ set(core_sources
 	Camera.cpp
 	Color.cpp
 	Cube.cpp
+	CubeScene.cpp
 	FourSphereScene.cpp
 	IntersectionLibrary.cpp
 	Light.cpp

@@ -14,11 +14,11 @@ public:
 	Ray(Vector3d origin, Vector3d direction);
 	Ray(Vector4d origin, Vector4d direction);
 
-	Vector3d getOrigin() {
+	Vector3d getOrigin() const {
 		return origin.start<3>();
 	}
 
-	Vector3d getDirection() {
+	Vector3d getDirection() const {
 		return direction.start<3>();
 	}
 

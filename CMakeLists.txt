@@ -24,6 +24,7 @@ set(core_sources
 	Material.cpp
 	MaterialNode.cpp
 	Node.cpp
+	Plane.cpp
 	Poisson.cpp
 	Ray.cpp
 	RayObject.cpp
@@ -47,6 +48,7 @@ if (enableTests)
 		tests/CubeTest.cpp
 		tests/IntersectionLibraryTest.cpp
 		tests/MaterialTest.cpp
+		tests/PlaneTest.cpp
 		tests/RayTest.cpp
 		tests/SceneGraphTest.cpp
 		tests/SphereTest.cpp
@@ -60,6 +62,7 @@ if (enableTests)
 		tests/CubeTest.h
 		tests/IntersectionLibraryTest.h
 		tests/MaterialTest.h
+		tests/PlaneTest.h
 		tests/RayTest.h
 		tests/SceneGraphTest.h
 		tests/SphereTest.h

@@ -3,6 +3,7 @@
 #include "tests/CubeTest.h"
 #include "tests/IntersectionLibraryTest.h"
 #include "tests/MaterialTest.h"
+#include "tests/PlaneTest.h"
 #include "tests/RayTest.h"
 #include "tests/SceneGraphTest.h"
 #include "tests/SphereTest.h"
@@ -14,6 +15,7 @@ int main()
 	CubeTest cubeTest;
 	IntersectionLibraryTest intersectionLibraryTest;
 	MaterialTest materialTest;
+	PlaneTest planeTest;
 	RayTest rayTest;
 	SceneGraphTest sceneGraphTest;
 	SphereTest sphereTest;
@@ -28,6 +30,7 @@ int main()
 	result += QTest::qExec(&cubeTest, testArguments);
 	result += QTest::qExec(&intersectionLibraryTest, testArguments);
 	result += QTest::qExec(&materialTest, testArguments);
+	result += QTest::qExec(&planeTest, testArguments);
 	result += QTest::qExec(&rayTest, testArguments);
 	result += QTest::qExec(&sceneGraphTest, testArguments);
 	result += QTest::qExec(&sphereTest, testArguments);

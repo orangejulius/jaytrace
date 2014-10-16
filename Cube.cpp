@@ -17,7 +17,7 @@ Cube::~Cube()
 
 IntersectionInfo* Cube::intersect(const Ray& ray)
 {
-	double tIn = -100000000.0;
+	double tIn = 0.0, tOut = 100000000.0;
 
 	IntersectionInfo* info = 0;
 
@@ -27,7 +27,7 @@ IntersectionInfo* Cube::intersect(const Ray& ray)
 	for(int axis = 0; axis < 3; axis++) {
 		// check the positive and negative face for each axis
 		for (int magnitude = -1; magnitude <= 1; magnitude += 2) {
-			double numerator = 1.0 - genericRay.getOrigin()[axis];
+			double numerator = 1.0 - magnitude * genericRay.getOrigin()[axis];
 			double denominator = magnitude * genericRay.getDirection()[axis];
 
 			// check for parallel ray
@@ -40,15 +40,30 @@ IntersectionInfo* Cube::intersect(const Ray& ray)
 			} else {
 				double tHit = numerator / denominator;
 
-				if (denominator < 0) {
+				if (denominator > 0) {
+					//exiting cube, simply keep track of tOut
+					if (tHit < tOut) {
+						tOut = tHit;
+					}
+				} else {
 					if (tHit > tIn) {
 						//this is a new latest hit going in
+						tIn = tHit;
+
+						if (info) {
+							delete info;
+						}
+
 						info = new IntersectionInfo();
 						info->object = this;
 						info->time = tHit;
 						info->normal = getFaceNormal(axis, magnitude);
+						info->normal.normalize();
 					}
 				}
+			}
+			if (tIn >= tOut) {
+				return 0; // ray misses cube
 			}
 		}
 	}

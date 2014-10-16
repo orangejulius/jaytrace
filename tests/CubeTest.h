@@ -11,6 +11,10 @@ private slots:
 	void testParallelOutsideRay();
 	void testParallelOnPlaneRay();
 	void testRotatedCube();
+	void testOriginInsideCube();
+	void testTranslatedCube();
+	void testAngledIntersection();
+	void testAngledMiss();
 };
 
 #endif // CUBETEST_H

@@ -50,6 +50,7 @@ if (enableTests)
 		tests/MaterialTest.cpp
 		tests/PlaneTest.cpp
 		tests/RayTest.cpp
+		tests/RotationNodeTest.cpp
 		tests/SceneGraphTest.cpp
 		tests/SphereTest.cpp
 		tests/TransformNodeTest.cpp)
@@ -64,6 +65,7 @@ if (enableTests)
 		tests/MaterialTest.h
 		tests/PlaneTest.h
 		tests/RayTest.h
+		tests/RotationNodeTest.h
 		tests/SceneGraphTest.h
 		tests/SphereTest.h
 		tests/TransformNodeTest.h)

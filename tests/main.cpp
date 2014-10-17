@@ -5,6 +5,7 @@
 #include "tests/MaterialTest.h"
 #include "tests/PlaneTest.h"
 #include "tests/RayTest.h"
+#include "tests/RotationNodeTest.h"
 #include "tests/SceneGraphTest.h"
 #include "tests/SphereTest.h"
 #include "tests/TransformNodeTest.h"
@@ -18,6 +19,7 @@ int main()
 	MaterialTest materialTest;
 	PlaneTest planeTest;
 	RayTest rayTest;
+	RotationNodeTest rotationNodeTest;
 	SceneGraphTest sceneGraphTest;
 	SphereTest sphereTest;
 	TransformNodeTest transformNodeTest;
@@ -34,6 +36,7 @@ int main()
 	result += QTest::qExec(&materialTest, testArguments);
 	result += QTest::qExec(&planeTest, testArguments);
 	result += QTest::qExec(&rayTest, testArguments);
+	result += QTest::qExec(&rotationNodeTest, testArguments);
 	result += QTest::qExec(&sceneGraphTest, testArguments);
 	result += QTest::qExec(&sphereTest, testArguments);
 	result += QTest::qExec(&transformNodeTest, testArguments);

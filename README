@@ -11,7 +11,7 @@ Shadows and reflections
 Dependencies
 CMake 2.8+
 Qt 4.6 (core, gui, and test libraries)
-Eigen 2.0
+Eigen 3.x
 
 Planned features include
 * triangle intersection support

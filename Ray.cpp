@@ -32,7 +32,7 @@ Ray Ray::getTransformedRay(Matrix4d inverseTransformationMatrix) const
 
 Vector3d Ray::getPosition(double time) const
 {
-	return (origin + direction * time).start<3>();
+	return (origin + direction * time).head<3>();
 }
 
 bool Ray::operator==(const Ray& r) const

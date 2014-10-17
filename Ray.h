@@ -15,11 +15,11 @@ public:
 	Ray(Vector4d origin, Vector4d direction);
 
 	Vector3d getOrigin() const {
-		return origin.start<3>();
+		return origin.head<3>();
 	}
 
 	Vector3d getDirection() const {
-		return direction.start<3>();
+		return direction.head<3>();
 	}
 
 	Ray getTransformedRay(Matrix4d inverseTransformationMatrix) const;

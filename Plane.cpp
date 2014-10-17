@@ -44,7 +44,7 @@ IntersectionInfo* Plane::intersect(const Ray& ray)
 
 	Vector4d transformedNormal = transformationMatrix * normal4d;
 
-	Vector3d normal = transformedNormal.start<3>();
+	Vector3d normal = transformedNormal.head<3>();
 
 	IntersectionInfo* info = new IntersectionInfo();
 	info->normal = normal;

@@ -1,6 +1,5 @@
 #include "Camera.h"
 
-#include <Eigen/Array>
 #include <Eigen/LU>
 
 #include "Angle.h"

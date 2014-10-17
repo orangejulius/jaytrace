@@ -4,7 +4,7 @@
 
 using Eigen::Matrix4d;
 
-void TransformNodeTest::testSingle()
+void TransformNodeTest::testNoOp()
 {
 	TransformNode t1;
 	Matrix4d expected = Matrix4d::Identity();

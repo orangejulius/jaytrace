@@ -7,6 +7,6 @@ class TransformNodeTest: public QObject
 {
 	Q_OBJECT
 private slots:
-	void testSingle();
+	void testNoOp();
 };
 #endif // TRANSFORMNODETEST_H

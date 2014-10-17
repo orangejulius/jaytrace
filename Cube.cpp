@@ -79,5 +79,5 @@ Vector3d Cube::getFaceNormal(int axis, int magnitude)
 
 	Vector4d transformedNormal = transformationMatrix * normal;
 
-	return transformedNormal.start<3>();
+	return transformedNormal.head<3>();
 }

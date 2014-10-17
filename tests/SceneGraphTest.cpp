@@ -38,9 +38,9 @@ void SceneGraphTest::testScalingNodeParent()
 {
 	NodePointer t1(new ScalingNode(1, 5, 1));
 	NodePointer n1(new Node(t1));
-	Transform3d expected;
+	Affine3d expected;
 	expected.setIdentity();
-	Scaling3d expectedScaling(1, 5, 1);
+	AlignedScaling3d expectedScaling(1, 5, 1);
 	expected *= expectedScaling;
 	Matrix4d actual = n1->getMatrixState().matrix();
 	QCOMPARE(actual, expected.matrix());
@@ -51,9 +51,9 @@ void SceneGraphTest::testScalingNodeParents()
 	NodePointer t1(new ScalingNode(1, 5, 1));
 	NodePointer t2(new ScalingNode(4, 1, 1, t1));
 	NodePointer n1(new Node(t2));
-	Transform3d expected;
+	Affine3d expected;
 	expected.setIdentity();
-	Scaling3d expectedScaling(4, 5, 1);
+	AlignedScaling3d expectedScaling(4, 5, 1);
 	expected *= expectedScaling;
 	Matrix4d actual = n1->getMatrixState().matrix();
 	QCOMPARE(actual, expected.matrix());
@@ -63,7 +63,7 @@ void SceneGraphTest::testTranslationNodeParent()
 {
 	NodePointer t1(new TranslationNode(0, 5, 0));
 	NodePointer n1(new Node(t1));
-	Transform3d expected;
+	Affine3d expected;
 	expected.setIdentity();
 	Translation3d expectedTranslation(0, 5, 0);
 	expected *= expectedTranslation;
@@ -76,7 +76,7 @@ void SceneGraphTest::testTranslationNodeParents()
 	NodePointer t1(new TranslationNode(0, 5, 0));
 	NodePointer t2(new TranslationNode(4, 0, 0, t1));
 	NodePointer n1(new Node(t2));
-	Transform3d expected;
+	Affine3d expected;
 	expected.setIdentity();
 	Translation3d expectedTranslation(4, 5, 0);
 	expected *= expectedTranslation;

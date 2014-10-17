@@ -3,7 +3,7 @@
 
 #include "Node.h"
 
-using Eigen::Transform3d;
+using Eigen::Affine3d;
 
 /* Class TransformNode
  *
@@ -18,14 +18,14 @@ public:
 	TransformNode(NodePointer parent = NodePointer(0));
 
 	/// Store an arbitrary transformation
-	TransformNode(Transform3d transform, NodePointer parent = NodePointer(0));
+	TransformNode(Affine3d transform, NodePointer parent = NodePointer(0));
 
-	virtual Transform3d getMatrixState();
+	virtual Affine3d getMatrixState();
 
 	virtual Matrix4d getInverseMatrix();
 
 protected:
-	Transform3d transform;
+	Affine3d transform;
 	Matrix4d inverseMatrix;
 };
 

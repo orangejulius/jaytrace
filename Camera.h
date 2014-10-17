@@ -5,7 +5,7 @@
 #include <Eigen/Geometry>
 
 using Eigen::Vector3d;
-using Eigen::Transform3d;
+using Eigen::Affine3d;
 
 class Angle;
 
@@ -30,7 +30,7 @@ public:
 	void rotateAroundLook(Angle angle, Vector3d axis);
 
 	/// Return a transformation to convert world coordinates into camera coordinates
-	Transform3d getTransform() const;
+	Affine3d getTransform() const;
 
 protected:
 	/// Compute the camera coordinate axes from the eye, look, and up vectors

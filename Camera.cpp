@@ -46,11 +46,11 @@ void Camera::setUp(Vector3d newUp)
 void Camera::slide(Vector3d delta)
 {
 	//get a transform to convert world coordinates to camera coordinates
-	Transform3d worldToCamera = getTransform();
+	Affine3d worldToCamera = getTransform();
 	//get the inverse transform which is returned by inverse() as a matrix
-	Transform3d cameraToWorld = Transform3d(worldToCamera.inverse());
+	Affine3d cameraToWorld = Affine3d(worldToCamera.inverse());
 
-	Transform3d slide = worldToCamera * Translation3d(delta) * cameraToWorld;
+	Affine3d slide = worldToCamera * Translation3d(delta) * cameraToWorld;
 
 	eye = slide * eye;
 	look = slide * eye;
@@ -61,7 +61,7 @@ void Camera::rotateAroundLook(Angle angle, Vector3d axis)
 	Translation3d translateToCenter(look);
 	AngleAxisd rotate(angle.getRadians(), axis);
 
-	Transform3d transform = translateToCenter * rotate * Transform3d(translateToCenter.inverse());
+	Affine3d transform = translateToCenter * rotate * Affine3d(translateToCenter.inverse());
 
 	eye = transform * eye;
 	up = transform * up;
@@ -69,7 +69,7 @@ void Camera::rotateAroundLook(Angle angle, Vector3d axis)
 	computeCameraCoordinates();
 }
 
-Transform3d Camera::getTransform() const
+Affine3d Camera::getTransform() const
 {
 	//create a transformation matrix to convert world coordinates into camera coordinates
 	Matrix4d m = Matrix4d::Identity();
@@ -78,7 +78,7 @@ Transform3d Camera::getTransform() const
 	   n.x(), n.y(), n.z(), -eye.dot(n),
 	   0, 0, 0, 1;
 
-	return Transform3d(m);
+	return Affine3d(m);
 }
 
 void Camera::computeCameraCoordinates()

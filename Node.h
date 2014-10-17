@@ -6,7 +6,7 @@
 #include <QSharedPointer>
 
 using Eigen::Matrix4d;
-using Eigen::Transform3d;
+using Eigen::Affine3d;
 
 class Material;
 class Node;
@@ -20,7 +20,7 @@ public:
 
 	virtual ~Node();
 
-	virtual Transform3d getMatrixState();
+	virtual Affine3d getMatrixState();
 
 	virtual Matrix4d getInverseMatrix();
 

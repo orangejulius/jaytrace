@@ -12,9 +12,9 @@ void SphereTest::testMultipleTransformParents()
 	NodePointer t2(new TranslationNode(0, 2, 0, t1));
 	QSharedPointer<Sphere> s1(new Sphere(t2));
 
-	Transform3d actualTransform = s1->getMatrixState();
+	Affine3d actualTransform = s1->getMatrixState();
 
-	Transform3d expectedTransform;
+	Affine3d expectedTransform;
 	expectedTransform.setIdentity();
 	Translation3d expectedTranslation(1, 2, 0);
 	expectedTransform *= expectedTranslation;

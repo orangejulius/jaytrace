@@ -14,12 +14,12 @@ Node::~Node()
 	qDebug() << "Deleting Node " << this;
 }
 
-Transform3d Node::getMatrixState()
+Affine3d Node::getMatrixState()
 {
 	if (parent) {
 		return parent->getMatrixState();
 	} else {
-		Transform3d noTransform;
+		Affine3d noTransform;
 		noTransform.setIdentity();
 		return noTransform;
 	}

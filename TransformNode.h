@@ -18,7 +18,7 @@ public:
 	TransformNode(NodePointer parent = NodePointer(0));
 
 	/// Store an arbitrary transformation
-	TransformNode(Affine3d transform, NodePointer parent = NodePointer(0));
+	TransformNode(Affine3d t, NodePointer parent = NodePointer(0));
 
 	virtual Affine3d getMatrixState();
 

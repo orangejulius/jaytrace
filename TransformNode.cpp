@@ -11,10 +11,10 @@ TransformNode::TransformNode(NodePointer parent): Node(parent)
 	inverseMatrix = transform.matrix().inverse();
 }
 
-TransformNode::TransformNode(Affine3d transform, NodePointer parent): Node(parent), transform(transform)
+TransformNode::TransformNode(Affine3d t, NodePointer parent): Node(parent), transform(t)
 {
 	if (parent) {
-		transform = parent->getMatrixState();
+		transform = parent->getMatrixState() * t;
 	}
 	inverseMatrix = transform.matrix().inverse();
 }

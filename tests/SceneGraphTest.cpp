@@ -40,7 +40,7 @@ void SceneGraphTest::testScalingNodeParent()
 	NodePointer n1(new Node(t1));
 	Affine3d expected;
 	expected.setIdentity();
-	Scaling3d expectedScaling(1, 5, 1);
+	AlignedScaling3d expectedScaling(1, 5, 1);
 	expected *= expectedScaling;
 	Matrix4d actual = n1->getMatrixState().matrix();
 	QCOMPARE(actual, expected.matrix());
@@ -53,7 +53,7 @@ void SceneGraphTest::testScalingNodeParents()
 	NodePointer n1(new Node(t2));
 	Affine3d expected;
 	expected.setIdentity();
-	Scaling3d expectedScaling(4, 5, 1);
+	AlignedScaling3d expectedScaling(4, 5, 1);
 	expected *= expectedScaling;
 	Matrix4d actual = n1->getMatrixState().matrix();
 	QCOMPARE(actual, expected.matrix());

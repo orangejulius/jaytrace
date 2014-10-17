@@ -3,7 +3,7 @@
 
 #include "TransformNode.h"
 
-using Eigen::Scaling3d;
+using Eigen::AlignedScaling3d;
 
 class ScalingNode: public TransformNode
 {
@@ -11,7 +11,7 @@ public:
 	ScalingNode(double x, double y, double z, NodePointer parent = NodePointer(0));
 
 protected:
-	Scaling3d scaling;
+	AlignedScaling3d scaling;
 };
 
 #endif // TRANSLATION_H

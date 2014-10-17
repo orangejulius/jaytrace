@@ -9,7 +9,7 @@ option(enableTests "Build the test executable" ON)
 
 set(CMAKE_CXX_FLAGS "-Wall -fopenmp")
 
-find_package(Eigen2 REQUIRED)
+find_package(Eigen3 REQUIRED)
 find_package(Qt4 REQUIRED)
 
 #source files used both by the main program and the test program
@@ -78,7 +78,7 @@ endif (enableTests)
 include(${QT_USE_FILE})
 
 include_directories(
-	${EIGEN2_INCLUDE_DIR}
+	${EIGEN3_INCLUDE_DIR}
 	${Jaytrace_SOURCE_DIR}
 )
 

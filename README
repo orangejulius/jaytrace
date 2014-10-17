@@ -3,18 +3,22 @@ Jaytrace: a personal ray tracer project
 v0.1
 
 Features
-Sphere intersections, reflections
+Intersections with spheres, cubes, and planes
+Composable 3D affine transformations using matricies
+Lighting model with ambient, diffuse, and specular lighting from multiple lights
+Shadows and reflections
 
 Dependencies
 CMake 2.8+
-Qt 4.6 (core and test libraries)
+Qt 4.6 (core, gui, and test libraries)
 Eigen 2.0
 
 Planned features include
-* Full transparency (diffraction, total internal reflection, proper handling of shadows)
-* support for rendering multiple frames for an animation
-* photon mapping
-* OpenCL/threading for computation
-* network communication to enable multiple machines to work on one output image
+* triangle intersection support
+* OBJ file format support
 * kd-tree based intersection algorithm
-* powerful file representation of scenes and objects
+* photon mapping
+* full transparency (diffraction, total internal reflection, proper handling of shadows)
+* support for rendering multiple frames for an animation
+* OpenCL or CUDA based computation
+* network communication to enable multiple machines to work on one output image

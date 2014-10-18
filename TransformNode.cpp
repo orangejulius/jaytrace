@@ -7,6 +7,8 @@ TransformNode::TransformNode(NodePointer parent): Node(parent)
 	transform.setIdentity();
 	if (parent) {
 		transform = parent->getMatrixState();
+	} else {
+		transform.setIdentity();
 	}
 	inverseMatrix = transform.matrix().inverse();
 }

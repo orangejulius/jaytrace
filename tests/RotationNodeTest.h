@@ -10,6 +10,6 @@ private slots:
 	void testNoOp();
 	void testAssignment();
 	void testParent();
-	void testComposition();
+	void testRotationComposition();
 };
 #endif // ROTATIONNODETEST_H

@@ -41,7 +41,7 @@ void RotationNodeTest::testParent()
 	QCOMPARE(expected, actual);
 }
 
-void RotationNodeTest::testComposition()
+void RotationNodeTest::testRotationComposition()
 {
 	Angle angle1 = Angle::degrees(30);
 	Angle angle2 = Angle::degrees(60);

@@ -91,6 +91,11 @@ void CubeTest::testTranslatedCube()
 	Ray ray2(Vector3d(10, 0, 10), Vector3d(0, 0, -1));
 	IntersectionInfo* info2 = cube->intersect(ray2);
 	QVERIFY(info2 != 0);
+
+	Vector3d expectedNormal(Vector3d::UnitZ());
+	QCOMPARE(info2->normal.x(), expectedNormal.x());
+	QCOMPARE(info2->normal.y(), expectedNormal.y());
+	QCOMPARE(info2->normal.z(), expectedNormal.z());
 }
 
 void CubeTest::testAngledIntersection()

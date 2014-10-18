@@ -4,6 +4,7 @@
 
 using Eigen::Vector3d;
 using Eigen::Translation3d;
+using Eigen::AngleAxisd;
 
 void TransformNodeTest::testNoOp()
 {
@@ -48,10 +49,11 @@ void TransformNodeTest::testParent()
 
 void TransformNodeTest::testComposition()
 {
-	Affine3d transform1(Translation3d(1, 0, 0));
-	Affine3d transform2(Translation3d(0, 1, 0));
 
+	Affine3d transform1(AngleAxisd(3, Vector3d::UnitX()));
+	Affine3d transform2(Translation3d(1, 1, 1));
 	Affine3d result(transform1 * transform2);
+
 	NodePointer t1(new TransformNode(transform1));
 	NodePointer t2(new TransformNode(transform2, t1));
 

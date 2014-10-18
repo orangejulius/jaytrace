@@ -32,19 +32,12 @@ void TransformNodeTest::testAssignment()
 
 void TransformNodeTest::testParent()
 {
-	//manually define a simple translation
-	Vector3d translation(1, 2, 3);
-	Matrix4d translationMatrix;
-	translationMatrix << 1, 0, 0, translation.x(),
-					     0, 1, 0, translation.y(),
-						 0, 0, 1, translation.z(),
-						 0, 0, 0, 1;
+	Affine3d translation(Translation3d(1, 2, 3));
+	NodePointer t1(new TransformNode(translation));
 
-	NodePointer t1(new TransformNode(Affine3d(translationMatrix)));
+	TransformNode t2(t1);
 
-	TransformNode t2(Affine3d::Identity(), t1);
-
-	QCOMPARE(t2.getMatrixState().matrix(), translationMatrix);
+	QCOMPARE(t2.getMatrixState().matrix(), translation.matrix());
 }
 
 void TransformNodeTest::testComposition()

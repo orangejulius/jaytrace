@@ -28,13 +28,17 @@ void CubeScene::setupObjects()
 
 	MaterialNodePointer material(new MaterialNode(rootNode));
 	Color white(1, 1, 1);
-	material->setAmbient(white * .1);
+	material->setAmbient(Color(0.5, 0, 0));
 	material->setDiffuse(white * .5);
-	material->setSpecular(white);
+	material->setSpecular(Color(0.5, 0, 1.0));
 	material->setShininess(20);
 
 	RayObjectPointer cube(new Cube(material));
 	addObject(cube);
+
+	NodePointer translation(new TranslationNode(-2.5, 0, 0, material));
+	RayObjectPointer cube2(new Cube(translation));
+	addObject(cube2);
 }
 
 void CubeScene::setupLights()

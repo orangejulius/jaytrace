@@ -22,11 +22,11 @@ public:
 
 	virtual Affine3d getMatrixState();
 
-	virtual Matrix4d getInverseMatrix();
+	virtual Affine3d getInverseMatrix();
 
 protected:
 	Affine3d transform;
-	Matrix4d inverseMatrix;
+	Affine3d inverseMatrix;
 };
 
 #endif // TRANSFORMNODE_H

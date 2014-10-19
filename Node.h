@@ -5,7 +5,6 @@
 #include <QtGlobal>
 #include <QSharedPointer>
 
-using Eigen::Matrix4d;
 using Eigen::Affine3d;
 
 class Material;
@@ -22,7 +21,7 @@ public:
 
 	virtual Affine3d getMatrixState();
 
-	virtual Matrix4d getInverseMatrix();
+	virtual Affine3d getInverseMatrix();
 
 	virtual Material getMaterial();
 

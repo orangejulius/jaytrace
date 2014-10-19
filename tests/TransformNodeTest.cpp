@@ -2,6 +2,7 @@
 
 #include "TransformNode.h"
 
+using Eigen::Matrix4d;
 using Eigen::Vector3d;
 using Eigen::Translation3d;
 using Eigen::AngleAxisd;

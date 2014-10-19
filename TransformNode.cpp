@@ -10,7 +10,7 @@ TransformNode::TransformNode(NodePointer parent): Node(parent)
 	} else {
 		transform.setIdentity();
 	}
-	inverseMatrix = transform.matrix().inverse();
+	inverseMatrix = transform.inverse();
 }
 
 TransformNode::TransformNode(Affine3d t, NodePointer parent): Node(parent), transform(t)
@@ -18,7 +18,7 @@ TransformNode::TransformNode(Affine3d t, NodePointer parent): Node(parent), tran
 	if (parent) {
 		transform = parent->getMatrixState() * t;
 	}
-	inverseMatrix = transform.matrix().inverse();
+	inverseMatrix = transform.inverse();
 }
 
 Affine3d TransformNode::getMatrixState()
@@ -26,7 +26,7 @@ Affine3d TransformNode::getMatrixState()
 	return transform;
 }
 
-Matrix4d TransformNode::getInverseMatrix()
+Affine3d TransformNode::getInverseMatrix()
 {
 	return inverseMatrix;
 }

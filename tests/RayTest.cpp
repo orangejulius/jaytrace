@@ -9,7 +9,7 @@ using Eigen::Translation3d;
 
 Q_DECLARE_METATYPE(Vector3d)
 Q_DECLARE_METATYPE(Ray)
-Q_DECLARE_METATYPE(Matrix4d)
+Q_DECLARE_METATYPE(Affine3d)
 
 void RayTest::getPosition()
 {
@@ -38,7 +38,7 @@ void RayTest::getPosition_data()
 void RayTest::getTransformedRay()
 {
 	QFETCH(Ray, initialRay);
-	QFETCH(Matrix4d, transformationMatrix);
+	QFETCH(Affine3d, transformationMatrix);
 	QFETCH(Ray, transformedRay);
 
 	Ray testTransformedRay = initialRay.getTransformedRay(transformationMatrix);
@@ -48,15 +48,15 @@ void RayTest::getTransformedRay()
 void RayTest::getTransformedRay_data()
 {
 	QTest::addColumn<Ray>("initialRay");
-	QTest::addColumn<Matrix4d>("transformationMatrix");
+	QTest::addColumn<Affine3d>("transformationMatrix");
 	QTest::addColumn<Ray>("transformedRay");
 
 	Ray ray1(Vector3d(1, 2, 3), Vector3d(4, 5, 6));
-	Matrix4d identityMatrix = Matrix4d::Identity();
+	Affine3d identityMatrix = Affine3d::Identity();
 	QTest::newRow("identityMatrix") << ray1 << identityMatrix << ray1;
 
 	Affine3d translateUp10X(Translation3d(10, 0, 0));
 	Ray ray2Expected(Vector3d(11, 2, 3), Vector3d(4, 5, 6));
 
-	QTest::newRow("translateUp10X") << ray1 << translateUp10X.matrix() << ray2Expected;
+	QTest::newRow("translateUp10X") << ray1 << translateUp10X << ray2Expected;
 }

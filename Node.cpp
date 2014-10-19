@@ -25,12 +25,12 @@ Affine3d Node::getMatrixState()
 	}
 }
 
-Matrix4d Node::getInverseMatrix()
+Affine3d Node::getInverseMatrix()
 {
 	if (parent) {
 		return parent->getInverseMatrix();
 	} else {
-		return Matrix4d::Identity();
+		return Affine3d::Identity();
 	}
 }
 

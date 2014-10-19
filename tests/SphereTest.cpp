@@ -2,6 +2,7 @@
 
 #include <Eigen/Geometry>
 #include <Eigen/LU>
+#include "IntersectionInfo.h"
 #include "Ray.h"
 #include "Sphere.h"
 #include "TranslationNode.h"
@@ -18,15 +19,38 @@ void SphereTest::testMultipleTransformParents()
 	QCOMPARE(expectedTransform.matrix(), actualTransform.matrix());
 }
 
-void SphereTest::testUntransformedIntersection()
+void SphereTest::testAxisAlignedNormalIntersection()
 {
-	Ray ray1(Vector3d(-10, 0, 0), Vector3d(10, 0, 0));
-	Ray ray2(Vector3d(-10, 0, 0), Vector3d(0, 10, 0));
-	Ray ray3(Vector3d(3, 2, 3), Vector3d(-3, -2, -3));
+	Ray ray(Vector3d(-10, 0, 0), Vector3d(1, 0, 0));
 	Sphere sphere;
-	QVERIFY(sphere.intersect(ray1));
-	QVERIFY(!sphere.intersect(ray2));
-	QVERIFY(sphere.intersect(ray3));
+
+	IntersectionInfo * info = sphere.intersect(ray);
+	QVERIFY(info != 0);
+
+	QCOMPARE(info->time, 9.0);
+}
+
+void SphereTest::testParallelMiss()
+{
+	Ray ray(Vector3d(-10, 0, 0), Vector3d(0, 1, 0));
+	Sphere sphere;
+
+	QVERIFY(sphere.intersect(ray) == 0);
+}
+
+void SphereTest::testAngledNormalIntersection()
+{
+	Ray ray(Vector3d(3, 2, 3), Vector3d(-3, -2, -3).normalized());
+	Sphere sphere;
+
+	IntersectionInfo * info = sphere.intersect(ray);
+
+	QVERIFY(info != 0);
+	QCOMPARE(info->time, ray.getOrigin().norm() - 1);
+	Vector3d expectedNormal = ray.getOrigin().normalized();
+	QCOMPARE(info->normal.x(), expectedNormal.x());
+	QCOMPARE(info->normal.y(), expectedNormal.y());
+	QCOMPARE(info->normal.z(), expectedNormal.z());
 }
 
 void SphereTest::testTransformedIntersection()

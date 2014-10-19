@@ -8,7 +8,9 @@ class SphereTest: public QObject
 	Q_OBJECT
 private slots:
 	void testMultipleTransformParents();
-	void testUntransformedIntersection();
+	void testAxisAlignedNormalIntersection();
+	void testParallelMiss();
+	void testAngledNormalIntersection();
 	void testTransformedIntersection();
 };
 

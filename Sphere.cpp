@@ -18,7 +18,7 @@ Sphere::~Sphere()
 
 IntersectionInfo* Sphere::intersect(const Ray& ray)
 {
-	Affine3d transform = getMatrixState();
+	Affine3d transform = getTransform();
 
 	if (transform.matrix().determinant() == 0) {
 		qDebug() << "Matrix not invertible!";

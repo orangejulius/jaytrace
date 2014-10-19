@@ -39,7 +39,7 @@ IntersectionInfo* Plane::intersect(const Ray& ray)
 	}
 
 	IntersectionInfo* info = new IntersectionInfo();
-	info->normal = getMatrixState().linear() * n;
+	info->normal = getTransform().linear() * n;
 	info->time = tHit;
 	info->object = this;
 

@@ -19,7 +19,7 @@ public:
 
 	virtual ~Node();
 
-	virtual Affine3d getMatrixState();
+	virtual Affine3d getTransform();
 
 	virtual Affine3d getInverseMatrix();
 

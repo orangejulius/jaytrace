@@ -22,7 +22,7 @@ void SceneGraphTest::testSingleTransformNode()
 {
 	TransformNode t1;
 	Matrix4d expected = Matrix4d::Identity();
-	Matrix4d actual = t1.getMatrixState().matrix();
+	Matrix4d actual = t1.getTransform().matrix();
 	QCOMPARE(actual, expected);
 }
 
@@ -30,7 +30,7 @@ void SceneGraphTest::testSingleTranslationNode()
 {
 	TranslationNode t1(0, 0, 0);
 	Matrix4d expected = Matrix4d::Identity();
-	Matrix4d actual = t1.getMatrixState().matrix();
+	Matrix4d actual = t1.getTransform().matrix();
 	QCOMPARE(actual, expected);
 }
 
@@ -42,7 +42,7 @@ void SceneGraphTest::testScalingNodeParent()
 	expected.setIdentity();
 	AlignedScaling3d expectedScaling(1, 5, 1);
 	expected *= expectedScaling;
-	Matrix4d actual = n1->getMatrixState().matrix();
+	Matrix4d actual = n1->getTransform().matrix();
 	QCOMPARE(actual, expected.matrix());
 }
 
@@ -55,7 +55,7 @@ void SceneGraphTest::testScalingNodeParents()
 	expected.setIdentity();
 	AlignedScaling3d expectedScaling(4, 5, 1);
 	expected *= expectedScaling;
-	Matrix4d actual = n1->getMatrixState().matrix();
+	Matrix4d actual = n1->getTransform().matrix();
 	QCOMPARE(actual, expected.matrix());
 }
 
@@ -67,7 +67,7 @@ void SceneGraphTest::testTranslationNodeParent()
 	expected.setIdentity();
 	Translation3d expectedTranslation(0, 5, 0);
 	expected *= expectedTranslation;
-	Matrix4d actual = n1->getMatrixState().matrix();
+	Matrix4d actual = n1->getTransform().matrix();
 	QCOMPARE(actual, expected.matrix());
 }
 
@@ -80,6 +80,6 @@ void SceneGraphTest::testTranslationNodeParents()
 	expected.setIdentity();
 	Translation3d expectedTranslation(4, 5, 0);
 	expected *= expectedTranslation;
-	Matrix4d actual = n1->getMatrixState().matrix();
+	Matrix4d actual = n1->getTransform().matrix();
 	QCOMPARE(actual, expected.matrix());
 }

@@ -11,7 +11,7 @@ void TransformNodeTest::testNoOp()
 {
 	TransformNode t1;
 	Matrix4d expected = Matrix4d::Identity();
-	Matrix4d actual = t1.getMatrixState().matrix();
+	Matrix4d actual = t1.getTransform().matrix();
 	QCOMPARE(actual, expected);
 }
 
@@ -27,7 +27,7 @@ void TransformNodeTest::testAssignment()
 
 	TransformNode t1(transform);
 
-	Matrix4d actual = t1.getMatrixState().matrix();
+	Matrix4d actual = t1.getTransform().matrix();
 	QCOMPARE(actual, expected);
 }
 
@@ -38,7 +38,7 @@ void TransformNodeTest::testParent()
 
 	TransformNode t2(t1);
 
-	QCOMPARE(t2.getMatrixState().matrix(), translation.matrix());
+	QCOMPARE(t2.getTransform().matrix(), translation.matrix());
 }
 
 void TransformNodeTest::testComposition()
@@ -51,5 +51,5 @@ void TransformNodeTest::testComposition()
 	NodePointer t1(new TransformNode(transform1));
 	NodePointer t2(new TransformNode(transform2, t1));
 
-	QCOMPARE(t2->getMatrixState().matrix(), result.matrix());
+	QCOMPARE(t2->getTransform().matrix(), result.matrix());
 }

@@ -4,6 +4,7 @@
 #include "Cube.h"
 #include "IntersectionInfo.h"
 #include "RotationNode.h"
+#include "ScalingNode.h"
 #include "TranslationNode.h"
 
 void CubeTest::testBasicIntersection()
@@ -153,4 +154,22 @@ void CubeTest::testTranslatedRotatedCube()
 	QCOMPARE(info->normal.x(), sqrt2 / 2);
 	QCOMPARE(info->normal.y(), 0.0);
 	QCOMPARE(info->normal.z(), sqrt2 / 2);
+}
+
+void CubeTest::testInvertedCube()
+{
+	NodePointer invert(new ScalingNode(-1, -1, -1));
+
+	Cube cube(invert);
+
+	Ray ray(Vector3d(0, 0, 10), Vector3d(0, 0, -1));
+
+	IntersectionInfo* info = cube.intersect(ray);
+	QVERIFY(info != 0);
+
+	QCOMPARE(info->time, 9.0);
+
+	QCOMPARE(info->normal.x(), 0.0);
+	QCOMPARE(info->normal.y(), 0.0);
+	QCOMPARE(info->normal.z(), 1.0);
 }

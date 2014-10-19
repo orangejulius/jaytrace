@@ -38,16 +38,8 @@ IntersectionInfo* Plane::intersect(const Ray& ray)
 		return 0;
 	}
 
-	Matrix4d transformationMatrix = getMatrixState().matrix();
-	Vector4d normal4d;
-	normal4d << n, 0;
-
-	Vector4d transformedNormal = transformationMatrix * normal4d;
-
-	Vector3d normal = transformedNormal.head<3>();
-
 	IntersectionInfo* info = new IntersectionInfo();
-	info->normal = normal;
+	info->normal = getMatrixState().linear() * n;
 	info->time = tHit;
 	info->object = this;
 

@@ -21,8 +21,6 @@ Vector2d Poisson::generate()
 		valid = true;
 		list<Vector2d>::iterator i;
 		for (i = history.begin(); i != history.end(); i++) {
-			Vector2d p2 = *i;
-
 			if ((p1 - *i).squaredNorm() < minDistance) {
 				valid = false;
 			}

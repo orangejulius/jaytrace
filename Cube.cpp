@@ -58,7 +58,6 @@ IntersectionInfo* Cube::intersect(const Ray& ray)
 						info->object = this;
 						info->time = tHit;
 						info->normal = getFaceNormal(axis, magnitude);
-						info->normal.normalize();
 					}
 				}
 			}
@@ -72,12 +71,8 @@ IntersectionInfo* Cube::intersect(const Ray& ray)
 
 Vector3d Cube::getFaceNormal(int axis, int magnitude)
 {
-	Vector4d normal(0, 0, 0, 1);
+	Vector3d normal(0, 0, 0);
 	normal[axis] = magnitude;
 
-	Matrix4d transformationMatrix = getMatrixState().matrix();
-
-	Vector4d transformedNormal = transformationMatrix * normal;
-
-	return transformedNormal.head<3>();
+	return (getMatrixState().linear() * normal).normalized();
 }

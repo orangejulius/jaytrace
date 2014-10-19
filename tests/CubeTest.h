@@ -15,6 +15,8 @@ private slots:
 	void testTranslatedCube();
 	void testAngledIntersection();
 	void testAngledMiss();
+	void testTranslatedRotatedCube();
+	void testInvertedCube();
 };
 
 #endif // CUBETEST_H

@@ -13,11 +13,7 @@ void SphereTest::testMultipleTransformParents()
 	QSharedPointer<Sphere> s1(new Sphere(t2));
 
 	Affine3d actualTransform = s1->getTransform();
-
-	Affine3d expectedTransform;
-	expectedTransform.setIdentity();
-	Translation3d expectedTranslation(1, 2, 0);
-	expectedTransform *= expectedTranslation;
+	Affine3d expectedTransform(Translation3d(1, 2, 0));
 
 	QCOMPARE(expectedTransform.matrix(), actualTransform.matrix());
 }

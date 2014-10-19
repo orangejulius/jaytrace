@@ -59,12 +59,8 @@ IntersectionInfo* Sphere::intersect(const Ray& ray)
 	IntersectionInfo* result = new IntersectionInfo;
 	result->time = solution;
 
-	//calculate the normal vector as a difference between the center of the circle
-	//and the intersection point
-	Vector3d intersectionPoint = ray.getPosition(result->time);
-	Vector3d circleCenter = transform.translation();
-	result->normal = intersectionPoint - circleCenter;
-	result->normal.normalize();
+	Vector3d genericNormal = genericRay.getPosition(result->time);
+	result->normal = (getTransform().linear().inverse().transpose() * genericNormal).normalized();
 	result->object = this;
 
 	return result;

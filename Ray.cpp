@@ -19,15 +19,11 @@ Ray::Ray(Vector4d origin, Vector4d direction): origin(origin), direction(directi
 
 }
 
-Ray Ray::getTransformedRay(Matrix4d inverseTransformationMatrix) const
+Ray Ray::getTransformedRay(Matrix4d transform) const
 {
-	Vector4d transformedRayOrigin;
-	transformedRayOrigin = (inverseTransformationMatrix * origin);
-
-	Vector4d transformedRayDirection;
-	transformedRayDirection = (inverseTransformationMatrix * direction);
-
-	return Ray(transformedRayOrigin, transformedRayDirection);
+	Vector4d transformedOrigin = transform * origin;
+	Vector4d transformedDirection = transform * direction;
+	return Ray(transformedOrigin, transformedDirection);
 }
 
 Vector3d Ray::getPosition(double time) const

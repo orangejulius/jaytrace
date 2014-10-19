@@ -4,6 +4,9 @@
 #include <Eigen/LU>
 #include "Ray.h"
 
+using Eigen::Affine3d;
+using Eigen::Translation3d;
+
 Q_DECLARE_METATYPE(Vector3d)
 Q_DECLARE_METATYPE(Ray)
 Q_DECLARE_METATYPE(Matrix4d)
@@ -51,4 +54,9 @@ void RayTest::getTransformedRay_data()
 	Ray ray1(Vector3d(1, 2, 3), Vector3d(4, 5, 6));
 	Matrix4d identityMatrix = Matrix4d::Identity();
 	QTest::newRow("identityMatrix") << ray1 << identityMatrix << ray1;
+
+	Affine3d translateUp10X(Translation3d(10, 0, 0));
+	Ray ray2Expected(Vector3d(11, 2, 3), Vector3d(4, 5, 6));
+
+	QTest::newRow("translateUp10X") << ray1 << translateUp10X.matrix() << ray2Expected;
 }

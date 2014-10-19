@@ -74,5 +74,5 @@ Vector3d Cube::getFaceNormal(int axis, int magnitude)
 	Vector3d normal(0, 0, 0);
 	normal[axis] = magnitude;
 
-	return getMatrixState().linear() * normal;
+	return (getMatrixState().linear() * normal).normalized();
 }

@@ -127,3 +127,30 @@ void CubeTest::testAngledMiss()
 	IntersectionInfo* info = cube.intersect(ray1);
 	QVERIFY(info == 0);
 }
+
+void CubeTest::testTranslatedRotatedCube()
+{
+	//rotate 45 degrees around the Y axis
+	NodePointer rotation(new RotationNode(Angle::degrees(45), Vector3d::UnitY()));
+
+	// translate 10 units back in the Z direction
+	NodePointer translate10Z(new TranslationNode(0, 0, -10, rotation));
+
+	Cube cube(translate10Z);
+
+	double sqrt2 = 1.414213562373095048801688724209;
+	Vector3d cubeCenter(-10 * sqrt2/2, 0, -10 * sqrt2/2);
+
+	Ray ray1(Vector3d(cubeCenter.x() + 1, 0, 0), Vector3d(0, 0, -1));
+
+	IntersectionInfo* info = cube.intersect(ray1);
+	QVERIFY(info != 0);
+
+	// distance from ray to cube center, plus offset from Z axis,
+	// minus distance from cube center to edge
+	QCOMPARE(info->time, -cubeCenter.x() + 1.0 - sqrt2);
+
+	QCOMPARE(info->normal.x(), sqrt2 / 2);
+	QCOMPARE(info->normal.y(), 0.0);
+	QCOMPARE(info->normal.z(), sqrt2 / 2);
+}

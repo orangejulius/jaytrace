@@ -13,6 +13,8 @@ private slots:
 	void testAngledNormalIntersection();
 	void testTransformedIntersection();
 	void testEvenlyScaledIntersection();
+	void testEllipsoidIntersection();
+	void testRotatedEllipsoidIntersection();
 };
 
 #endif // SPHERETEST_H

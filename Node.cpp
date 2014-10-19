@@ -25,10 +25,10 @@ Affine3d Node::getTransform()
 	}
 }
 
-Affine3d Node::getInverseMatrix()
+Affine3d Node::getInverseTransform()
 {
 	if (parent) {
-		return parent->getInverseMatrix();
+		return parent->getInverseTransform();
 	} else {
 		return Affine3d::Identity();
 	}

@@ -21,7 +21,7 @@ public:
 
 	virtual Affine3d getTransform();
 
-	virtual Affine3d getInverseMatrix();
+	virtual Affine3d getInverseTransform();
 
 	virtual Material getMaterial();
 

@@ -23,7 +23,7 @@ Plane::~Plane()
 
 IntersectionInfo* Plane::intersect(const Ray& ray)
 {
-	Ray genericRay = ray.getTransformedRay(getInverseMatrix());
+	Ray genericRay = ray.getTransformedRay(getInverseTransform());
 
 	double numerator = n.dot(v0 - genericRay.getOrigin());
 	double denominator = n.dot(genericRay.getDirection());

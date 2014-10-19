@@ -26,7 +26,7 @@ Affine3d TransformNode::getTransform()
 	return transform;
 }
 
-Affine3d TransformNode::getInverseMatrix()
+Affine3d TransformNode::getInverseTransform()
 {
 	return inverseMatrix;
 }

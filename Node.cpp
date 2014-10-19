@@ -14,10 +14,10 @@ Node::~Node()
 	qDebug() << "Deleting Node " << this;
 }
 
-Affine3d Node::getMatrixState()
+Affine3d Node::getTransform()
 {
 	if (parent) {
-		return parent->getMatrixState();
+		return parent->getTransform();
 	} else {
 		Affine3d noTransform;
 		noTransform.setIdentity();
@@ -25,12 +25,12 @@ Affine3d Node::getMatrixState()
 	}
 }
 
-Matrix4d Node::getInverseMatrix()
+Affine3d Node::getInverseTransform()
 {
 	if (parent) {
-		return parent->getInverseMatrix();
+		return parent->getInverseTransform();
 	} else {
-		return Matrix4d::Identity();
+		return Affine3d::Identity();
 	}
 }
 

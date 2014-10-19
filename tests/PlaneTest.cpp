@@ -52,7 +52,7 @@ void PlaneTest::testRotatedIntersection()
 	QVERIFY(info != 0);
 	QCOMPARE(info->time, 20.0);
 
-	Vector3d expectedNormal = rotation->getMatrixState() * Vector3d::UnitZ();
+	Vector3d expectedNormal = rotation->getTransform() * Vector3d::UnitZ();
 	QCOMPARE(info->normal[0], expectedNormal[0]);
 	QCOMPARE(info->normal[1], expectedNormal[1]);
 	QCOMPARE(info->normal[2], expectedNormal[2]);

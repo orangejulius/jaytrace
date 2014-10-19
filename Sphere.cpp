@@ -18,14 +18,14 @@ Sphere::~Sphere()
 
 IntersectionInfo* Sphere::intersect(const Ray& ray)
 {
-	Affine3d transform = getMatrixState();
+	Affine3d transform = getTransform();
 
 	if (transform.matrix().determinant() == 0) {
 		qDebug() << "Matrix not invertible!";
 		return 0;
 	}
 
-	Ray genericRay = ray.getTransformedRay(getInverseMatrix());
+	Ray genericRay = ray.getTransformedRay(getInverseTransform());
 
 	double A = genericRay.getDirection().squaredNorm();
 	double B = genericRay.getOrigin().dot(genericRay.getDirection());

@@ -21,7 +21,7 @@ IntersectionInfo* Cube::intersect(const Ray& ray)
 
 	IntersectionInfo* info = 0;
 
-	Ray genericRay = ray.getTransformedRay(getInverseMatrix());
+	Ray genericRay = ray.getTransformedRay(getInverseTransform());
 
 	// check each face in x, y, z order
 	for(int axis = 0; axis < 3; axis++) {
@@ -74,5 +74,5 @@ Vector3d Cube::getFaceNormal(int axis, int magnitude)
 	Vector3d normal(0, 0, 0);
 	normal[axis] = magnitude;
 
-	return (getMatrixState().linear() * normal).normalized();
+	return (getTransform().linear() * normal).normalized();
 }

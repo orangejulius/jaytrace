@@ -2,34 +2,33 @@
 #define RAY_H
 
 #include <Eigen/Core>
+#include <Eigen/Geometry>
 
 using Eigen::Vector3d;
-using Eigen::Vector4d;
-using Eigen::Matrix4d;
+using Eigen::Affine3d;
 
 class Ray
 {
 public:
 	Ray();
 	Ray(Vector3d origin, Vector3d direction);
-	Ray(Vector4d origin, Vector4d direction);
 
 	Vector3d getOrigin() const {
-		return origin.head<3>();
+		return origin;
 	}
 
 	Vector3d getDirection() const {
-		return direction.head<3>();
+		return direction;
 	}
 
-	Ray getTransformedRay(Matrix4d inverseTransformationMatrix) const;
+	Ray getTransformedRay(Affine3d transform) const;
 	Vector3d getPosition(double time) const;
 
 	bool operator==(const Ray& r) const;
 
 protected:
-	Vector4d origin;
-	Vector4d direction;
+	Vector3d origin;
+	Vector3d direction;
 };
 
 #endif // RAY_H

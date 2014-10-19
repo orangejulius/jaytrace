@@ -2,6 +2,7 @@
 
 #include "RotationNode.h"
 
+using Eigen::Matrix4d;
 using Eigen::Vector3d;
 using Eigen::Translation3d;
 
@@ -9,7 +10,7 @@ void RotationNodeTest::testNoOp()
 {
 	RotationNode t1(Angle::degrees(0), Vector3d::UnitX());
 	Matrix4d expected = Matrix4d::Identity();
-	Matrix4d actual = t1.getMatrixState().matrix();
+	Matrix4d actual = t1.getTransform().matrix();
 	QCOMPARE(actual, expected);
 }
 
@@ -20,7 +21,7 @@ void RotationNodeTest::testAssignment()
 	Affine3d transform(a);
 
 	Matrix4d expected = transform.matrix();
-	Matrix4d actual = rotationNode.getMatrixState().matrix();
+	Matrix4d actual = rotationNode.getTransform().matrix();
 
 	QCOMPARE(actual, expected);
 }
@@ -36,7 +37,7 @@ void RotationNodeTest::testParent()
 	AngleAxisd resultRotation(angle1.getRadians(), axis);
 	Affine3d resultTransform(resultRotation);
 	Matrix4d expected = resultTransform.matrix();
-	Matrix4d actual = rotationNode2->getMatrixState().matrix();
+	Matrix4d actual = rotationNode2->getTransform().matrix();
 
 	QCOMPARE(expected, actual);
 }
@@ -55,7 +56,7 @@ void RotationNodeTest::testRotationComposition()
 	Affine3d resultTransform(resultRotation);
 
 	Matrix4d expected = resultTransform.matrix();
-	Matrix4d actual = rotationNode2->getMatrixState().matrix();
+	Matrix4d actual = rotationNode2->getTransform().matrix();
 
 	// fuzzy comparisons against zero are unreliable
 	// add one to each element of the two matricies before comparing

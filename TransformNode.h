@@ -20,13 +20,13 @@ public:
 	/// Store an arbitrary transformation
 	TransformNode(Affine3d t, NodePointer parent = NodePointer(0));
 
-	virtual Affine3d getMatrixState();
+	virtual Affine3d getTransform();
 
-	virtual Matrix4d getInverseMatrix();
+	virtual Affine3d getInverseTransform();
 
 protected:
 	Affine3d transform;
-	Matrix4d inverseMatrix;
+	Affine3d inverseMatrix;
 };
 
 #endif // TRANSFORMNODE_H

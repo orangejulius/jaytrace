@@ -4,6 +4,7 @@
 #include <Eigen/LU>
 #include "IntersectionInfo.h"
 #include "Ray.h"
+#include "ScalingNode.h"
 #include "Sphere.h"
 #include "TranslationNode.h"
 
@@ -63,4 +64,18 @@ void SphereTest::testTransformedIntersection()
 
 	QVERIFY(s1.intersect(ray1));
 	QVERIFY(!s1.intersect(ray2));
+}
+
+void SphereTest::testEvenlyScaledIntersection()
+{
+	NodePointer scale2x(new ScalingNode(2, 2, 2));
+	Sphere sphere(scale2x);
+
+	Ray ray(Vector3d(0, 0, 10), Vector3d(0, 0, -1));
+
+	IntersectionInfo* info = sphere.intersect(ray);
+
+	QVERIFY(info != 0);
+	QCOMPARE(info->time, 8.0);
+	QCOMPARE(info->normal, Vector3d(0, 0, 1));
 }

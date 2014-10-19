@@ -12,6 +12,7 @@ private slots:
 	void testParallelMiss();
 	void testAngledNormalIntersection();
 	void testTransformedIntersection();
+	void testEvenlyScaledIntersection();
 };
 
 #endif // SPHERETEST_H

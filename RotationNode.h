@@ -10,7 +10,7 @@ using Eigen::Vector3d;
 class RotationNode: public TransformNode
 {
 public:
-	RotationNode(Angle radians, Vector3d axis, NodePointer parent = NodePointer(0));
+	RotationNode(Angle angle, Vector3d axis, NodePointer parent = NodePointer(0));
 
 protected:
 	AngleAxisd rotation;

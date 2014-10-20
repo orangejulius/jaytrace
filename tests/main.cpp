@@ -9,6 +9,7 @@
 #include "tests/SceneGraphTest.h"
 #include "tests/SphereTest.h"
 #include "tests/TransformNodeTest.h"
+#include "tests/TriangleTest.h"
 
 int main()
 {
@@ -23,6 +24,7 @@ int main()
 	SceneGraphTest sceneGraphTest;
 	SphereTest sphereTest;
 	TransformNodeTest transformNodeTest;
+	TriangleTest triangleTest;
 
 	QStringList testArguments;
 	testArguments << " "<< "-silent";
@@ -40,6 +42,7 @@ int main()
 	result += QTest::qExec(&sceneGraphTest, testArguments);
 	result += QTest::qExec(&sphereTest, testArguments);
 	result += QTest::qExec(&transformNodeTest, testArguments);
+	result += QTest::qExec(&triangleTest, testArguments);
 
 	if (result) {
 		qDebug()<<"Tests failed\n";

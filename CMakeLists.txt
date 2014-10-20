@@ -37,7 +37,8 @@ set(core_sources
 	Sphere.cpp
 	SpiralScene.cpp
 	TransformNode.cpp
-	TranslationNode.cpp)
+	TranslationNode.cpp
+	Triangle.cpp)
 
 if (enableTests)
 	#source files specific to the test program
@@ -53,7 +54,8 @@ if (enableTests)
 		tests/RotationNodeTest.cpp
 		tests/SceneGraphTest.cpp
 		tests/SphereTest.cpp
-		tests/TransformNodeTest.cpp)
+		tests/TransformNodeTest.cpp
+		tests/TriangleTest.cpp)
 
 	#header files of classes with the Q_OBJECT macro
 	#these classes must be processed by the moc
@@ -68,7 +70,8 @@ if (enableTests)
 		tests/RotationNodeTest.h
 		tests/SceneGraphTest.h
 		tests/SphereTest.h
-		tests/TransformNodeTest.h)
+		tests/TransformNodeTest.h
+		tests/TriangleTest.h)
 
 	qt4_wrap_cpp(jaytraceTest_moc_sources ${jaytraceTest_qobject_headers})
 

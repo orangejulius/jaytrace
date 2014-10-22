@@ -24,6 +24,8 @@ set(core_sources
 	Material.cpp
 	MaterialNode.cpp
 	Node.cpp
+	OBJModel.cpp
+	OBJScene.cpp
 	Plane.cpp
 	Poisson.cpp
 	Ray.cpp
@@ -39,6 +41,10 @@ set(core_sources
 	TransformNode.cpp
 	TranslationNode.cpp
 	Triangle.cpp)
+
+set(library_sources
+	libraries/tinyobjloader/tiny_obj_loader.cc
+	)
 
 if (enableTests)
 	#source files specific to the test program
@@ -83,13 +89,14 @@ endif (enableTests)
 include(${QT_USE_FILE})
 
 include_directories(
+	"libraries/tinyobjloader"
 	${EIGEN3_INCLUDE_DIR}
 	${Jaytrace_SOURCE_DIR}
 )
 
 add_definitions(-O2 -ggdb ${QT_DEFINITIONS})
 
-add_library(JaytraceCore ${core_sources})
+add_library(JaytraceCore ${core_sources} ${library_sources})
 
 add_executable(jaytrace main.cpp)
 target_link_libraries(jaytrace JaytraceCore ${QT_LIBRARIES})

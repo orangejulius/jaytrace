@@ -1,13 +1,13 @@
 #include "Camera.h"
 #include "RaytraceRenderer.h"
-#include "CubeScene.h"
+#include "OBJScene.h"
 
 #include <cmath>
 #include <QDate>
 
 int main()
 {
-	ScenePointer scene(new CubeScene());
+	ScenePointer scene(new OBJScene());
 	RaytraceRenderer raytraceRenderer(scene);
 
 	QImage output = raytraceRenderer.render();

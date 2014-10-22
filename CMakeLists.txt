@@ -24,6 +24,7 @@ set(core_sources
 	Material.cpp
 	MaterialNode.cpp
 	Node.cpp
+	OBJModel.cpp
 	Plane.cpp
 	Poisson.cpp
 	Ray.cpp

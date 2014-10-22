@@ -16,4 +16,8 @@ public:
 	Node* object;
 };
 
+typedef QSharedPointer<IntersectionInfo> IntersectionInfoPointer;
+
+typedef IntersectionInfoPointer NoHit;
+
 #endif // INTERSECTIONINFO_H

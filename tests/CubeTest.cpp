@@ -16,7 +16,7 @@ void CubeTest::testBasicIntersection()
 	// with corners at (+-1, +-1, +-1)
 	Cube cube;
 
-	IntersectionInfo* info = cube.intersect(ray1);
+	IntersectionInfoPointer info = cube.intersect(ray1);
 	QVERIFY(info != 0);
 
 	//intersection will happen at (0,0,1), 9 time units from the ray's origin
@@ -33,7 +33,7 @@ void CubeTest::testParallelOutsideRay()
 
 	Cube cube;
 
-	IntersectionInfo* info = cube.intersect(ray1);
+	IntersectionInfoPointer info = cube.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -45,7 +45,7 @@ void CubeTest::testParallelOnPlaneRay()
 
 	Cube cube;
 
-	IntersectionInfo* info = cube.intersect(ray1);
+	IntersectionInfoPointer info = cube.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -57,7 +57,7 @@ void CubeTest::testRotatedCube()
 
 	RayObjectPointer cube(new Cube(rotation));
 
-	IntersectionInfo* info = cube->intersect(ray1);
+	IntersectionInfoPointer info = cube->intersect(ray1);
 
 	QVERIFY(info != 0);
 
@@ -76,7 +76,7 @@ void CubeTest::testOriginInsideCube()
 
 	Cube cube;
 
-	IntersectionInfo* info = cube.intersect(ray1);
+	IntersectionInfoPointer info = cube.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -86,11 +86,11 @@ void CubeTest::testTranslatedCube()
 	RayObjectPointer cube(new Cube(translation));
 
 	Ray ray1(Vector3d(0, 0, 10), Vector3d(0, 0, -1));
-	IntersectionInfo* info1 = cube->intersect(ray1);
+	IntersectionInfoPointer info1 = cube->intersect(ray1);
 	QVERIFY(info1 == 0);
 
 	Ray ray2(Vector3d(10, 0, 10), Vector3d(0, 0, -1));
-	IntersectionInfo* info2 = cube->intersect(ray2);
+	IntersectionInfoPointer info2 = cube->intersect(ray2);
 	QVERIFY(info2 != 0);
 
 	Vector3d expectedNormal(Vector3d::UnitZ());
@@ -110,7 +110,7 @@ void CubeTest::testAngledIntersection()
 
 	Cube cube;
 
-	IntersectionInfo* info = cube.intersect(ray1);
+	IntersectionInfoPointer info = cube.intersect(ray1);
 	QVERIFY(info != 0);
 }
 
@@ -125,7 +125,7 @@ void CubeTest::testAngledMiss()
 
 	Cube cube;
 
-	IntersectionInfo* info = cube.intersect(ray1);
+	IntersectionInfoPointer info = cube.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -144,7 +144,7 @@ void CubeTest::testTranslatedRotatedCube()
 
 	Ray ray1(Vector3d(cubeCenter.x() + 1, 0, 0), Vector3d(0, 0, -1));
 
-	IntersectionInfo* info = cube.intersect(ray1);
+	IntersectionInfoPointer info = cube.intersect(ray1);
 	QVERIFY(info != 0);
 
 	// distance from ray to cube center, plus offset from Z axis,
@@ -164,7 +164,7 @@ void CubeTest::testInvertedCube()
 
 	Ray ray(Vector3d(0, 0, 10), Vector3d(0, 0, -1));
 
-	IntersectionInfo* info = cube.intersect(ray);
+	IntersectionInfoPointer info = cube.intersect(ray);
 	QVERIFY(info != 0);
 
 	QCOMPARE(info->time, 9.0);

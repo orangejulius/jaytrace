@@ -16,7 +16,7 @@ public:
 	Triangle(Vector3d v0, Vector3d v1, Vector3d v2, NodePointer parent = NodePointer(0));
 	virtual ~Triangle();
 
-	IntersectionInfo* intersect(const Ray& ray);
+	IntersectionInfoPointer intersect(const Ray& ray);
 
 	Vector3d getV0() const {
 		return v0;

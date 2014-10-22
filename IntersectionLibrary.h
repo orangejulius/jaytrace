@@ -11,7 +11,7 @@ class IntersectionLibrary
 {
 public:
 	void addObject(RayObjectPointer object);
-	IntersectionInfo* intersect(const Ray& ray);
+	IntersectionInfoPointer intersect(const Ray& ray);
 private:
 	list<RayObjectPointer> objects;
 };

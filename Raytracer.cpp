@@ -64,7 +64,7 @@ QImage Raytracer::render()
 
 Color Raytracer::rayColor(Ray ray)
 {
-	IntersectionInfo* info = intersectionLibrary.intersect(ray);
+	IntersectionInfoPointer info = intersectionLibrary.intersect(ray);
 	Color totalColor(0, 0, 0);
 	if (!info) {
 		return totalColor;
@@ -109,19 +109,16 @@ Color Raytracer::rayColor(Ray ray)
 	Color reflectionColor = rayColor(reflectionRay);
 	totalColor += reflectionColor * objectMaterial.getSpecular();
 
-	delete info;
-
 	return totalColor;
 }
 
 bool Raytracer::shadowFeeler(Ray ray)
 {
-	IntersectionInfo* info = intersectionLibrary.intersect(ray);
+	IntersectionInfoPointer info = intersectionLibrary.intersect(ray);
 
 	if (info == 0) {
 		return true;
 	} else {
-		delete info;
 		return false;
 	}
 }

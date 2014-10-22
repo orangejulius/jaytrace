@@ -14,7 +14,7 @@ void PlaneTest::testNormalIntersection()
 	//defaults to the Z=0 plane
 	Plane plane;
 
-	IntersectionInfo* info = plane.intersect(ray1);
+	IntersectionInfoPointer info = plane.intersect(ray1);
 	QVERIFY(info != 0);
 	QCOMPARE(info->time, 10.0);
 	QCOMPARE(info->normal, Vector3d(0, 0, 1));
@@ -31,7 +31,7 @@ void PlaneTest::testTranslatedIntersection()
 	//defaults to the Z=0 plane
 	Plane plane(translation);
 
-	IntersectionInfo* info = plane.intersect(ray1);
+	IntersectionInfoPointer info = plane.intersect(ray1);
 	QVERIFY(info != 0);
 	QCOMPARE(info->time, 20.0);
 	QCOMPARE(info->normal, Vector3d(0, 0, 1));
@@ -48,7 +48,7 @@ void PlaneTest::testRotatedIntersection()
 	//defaults to the Z=0 plane
 	Plane plane(rotation);
 
-	IntersectionInfo* info = plane.intersect(ray1);
+	IntersectionInfoPointer info = plane.intersect(ray1);
 	QVERIFY(info != 0);
 	QCOMPARE(info->time, 20.0);
 
@@ -71,7 +71,7 @@ void PlaneTest::testAngledIntersection()
 
 	Ray ray1(origin, direction);
 
-	IntersectionInfo* info = plane.intersect(ray1);
+	IntersectionInfoPointer info = plane.intersect(ray1);
 	QVERIFY(info != 0);
 
 	QCOMPARE(info->normal, Vector3d(0, 0, 1));
@@ -83,7 +83,7 @@ void PlaneTest::testInPlaneRay()
 
 	Ray ray1(Vector3d(0, 0, 0), Vector3d::UnitX() * -1);
 
-	IntersectionInfo* info = plane.intersect(ray1);
+	IntersectionInfoPointer info = plane.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -93,7 +93,7 @@ void PlaneTest::testParallelRayMiss()
 
 	Ray ray1(Vector3d(2, 5, 0), -1 * Vector3d::UnitX());
 
-	IntersectionInfo* info = plane.intersect(ray1);
+	IntersectionInfoPointer info = plane.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -104,6 +104,6 @@ void PlaneTest::testNegativeHit()
 	// ray starts at -10 Z, so hit time is negative
 	Ray ray1(Vector3d(0, 0, -10), Vector3d::UnitX() * -1);
 
-	IntersectionInfo* info = plane.intersect(ray1);
+	IntersectionInfoPointer info = plane.intersect(ray1);
 	QVERIFY(info == 0);
 }

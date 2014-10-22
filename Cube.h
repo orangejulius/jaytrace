@@ -14,7 +14,7 @@ public:
 	Cube(NodePointer parent = NodePointer(0));
 	virtual ~Cube();
 
-	IntersectionInfo* intersect(const Ray& ray);
+	IntersectionInfoPointer intersect(const Ray& ray);
 
 protected:
 	Vector3d getFaceNormal(int axis, int magnitude);

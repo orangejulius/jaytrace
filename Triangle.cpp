@@ -21,32 +21,32 @@ Triangle::~Triangle()
 	qDebug() << "Deleting Triangle " << this;
 }
 
-IntersectionInfo* Triangle::intersect(const Ray& ray)
+IntersectionInfoPointer Triangle::intersect(const Ray& ray)
 {
 	// check for degenerate triangle (a line segment)
 	if (n.isApprox(Vector3d::Zero())) {
-		return 0;
+		return NoHit();
 	}
 
 	Ray genericRay = ray.getTransformedRay(getInverseTransform());
 
 	// first check for intersection with the plane of the triangle
-	IntersectionInfo* planeIntersection = plane.intersect(genericRay);
+	IntersectionInfoPointer planeIntersection = plane.intersect(genericRay);
 	if (planeIntersection == 0) {
-		return 0;
+		return NoHit();
 	}
 	// get the point at which the ray intersects the plane
 	Vector3d p1 = genericRay.getPosition(planeIntersection->time);
 
 	if(pointInTriangle(p1)) {
-		IntersectionInfo* info = new IntersectionInfo;
+		IntersectionInfoPointer info(new IntersectionInfo());
 		info->time = planeIntersection->time;
 		info->normal = getTransformedNormal();
 		info->object = this;
 		return info;
 	}
 
-	return 0;
+	return NoHit();
 }
 
 bool Triangle::pointInTriangle(Vector3d p1)

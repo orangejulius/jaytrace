@@ -15,7 +15,7 @@ public:
 	Plane(Vector3d v0, Vector3d n, NodePointer parent = NodePointer(0));
 	virtual ~Plane();
 
-	IntersectionInfo* intersect(const Ray& ray);
+	IntersectionInfoPointer intersect(const Ray& ray);
 
 protected:
 	Vector3d v0, n;

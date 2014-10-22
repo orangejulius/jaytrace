@@ -16,13 +16,13 @@ Sphere::~Sphere()
 	qDebug() << "Deleting Sphere " << this;
 }
 
-IntersectionInfo* Sphere::intersect(const Ray& ray)
+IntersectionInfoPointer Sphere::intersect(const Ray& ray)
 {
 	Affine3d transform = getTransform();
 
 	if (transform.matrix().determinant() == 0) {
 		qDebug() << "Matrix not invertible!";
-		return 0;
+		return NoHit();
 	}
 
 	Ray genericRay = ray.getTransformedRay(getInverseTransform());
@@ -34,7 +34,7 @@ IntersectionInfo* Sphere::intersect(const Ray& ray)
 	double discriminant = B * B - A * C;
 
 	if (discriminant < 0) {
-		return 0;
+		return NoHit();
 	}
 
 	double dRoot = sqrt(discriminant);
@@ -46,17 +46,17 @@ IntersectionInfo* Sphere::intersect(const Ray& ray)
 	if (t2 > 0.0000000001 ) {
 		solution = t2;
 	} else {
-		return 0;
+		return NoHit();
 	}
 
 	double t1 = (-B - dRoot) / A;
 	if (t1 > 0.000000001) {
 		solution = t1;
 	} else {
-		return 0;
+		return NoHit();
 	}
 
-	IntersectionInfo* result = new IntersectionInfo;
+	IntersectionInfoPointer result(new IntersectionInfo());
 	result->time = solution;
 
 	Vector3d genericNormal = genericRay.getPosition(result->time);

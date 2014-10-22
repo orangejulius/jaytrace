@@ -15,11 +15,11 @@ Cube::~Cube()
 	qDebug() << "Deleting Cube " << this;
 }
 
-IntersectionInfo* Cube::intersect(const Ray& ray)
+IntersectionInfoPointer Cube::intersect(const Ray& ray)
 {
 	double tIn = 0.000000001, tOut = 100000000.0;
 
-	IntersectionInfo* info = 0;
+	IntersectionInfoPointer info;
 
 	Ray genericRay = ray.getTransformedRay(getInverseTransform());
 
@@ -35,7 +35,7 @@ IntersectionInfo* Cube::intersect(const Ray& ray)
 				if (numerator <= 0) {
 					//ray is never inside cube
 					//note this includes rays exactly in the plane of one face
-					return 0;
+					return NoHit();
 				}
 			} else {
 				double tHit = numerator / denominator;
@@ -50,11 +50,7 @@ IntersectionInfo* Cube::intersect(const Ray& ray)
 						//this is a new latest hit going in
 						tIn = tHit;
 
-						if (info) {
-							delete info;
-						}
-
-						info = new IntersectionInfo();
+						info = IntersectionInfoPointer(new IntersectionInfo());
 						info->object = this;
 						info->time = tHit;
 						info->normal = getFaceNormal(axis, magnitude);
@@ -62,7 +58,7 @@ IntersectionInfo* Cube::intersect(const Ray& ray)
 				}
 			}
 			if (tIn >= tOut) {
-				return 0; // ray misses cube
+				return NoHit(); // ray misses cube
 			}
 		}
 	}

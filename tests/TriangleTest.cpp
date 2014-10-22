@@ -24,7 +24,7 @@ void TriangleTest::testNormalIntersection()
 	//triangle situated on the Z=0 plane
 	Triangle triangle(Vector3d(0, 1, 0), Vector3d(-1, -1, 0), Vector3d(1, -1, 0));
 
-	IntersectionInfo* info = triangle.intersect(ray1);
+	IntersectionInfoPointer info = triangle.intersect(ray1);
 	QVERIFY(info != 0);
 
 	QCOMPARE(info->time, 10.0);
@@ -42,7 +42,7 @@ void TriangleTest::testTransformedIntersection()
 	NodePointer translation(new TranslationNode(10, 0, 0));
 	Triangle triangle(Vector3d(0, 1, 0), Vector3d(-1, -1, 0), Vector3d(1, -1, 0), translation);
 
-	IntersectionInfo* info = triangle.intersect(ray1);
+	IntersectionInfoPointer info = triangle.intersect(ray1);
 	QVERIFY(info != 0);
 
 	QCOMPARE(info->time, 10.0);
@@ -61,7 +61,7 @@ void TriangleTest::testAngledIntersection()
 	direction.normalize();
 	Ray ray1(origin, direction);
 
-	IntersectionInfo* info = triangle.intersect(ray1);
+	IntersectionInfoPointer info = triangle.intersect(ray1);
 	QVERIFY(info != 0);
 
 	//triangle normal is the unit Z vector
@@ -75,7 +75,7 @@ void TriangleTest::testInPlaneRay()
 
 	Ray ray1(Vector3d(2, 0, 0), -1 * Vector3d::UnitX());
 
-	IntersectionInfo* info = triangle.intersect(ray1);
+	IntersectionInfoPointer info = triangle.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -86,7 +86,7 @@ void TriangleTest::testParallelRayMiss()
 
 	Ray ray1(Vector3d(2, 5, 0), -1 * Vector3d::UnitX());
 
-	IntersectionInfo* info = triangle.intersect(ray1);
+	IntersectionInfoPointer info = triangle.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -97,7 +97,7 @@ void TriangleTest::testNormalMiss()
 	//triangle situated on the Z=0 plane
 	Triangle triangle(Vector3d(0, 1, 0), Vector3d(-1, -1, 0), Vector3d(1, -1, 0));
 
-	IntersectionInfo* info = triangle.intersect(ray1);
+	IntersectionInfoPointer info = triangle.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -111,7 +111,7 @@ void TriangleTest::testAngledMiss()
 	direction.normalize();
 	Ray ray1(origin, direction);
 
-	IntersectionInfo* info = triangle.intersect(ray1);
+	IntersectionInfoPointer info = triangle.intersect(ray1);
 	QVERIFY(info == 0);
 }
 
@@ -125,7 +125,7 @@ void TriangleTest::testRotatedIntersection()
 	//triangle situated on the Z=0 plane
 	Triangle triangle(Vector3d(0, 1, 0), Vector3d(-1, -1, 0), Vector3d(1, -1, 0), rotation);
 
-	IntersectionInfo* info = triangle.intersect(ray1);
+	IntersectionInfoPointer info = triangle.intersect(ray1);
 	double sqrt2 = 1.414213562373095048801688724209;
 	Vector3d expectedNormal(sqrt2 / 2, 0, sqrt2 / 2);
 

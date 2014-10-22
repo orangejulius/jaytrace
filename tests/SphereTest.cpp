@@ -26,7 +26,7 @@ void SphereTest::testAxisAlignedNormalIntersection()
 	Ray ray(Vector3d(-10, 0, 0), Vector3d(1, 0, 0));
 	Sphere sphere;
 
-	IntersectionInfo * info = sphere.intersect(ray);
+	IntersectionInfoPointer info = sphere.intersect(ray);
 	QVERIFY(info != 0);
 
 	QCOMPARE(info->time, 9.0);
@@ -45,7 +45,7 @@ void SphereTest::testAngledNormalIntersection()
 	Ray ray(Vector3d(3, 2, 3), Vector3d(-3, -2, -3).normalized());
 	Sphere sphere;
 
-	IntersectionInfo * info = sphere.intersect(ray);
+	IntersectionInfoPointer info = sphere.intersect(ray);
 
 	QVERIFY(info != 0);
 	QCOMPARE(info->time, ray.getOrigin().norm() - 1);
@@ -74,7 +74,7 @@ void SphereTest::testEvenlyScaledIntersection()
 
 	Ray ray(Vector3d(0, 0, 10), Vector3d(0, 0, -1));
 
-	IntersectionInfo* info = sphere.intersect(ray);
+	IntersectionInfoPointer info = sphere.intersect(ray);
 
 	QVERIFY(info != 0);
 	QCOMPARE(info->time, 8.0);
@@ -88,8 +88,8 @@ void SphereTest::testEllipsoidIntersection()
 	Ray ray1(Vector3d(0, 0, 10), Vector3d(0, 0, -1));
 	Ray ray2(Vector3d(0, 0.5, 10), Vector3d(0, 0, -1));
 
-	IntersectionInfo* info1 = sphere.intersect(ray1);
-	IntersectionInfo* info2 = sphere.intersect(ray2);
+	IntersectionInfoPointer info1 = sphere.intersect(ray1);
+	IntersectionInfoPointer info2 = sphere.intersect(ray2);
 
 	QVERIFY(info1 != 0);
 	QCOMPARE(info1->time, 8.0);
@@ -114,7 +114,7 @@ void SphereTest::testRotatedEllipsoidIntersection()
 	Sphere sphere(scaleToEllipsoid);
 	Ray ray(Vector3d(0, 0.5, 10), Vector3d(0, 0, -1));
 
-	IntersectionInfo* info = sphere.intersect(ray);
+	IntersectionInfoPointer info = sphere.intersect(ray);
 
 	double sqrt3 = 1.7320508075688772;
 	Vector3d expectedIntersection(0, 0.5, sqrt3);

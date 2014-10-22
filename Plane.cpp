@@ -21,7 +21,7 @@ Plane::~Plane()
 	qDebug() << "Deleting Plane " << this;
 }
 
-IntersectionInfo* Plane::intersect(const Ray& ray)
+IntersectionInfoPointer Plane::intersect(const Ray& ray)
 {
 	Ray genericRay = ray.getTransformedRay(getInverseTransform());
 
@@ -29,16 +29,16 @@ IntersectionInfo* Plane::intersect(const Ray& ray)
 	double denominator = n.dot(genericRay.getDirection());
 
 	if (denominator < 0.000000001 && denominator > -0.0000000001) {
-		return 0;
+		return NoHit();
 	}
 
 	double tHit = numerator / denominator;
 
 	if (tHit < 0.0000000001) {
-		return 0;
+		return NoHit();
 	}
 
-	IntersectionInfo* info = new IntersectionInfo();
+	IntersectionInfoPointer info(new IntersectionInfo());
 	info->normal = getTransform().linear() * n;
 	info->time = tHit;
 	info->object = this;

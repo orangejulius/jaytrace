@@ -12,7 +12,7 @@ public:
 	Sphere(NodePointer parent = NodePointer(0));
 	virtual ~Sphere();
 
-	IntersectionInfo* intersect(const Ray& ray);
+	IntersectionInfoPointer intersect(const Ray& ray);
 private:
 
 };

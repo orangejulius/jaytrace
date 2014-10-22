@@ -24,9 +24,9 @@ void IntersectionLibraryTest::testIntersections()
 	intersectionLibrary.addObject(sphere1);
 	intersectionLibrary.addObject(sphere2);
 
-	IntersectionInfo* info1 = intersectionLibrary.intersect(ray1);
-	IntersectionInfo* info2 = intersectionLibrary.intersect(ray2);
-	IntersectionInfo* info3 = intersectionLibrary.intersect(ray3);
+	IntersectionInfoPointer info1 = intersectionLibrary.intersect(ray1);
+	IntersectionInfoPointer info2 = intersectionLibrary.intersect(ray2);
+	IntersectionInfoPointer info3 = intersectionLibrary.intersect(ray3);
 
 	QVERIFY(info1);
 	QCOMPARE(info1->normal, Vector3d(-1, 0, 0));
@@ -56,8 +56,8 @@ void IntersectionLibraryTest::testOccultation()
 	intersectionLibrary.addObject(sphere1);
 	intersectionLibrary.addObject(sphere2);
 
-	IntersectionInfo* info1 = intersectionLibrary.intersect(ray1);
-	IntersectionInfo* info2 = intersectionLibrary.intersect(ray2);
+	IntersectionInfoPointer info1 = intersectionLibrary.intersect(ray1);
+	IntersectionInfoPointer info2 = intersectionLibrary.intersect(ray2);
 
 	QVERIFY(info1);
 	QCOMPARE(info1->normal, Vector3d(-1, 0, 0));

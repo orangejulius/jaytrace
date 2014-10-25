@@ -20,7 +20,6 @@ OBJModel OBJModel::import(std::string filename, NodePointer parent)
 		shape_t shape = shapes[shape_idx];
 		assert((shape.mesh.indices.size() % 3) == 0);
 		for (size_t face_idx = 0; face_idx < shape.mesh.indices.size() / 3; face_idx++) {
-			// size 3 float array. each element is an id of a vertex
 			unsigned int *face_vertex_ids = &shape.mesh.indices[3*face_idx];
 			Vector3d verticies[3];
 			for (int face_vertex_index = 0; face_vertex_index < 3; face_vertex_index++) {

@@ -9,6 +9,19 @@ Composable 3D affine transformations using matrices
 Lighting model with ambient, diffuse, and specular lighting from multiple lights
 Shadows and reflections
 
+Philosophies
+This project primarily serves two purposes: to experiment with interesting algorithms and to create
+pretty pictures. I have thus far preferred improved encapsulation and readability of the code over
+micro-optimizations, therefore the style of this project does not always feel like traditional
+graphics code (especially in academia where many graphics algorithms originate), which favors long
+functions close to the metal for speed.
+
+On the other hand, I've tried to write code in a very testable way (like modern web development) and
+add unit tests where possible, which is not common (I assume) in high-performance graphics code.
+These tradeoffs are not easy, but it has been educational to try to balance the two.  Hopefully, as
+I whittle down the list of features I'm exited to implement, I'll have time to optimize the code
+further while maintaining readability and extensibility.
+
 Dependencies
 CMake 2.8+
 Qt 4.6 (core, gui, and test libraries)

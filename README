@@ -3,8 +3,9 @@ Jaytrace: a personal ray tracer project
 v0.1
 
 Features
-Intersections with spheres, cubes, and planes
-Composable 3D affine transformations using matricies
+Intersections with spheres, triangles, cubes, and planes
+OBJ file support using tinyobjloader
+Composable 3D affine transformations using matrices
 Lighting model with ambient, diffuse, and specular lighting from multiple lights
 Shadows and reflections
 
@@ -13,12 +14,10 @@ CMake 2.8+
 Qt 4.6 (core, gui, and test libraries)
 Eigen 3.x
 
-Planned features include
-* triangle intersection support
-* OBJ file format support
-* kd-tree based intersection algorithm
-* photon mapping
-* full transparency (diffraction, total internal reflection, proper handling of shadows)
+Planned features
+* kd-tree based intersection checking
+* photon mapping or other global illumination systems
+* full transparency (diffraction, total internal reflection)
 * support for rendering multiple frames for an animation
 * OpenCL or CUDA based computation
 * network communication to enable multiple machines to work on one output image

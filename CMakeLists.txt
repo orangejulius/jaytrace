@@ -102,6 +102,8 @@ add_executable(jaytrace main.cpp)
 target_link_libraries(jaytrace JaytraceCore ${QT_LIBRARIES})
 
 if (enableTests)
+	enable_testing()
 	add_executable(jaytraceTest ${jaytraceTest_all_sources})
+	add_test(NAME jaytraceTest COMMAND jaytraceTest)
 	target_link_libraries(jaytraceTest JaytraceCore ${QT_LIBRARIES})
 endif (enableTests)

@@ -8,6 +8,7 @@ OBJ file support using tinyobjloader
 Composable 3D affine transformations using matrices
 Lighting model with ambient, diffuse, and specular lighting from multiple lights
 Shadows and reflections
+Antialiasing with Poisson distribution based point selection
 
 Philosophies
 This project primarily serves two purposes: to experiment with interesting algorithms and to create

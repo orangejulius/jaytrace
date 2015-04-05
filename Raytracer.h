@@ -12,7 +12,7 @@ class Color;
 class Raytracer
 {
 public:
-	Raytracer(unsigned int width, unsigned int height, Angle projectionAngle);
+	Raytracer(unsigned int width, unsigned int height, unsigned int aaSamples, Angle projectionAngle);
 
 	void addObject(RayObjectPointer object);
 	void addLight(LightPointer light);
@@ -27,6 +27,7 @@ private:
 
 	unsigned int width;
 	unsigned int height;
+	unsigned int aaSamples;
 	double aspectRatio;
 	Angle projectionAngle;
 

@@ -1,5 +1,7 @@
 #include "Raytracer.h"
 
+#include <stdio.h>
+
 #include "Material.h"
 #include "Poisson.h"
 #include "Ray.h"
@@ -33,6 +35,7 @@ QImage Raytracer::render()
 
 	#pragma omp parallel for num_threads(4) schedule(dynamic)
 	for (unsigned int row = 0; row < height; row++) {
+		fprintf(stderr, "\r%f%% (%d of %d rows)", float(row)/height * 100, row, height);
 		for (unsigned int col = 0; col < width; col++) {
 			Color pixelColor(0, 0, 0);
 			Poisson poisson(aaSamples);
@@ -58,6 +61,7 @@ QImage Raytracer::render()
 			image.setPixel(col, row, pixelColor.getARGB());
 		}
 	}
+	fprintf(stderr, "\n");
 	return image;
 }
 

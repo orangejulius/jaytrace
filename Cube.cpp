@@ -1,6 +1,7 @@
 #include "Cube.h"
 
 #include "IntersectionInfo.h"
+#include "jaytrace.h"
 #include "Ray.h"
 
 #include <QDebug>
@@ -17,7 +18,7 @@ Cube::~Cube()
 
 IntersectionInfoPointer Cube::intersect(const Ray& ray)
 {
-	double tIn = 0.000000001, tOut = 100000000.0;
+	double tIn = EPSILON, tOut = 100000000.0;
 
 	IntersectionInfoPointer info;
 

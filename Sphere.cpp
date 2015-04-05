@@ -1,6 +1,7 @@
 #include "Sphere.h"
 
 #include "IntersectionInfo.h"
+#include "jaytrace.h"
 #include "Ray.h"
 
 #include <QDebug>
@@ -43,14 +44,14 @@ IntersectionInfoPointer Sphere::intersect(const Ray& ray)
 	//t2 is always greater than t1 so if t2 is not greater than 0,
 	//t1 cannot be
 	double t2 = (-B + dRoot) / A;
-	if (t2 > 0.0000000001 ) {
+	if (t2 > EPSILON) {
 		solution = t2;
 	} else {
 		return NoHit();
 	}
 
 	double t1 = (-B - dRoot) / A;
-	if (t1 > 0.000000001) {
+	if (t1 > EPSILON) {
 		solution = t1;
 	} else {
 		return NoHit();

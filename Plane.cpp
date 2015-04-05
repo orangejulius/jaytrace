@@ -1,6 +1,7 @@
 #include "Plane.h"
 
 #include "IntersectionInfo.h"
+#include "jaytrace.h"
 #include "Ray.h"
 #include "Raytracer.h"
 
@@ -28,13 +29,13 @@ IntersectionInfoPointer Plane::intersect(const Ray& ray)
 	double numerator = n.dot(v0 - genericRay.getOrigin());
 	double denominator = n.dot(genericRay.getDirection());
 
-	if (denominator < 0.000000001 && denominator > -0.0000000001) {
+	if (denominator < EPSILON && denominator > -EPSILON) {
 		return NoHit();
 	}
 
 	double tHit = numerator / denominator;
 
-	if (tHit < 0.0000000001) {
+	if (tHit < EPSILON) {
 		return NoHit();
 	}
 

@@ -7,7 +7,7 @@
 
 using Eigen::Vector3d;
 
-RaytraceRenderer::RaytraceRenderer(ScenePointer scene, unsigned int width, unsigned int height, Angle projectionAngle): Renderer(scene, width, height, projectionAngle)
+RaytraceRenderer::RaytraceRenderer(ScenePointer scene, unsigned int width, unsigned int height, unsigned int aaSamples, Angle projectionAngle): Renderer(scene, width, height, aaSamples, projectionAngle)
 {
 
 }
@@ -19,7 +19,7 @@ RaytraceRenderer::~RaytraceRenderer()
 
 QImage RaytraceRenderer::render()
 {
-	Raytracer raytracer(width, height, projectionAngle);
+	Raytracer raytracer(width, height, aaSamples, projectionAngle);
 
 	list<RayObjectPointer> objects = scene->getObjects();
 	list<LightPointer> lights = scene->getLights();

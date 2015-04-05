@@ -4,7 +4,7 @@
 #include "Poisson.h"
 #include "Ray.h"
 
-Raytracer::Raytracer(unsigned int width, unsigned int height, Angle projectionAngle): width(width), height(height), projectionAngle(projectionAngle)
+Raytracer::Raytracer(unsigned int width, unsigned int height, unsigned int aaSamples, Angle projectionAngle): width(width), height(height), aaSamples(aaSamples), projectionAngle(projectionAngle)
 {
 	aspectRatio = (double)width/height;
 }
@@ -35,7 +35,6 @@ QImage Raytracer::render()
 	for (unsigned int row = 0; row < height; row++) {
 		for (unsigned int col = 0; col < width; col++) {
 			Color pixelColor(0, 0, 0);
-			unsigned int aaSamples = 4;
 			Poisson poisson(aaSamples);
 			for (unsigned int aa = 0; aa < aaSamples; aa++) {
 				Vector2d offset(.5, .5);

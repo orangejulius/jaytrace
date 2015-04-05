@@ -8,7 +8,7 @@
 class RaytraceRenderer: public Renderer
 {
 public:
-	RaytraceRenderer(ScenePointer scene, unsigned int width = 640, unsigned int height = 480, Angle projectionAngle = Angle::degrees(25));
+	RaytraceRenderer(ScenePointer scene, unsigned int width = 640, unsigned int height = 480, unsigned int aaSamples = 1, Angle projectionAngle = Angle::degrees(25));
 	~RaytraceRenderer();
 
 	QImage render();

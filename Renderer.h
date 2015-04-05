@@ -11,13 +11,15 @@ using std::list;
 class Renderer
 {
 public:
-	Renderer(ScenePointer scene, unsigned int width, unsigned int height, Angle projectionAngle);
+	Renderer(ScenePointer scene, unsigned int width, unsigned int height, unsigned int aaSamples, Angle projectionAngle);
 
 protected:
 	ScenePointer scene;
 
 	unsigned int width;
 	unsigned int height;
+
+	unsigned int aaSamples;
 
 	Angle projectionAngle;
 	float aspectRatio;
